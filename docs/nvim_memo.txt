@@ -1,0 +1,63 @@
+選択していない補完が挿入されていまう
+cmpあたりが怪しい
+
+nvim installer:
+
+    packer.nvim
+        bootstrap: (You can also use the following command (with packer bootstrapped) to have packer setup your configuration (or simply run updates) and close once all operations are completed)
+            $ nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+    lsp install:
+
+        install lsp with npm
+            npm i -g bash-language-server
+            npm i -g vscode-langservers-extracted
+            npm i -g dockerfile-language-server-nodejs
+            npm i -g emmet-ls
+            npm i -g pyright
+            npm i -g vim-language-server
+            npm i -g typescript typescript-language-server
+
+
+        install lsp with yarn
+            yarn global add yaml-language-server
+
+
+        install lsp with pip
+            pip install cmake-language-server
+
+
+        install lsp with go
+            GO111MODULE=on go get golang.org/x/tools/gopls@latest
+
+
+        install lsp with brew
+            brew install llvm
+            brew install rust-analyzer
+
+
+        install lsp with git
+            sumneko_lua:
+                brew install ninja
+                dir="${HOME}/.local/share/nvim/lsp_servers"
+                mkdir -p "$dir"
+                cd "$dir"
+                git clone https://github.com/sumneko/lua-language-server
+                cd lua-language-server
+                git submodule update --init --recursive
+                cd 3rd/luamake
+                compile/install.sh
+                \cd ../..
+                ./3rd/luamake/luamake rebuild
+
+            lemminx: (https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/0.18.0-400/)
+                dir="${HOME}/.local/share/nvim/lsp_servers/lemminx"
+                mkdir -p "$dir"
+                cd "$dir"
+                curl -O https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/0.18.0-400/lemminx-osx-x86_64.zip
+                unzip lemminx-osx-x86_64.zip
+                \rm -f lemminx-osx-x86_64.zip
+
+
+
+rust用のプラグインを構築する必要がある

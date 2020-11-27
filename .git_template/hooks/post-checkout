@@ -1,0 +1,63 @@
+#!/bin/bash
+
+get::origin_userName(){
+    readonly origin_name="$(git remote | head -1)"
+    current_remote_url="$(git config --local remote.$origin_name.url)"
+
+    if [ -z "$current_remote_url" ]; then
+        printf "\e[31;1m%s\e[m\n" "fatal: No remote URL"
+        exit 1
+    fi
+
+    case $current_remote_url in
+    *://*)
+        # Extraction
+        #  'https://github.com/user/repository' >>> 'user'
+        origin_userName=$(echo $current_remote_url | sed -e 's|.*/\(.*\)/.*|\1|')
+        ;;
+    *:*)
+        # Extraction
+        #  'git@github.com:user/repository' >>> 'user'
+        origin_userName=$(echo $current_remote_url | sed -e 's|.*:\(.*\)/.*|\1|')
+        ;;
+    esac
+}
+
+
+readonly PREVIOUS_HEAD=$1
+readonly NOW_HEAD=$2
+
+# If you checkout of the branch: 1
+# If you checkout of the file: 0
+readonly BRANCH_SWITCH=$3
+
+readonly Z40="0000000000000000000000000000000000000000"
+
+if [ "$PREVIOUS_HEAD" = "$Z40" -a "$BRANCH_SWITCH" = "1" ]; then
+
+    get::origin_userName
+
+    #find ~ -maxdepth 1 -type f -name ".gitconfig_user*" | xargs sed -ne "s|.*name = \(.*\)|\1|p"
+    gitconfig_userPATH="$HOME"
+    for file in $(find $gitconfig_userPATH -maxdepth 1 -type f -name ".gitconfig_user*"); do
+        all_uerName=$(sed -ne "s|.*name = \(.*\)|\1|p" $file)
+        if [ $origin_userName = $all_uerName ]; then
+            echo "Hit: $all_uerName"
+            echo "File: $file"
+
+            local_userName="$(git config --local user.name)"
+            local_userEmail="$(git config --local user.email)"
+            if [ -z "$local_userName" -a -z "$local_userEmail" ]; then
+                local_userName="$all_uerName"
+                local_userEmail="$(sed -ne "s|.*email = \(.*\)|\1|p" $file)"
+                git config --local user.name "$local_userName"
+                git config --local user.email "$local_userEmail"
+                echo "config: set the local user.name to '$local_userName'"
+                echo "config: set the local user.email to '$local_userEmail'"
+            fi
+            exit 0
+        fi
+    done
+else
+    :
+fi

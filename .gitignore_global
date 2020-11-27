@@ -1,0 +1,6 @@
+# osx
+.DS_Store
+
+# node
+.node-version
+node_modules

@@ -1,0 +1,8 @@
+[submodule "dot_macos"]
+	path = dot_macos
+	url = https://github.com/ttt-teru/dot_macos.git
+	branch = main
+[submodule "dot_win"]
+	path = dot_win
+	url = https://github.com/ttt-teru/dot_win.git
+	branch = main

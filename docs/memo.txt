@@ -1,0 +1,20 @@
+Memo .gitconfig:
+    git log --graph --all --pretty=format:\
+        '%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\
+        --abbrev-commit --date=relative
+
+    git log --graph --pretty=format:\
+        '%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
+
+    git log --graph --oneline --decorate --all \
+        $( git fsck --no-reflog | awk '/dangling commit/ {print $3}' )
+
+
+Add: item to the README.md
+    1) How to use the installer.
+    2) CLI Tool Config.
+
+Task:
+    nvim development environment installrer.
+        .) anyenv -> envTools
+        .) Run the script written in the nvim_memo.txt

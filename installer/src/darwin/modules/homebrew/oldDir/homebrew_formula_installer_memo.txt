@@ -1,0 +1,131 @@
+select_brewformula=('bash' 'git' 'fish' 'starship' 'neovim' 'yarn' 'vim' 'tmux'
+                    'sfmono-square' 'gcc' 'llvm' 'cmake' 'go' 'gtk+3' 'sdl2' 'spark' 'anyenv' 'hub' 'nasm' 'ncurses' 'qemu' 'ruby'
+                    'binutils' 'bat' 'curl' 'direnv' 'exa' 'tldr' 'trash' 'tree'
+                    'fzf' 'gdb' 'hexyl' 'tig' 'lazygit'
+                    'htop' 'neofetch' 'duf' 'procs'
+                    'cmatrix' 'nyancat' 'silicon'
+)
+
+select_caskformula=('Discord' 'Zoomus'
+                    'Docker' 'Ghidra' 'Gitkraken' 'iTerm2' 'Unity-Hub' 'VirtualBox' 'Visual-Studio-Code' 'Wireshark' 'Xquartz'
+                    'Autodesk-Fusion360' 'Blender' 'Clipy' 'Karabiner-Elements' 'Deepl' 'Notion' 'OBS'
+                    'Firefox' 'Google-Chrome' 'Google-japanese-ime'
+                    'Font-hack-nerd-font'
+)
+
+select_masformula=('LINE' 'Slack' 'TweetDeck' 'Twitter'
+                   'CotEditor' 'Developer' 'Amphetamine'
+                   'BetterSnapTool' 'GLView' 'Keynote' 'Skitch' 'TheUnarchiver' 'WinArchiverLite' 'XMind' 'Xcode' 'Cinebench'
+)
+
+#echo ${#select_brewformula[@]}
+#echo ${select_brewformula[@]}
+#echo
+#echo ${#select_caskformula[@]}
+#echo ${select_caskformula[@]}
+#echo
+#echo ${#select_masformula[@]}
+#echo ${select_masformula[@]}
+
+for brew in "${select_brewformula[@]}"; do
+    echo $brew
+done
+echo
+for cask in "${select_caskformula[@]}"; do
+    echo $cask
+done
+echo
+for mas in "${select_masformula[@]}"; do
+    echo $mas
+done
+
+
+#########################
+declare -A select_brewformula=(
+        ['bash']=0
+        ['git']=0
+        ['fish']=0
+        ['starship']=0
+        ['neovim']=0
+        ['yarn']=0
+        ['vim']=0
+        ['tmux']=0
+        ['sfmono-square']=0
+        ['gcc']=0
+        ['llvm']=0
+        ['cmake']=0
+        ['go']=0
+        ['gtk+3']=0
+        ['sdl2']=0
+        ['spark']=0
+        ['anyenv']=0
+        ['hub']=0
+        ['nasm']=0
+        ['ncurses']=0
+        ['qemu']=0
+        ['ruby']=0
+        ['binutils']=0
+        ['bat']=0
+        ['curl']=0
+        ['direnv']=0
+        ['exa']=0
+        ['tldr']=0
+        ['trash']=0
+        ['tree']=0
+        ['fzf']=0
+        ['gdb']=0
+        ['hexyl']=0
+        ['tig']=0
+        ['lazygit']=0
+        ['htop']=0
+        ['neofetch']=0
+        ['duf']=0
+        ['procs']=0
+        ['cmatrix']=0
+        ['nyancat']=0
+        ['silicon']=0
+)
+
+declare -A select_caskformula=(
+        ['Discord']=0
+        ['Zoomus']=0
+        ['Docker']=0
+        ['Ghidra']=0
+        ['Gitkraken']=0
+        ['iTerm2']=0
+        ['Unity-Hub']=0
+        ['VirtualBox']=0
+        ['Visual-Studio-Code']=0
+        ['Wireshark']=0
+        ['Xquartz']=0
+        ['Autodesk-Fusion360']=0
+        ['Blender']=0
+        ['Clipy']=0
+        ['Karabiner-Elements']=0
+        ['Deepl']=0
+        ['Notion']=0
+        ['OBS']=0
+        ['Firefox']=0
+        ['Google-Chrome']=0
+        ['Google-japanese-ime']=0
+        ['Font-hack-nerd-font']=0
+)
+
+declare -A select_masformula=(
+        ['LINE']=0
+        ['Slack']=0
+        ['TweetDeck']=0
+        ['Twitter']=0
+        ['CotEditor']=0
+        ['Developer']=0
+        ['Amphetamine']=0
+        ['BetterSnapTool']=0
+        ['GLView']=0
+        ['Keynote']=0
+        ['Skitch']=0
+        ['TheUnarchiver']=0
+        ['WinArchiverLite']=0
+        ['XMind']=0
+        ['Xcode']=0
+        ['Cinebench']=0
+)

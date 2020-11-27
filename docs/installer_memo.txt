@@ -1,0 +1,183 @@
+機能要件:
+    1) installer (osごとに定めた環境を構築する。osxとlinuxを予定)
+        macOS -> defaultsコマンドによるmacOSの設定およびbrewのリスト化したformulaすべて、そしてtmuxやneovimなどの開発環境の構築をフルインストールとする。
+                 すでに環境が構築されている場合、抜けている部分だけをインストール&適用する。
+        linux -> tmuxとneovimの環境をフルインストールとする。
+                 ROSの環境構築も自動化する。（実装未定）
+
+    2) dot doctor (OSごとに定めた環境のフルインストールの内容と現在の環境とを照合するなど)
+        macOS -> 自分が必須、必要と思ったリストと現在の環境にインストールされているものを照合して結果を出力する。
+        linux -> tmuxとneovimの環境がインストールされていればtrueとする。
+
+    3) brew formulaなどのインストール後に必須パッケージがインストールが確認されれば.bash_profileなどのシンボリックを指定パスに追加
+
+
+仕様変更:
+    1) Brew bundleは不都合があるためformulaのインストールは自作のものを用意する(以下にリストを作成する)
+
+
+構築順序:
+    1) パッケージ管理ツール(Homebrew)のinstall
+    2) 依存関係(python, node, etc...)などのinstall
+    3) 開発環境(neovim, tmux, etc...)などのinstall
+    4) formula(tig, fzf, etc...)などのinstall
+
+
+メモ:
+    シンボリックの貼り付けは諸々インストールが完了したら作成することになる。
+        インストールしたパッケージの環境設定も含まれるから
+
+
+リファクタリングなど
+-> bashで実行するからビルトインコマンドは積極的に使う(例: [] -> [[]] など)
+
+
+アイデア(実装するかは不明):
+   (不必要)インストールされているパッケージに応じてprofile(.bash_profile等)を出力するプログラム。
+        フルインストール時の内容と重複するため慎重に...
+
+
+リスト:
+    macOS: ( Full, Custom[各項目の個別,Symbolic])
+        Preferences:
+            Finder          : OK
+            Power           : OK for now
+            General         :
+            Dock            : OK
+            Menu_bar        : OK for now
+            Mission_control : OK
+            Accessibility   :
+            Sound           : OK for now
+            Keyboard        : OK for now
+            Shortcut        : OK for now
+            Trackpad        :
+            Mouse           :
+
+        Homebrew:
+            Homebrew installer: OK
+            Homebrew formula List: OK for now
+            Homebrew formula Install: OK
+            Homebrew menu: 
+
+            必須tap:
+                "homebrew/core"
+                "homebrew/cask"
+                "homebrew/cask-fonts" // font-hack-nerd-fontに必要
+                "homebrew/bundle"
+
+            必要tap:
+                tap "delphinus/sfmono-square"
+                tap "jesseduffield/lazygit"
+
+            将来的に使ってみたいformulaに必要なtap:
+                tap "universal-ctags/universal-ctags"
+
+            必須formula:
+                brew "git"
+                brew "mas"
+                brew "bash"
+                brew "fish"
+                brew "starship"
+                brew "neovim", args: ["HEAD"]
+                brew "yarn" // Coc.nvimで必要 // npmでいいのでは？　nodeと一緒に自動でインストールされる
+                brew "vim"
+                brew "tmux"
+
+            必要formula:
+                brew "delphinus/sfmono-square/sfmono-square"
+                brew "gcc"
+                brew "llvm"
+                brew "cmake"
+                brew "go"
+                brew "gtk+3"
+                brew "sdl2"
+                brew "spark"
+                brew "anyenv"
+                brew "hub"
+                brew "nasm"
+                brew "ncurses"
+                brew "qemu"
+                brew "ruby"
+
+            コマンド系formula:
+                brew "binutils"
+                brew "bat"
+                brew "curl"
+                brew "direnv"
+                brew "exa"
+                brew "tldr"
+                brew "trash"
+                brew "tree"
+
+
+            CLIツール系formula:
+                brew "fzf"
+                brew "gdb"
+                brew "hexyl"
+                brew "tig"
+                brew "jesseduffield/lazygit/lazygit"
+
+                導入検証formula
+                    brew "bpytop"
+
+            表示ツール系formula:
+                brew "htop"
+                brew "neofetch"
+                brew "duf"
+                brew "procs"
+
+            ネタformula:
+                brew "cmatrix"
+                brew "nyancat"
+                brew "silicon"
+
+            <=============================
+            将来的に使ってみたいformula:
+                brew "boost" // c++のオープンソースライブラリ 便利なものがたくさんあるらしい
+                brew "clang-format" // c++のフォーマットツール LLVMに付属
+                brew "shellcheck" // シェルのlintツール
+                brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"] // cscopeと併用
+                brew "cscope" // ctagsと併用
+                brew "fd" // rust製のfind代替コマンド
+                brew "ripgrep" // rust製のgrep代替コマンド
+                brew "the_silver_searcher" // ackの代替
+
+            不要formula:
+                brew "automake" // makefile 自動生成ツール　cmakeを使うからいらない
+                brew "coreutils" // gnu製のユーティリティ系のコマンドがまとめられている
+
+            どうしようformula:
+                brew "zsh"
+                brew "wget" // curlでいいのでは？
+
+            インストールできないformula(risc-v):
+                tap "riscv/riscv"
+                brew "riscv/riscv/riscv-tools"
+                brew "riscv/riscv/riscv-gnu-toolchain" // riscv-toolsを入れればインストールされる
+
+                # riscv-gnu-toolchainで必要かも
+                    brew "python3"
+                    brew "gawk"
+                    brew "gnu-sed"
+                    brew "gmp" // 多倍長整数など任意精度の算術ライブラリ
+                    brew "mpfr" // 多倍長浮動小数点計算用のcライブラリ
+                    brew "libmpc" // 高精度の複素数を算術するためのcライブラリ
+                    brew "isl" // 多面体モデルの整数セットライブラリ
+                    brew "zlib" // zipなどに使われている圧縮アルゴリズムをライブラリ化したもの
+                    brew "expat" // xml 1.0 parser
+
+            ## 以下、ほとんどが依存関係のため自動でインストールされたものと思われる。
+            不明formula:
+                brew "openssl@1.1" // もしかしたら必要かも
+                brew "jq" // jsonデータの取得および整形
+                brew "fontconfig" // xwindows用のxmlベースのフォント構成api
+                brew "pkg-config" // ライブラリのコンパイルフラグとリンクフラグを管理する
+                brew "gobject-introspection" // スクリプト言語においてc言語で書かれたライブラリを言語バインディングを書かずに使えるようにする
+                brew "libslirp" // 汎用tcp-ipエミュレーター
+                brew "luarocks" // luaプログラミング言語のパッケージマネージャー
+                brew "luv" // lua用のベアlibuvバインディング
+
+                ライブラリ系formula:
+                    brew "imagemagick" // 画像処理ライブラリ
+                    brew "imath" // 2dおよび3dのベクトル、行列、および数学演算のライブラリ
+                    brew "liblqr" // c/c++シームカービングライブラリ

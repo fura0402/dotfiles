@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# Creating an ide layout
+
+print_list(){
+\cat <<EOF
+
+  Select the command and press Enter.
+    list:
+       0) low
+       1) high
+       2) rosd
+       3) rose
+       4) tile
+EOF
+}
+
+if [ ! $TMUX ]; then
+    echo "Cannot run without being in tmux."
+    echo "run command 'tmux'"
+else
+    if [ "$#" -eq 0 ]; then
+        echo "Usage: ide <args>"
+        echo 'There are no argument ("ide --list" for list)'
+    else
+        case $1 in
+            "low" | "0")    # Low Level Programming
+                tmux rename-window low
+                tmux split-window -h
+                tmux resize-pane -L 33
+                tmux select-pane -t 0
+                tmux send-keys -t 0 "trap SIGWINCH && export PS1='\[\033[01;32m\] Other Spase: \[\e[0m\]' && clear" C-m
+                tmux split-window -v
+                tmux resize-pane -U 10
+                tmux send-keys -t 1 "trap SIGWINCH && export PS1='\[\033[01;36m\]\$ \[\e[0m\]' && clear" C-m
+                tmux select-pane -t 1
+                tmux select-pane -t 2
+                tmux set-option pane-border-format "#[fg=colour0,bg=colour7](#{b:pane_current_path}) #P #(echo $SHELL)"
+                tmux send-keys -t 2 "ls" C-m
+                ;;
+            "high" | "1")   # High Level Programming
+                tmux split-window -v
+                tmux split-window -h
+                tmux resize-pane -D 20
+                tmux select-pane -t 1
+                tmux select-pane -t 0
+                tmux send-keys -t 0 "ls" C-m
+                clear
+                ;;
+            "rosd" | "2")   # ros debug
+                tmux rename-window ros-debug
+                tmux split-window -h
+                tmux resize-pane -L 40
+                tmux split-window -v
+                tmux split-window -h
+                tmux select-pane -t 1
+                tmux split-window -h
+                tmux resize-pane -L 20
+                tmux select-pane -t 0
+                tmux split-window -v
+                tmux resize-pane -U 14
+                tmux split-window -v
+                tmux select-pane -t 0
+                tmux send-keys -t 4 "ls" C-m
+                clear
+                ;;
+            "rose" | "3")   # ros editor
+                tmux rename-window ros-editor
+                tmux split-window -h
+                tmux resize-pane -R 43
+                tmux split-window -v
+                tmux resize-pane -D 7
+                tmux select-pane -t 0
+                tmux split-window -v
+                tmux resize-pane -D 9
+                tmux select-pane -t 0
+                tmux send-keys -t 0 "ls" C-m
+                clear
+                ;;
+
+            "tile" | "4")   # 4-split tiles
+                tmux rename-window tile
+                tmux split-window -h
+                tmux split-window -v
+                tmux select-pane -t 0
+                tmux split-window -v
+                tmux select-pane -t 0
+                tmux send-keys -t 0 "ls" C-m
+                clear
+                ;;
+            "-l" | "--list")    # ide script list
+                print_list
+                ;;
+            *)
+                echo "Invalid argument : $1"
+                print_list
+                ;;
+        esac
+    fi
+fi

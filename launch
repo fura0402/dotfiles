@@ -1,0 +1,109 @@
+#!/bin/bash
+
+prompt_header(){
+    printf "\e[36;1m%s \e[m%s\n" "$" "$1"
+}
+
+print_error(){
+    printf "\e[31;1m%s \e[m%s\n" "Error:" "$1"
+}
+
+is_exist(){
+    if ! which "$1" &>/dev/null; then
+        echo " Error"
+        echo " $1 required."
+        exit 1
+    fi
+}
+
+dotfiles_check(){
+    if [ -e "$dotPath/dotfiles" ]; then
+        print_error "There are already dotfiles in '$dotPath'"
+        exit 1
+    fi
+}
+
+dotfiles_download(){
+    while :; do
+        read -p "Number: " select_number
+        if [ "$select_number" = "0" -o "$select_number" = "1" ]; then
+            echo
+            echo "========================================"
+
+            if is_exist "git"; then
+                if [ "$select_number" = "0" ]; then
+                    local dotGithub_SSH="git@github.com:ttt-teru/dotfiles.git"
+
+                    prompt_header "git clone --recursive $dotGithub_SSH $dotDir"
+                    echo
+                    git clone --recursive "$dotGithub_SSH" "$dotDir"
+                fi
+                if [ "$select_number" = "1" ]; then
+                    local dotGithub_HTTPS="https://github.com/ttt-teru/dotfiles.git"
+
+                    prompt_header "git clone --recursive $dotGithub_HTTPS $dotDir"
+                    echo
+                    git clone --recursive "$dotGithub_HTTPS" "$dotDir"
+                fi
+            fi
+            return 0
+        elif [ "$select_number" = "2" -o "$select_number" = "3" ]; then
+            local tarball_url="https://github.com/ttt-teru/dotfiles/archive/main.tar.gz"
+            local tarball_fileName="$dotPath/dotfiles.tar.gz"
+
+            echo
+            echo "========================================"
+            if [ "$select_number" = "2" ]; then
+                if is_exist "curl"; then
+                    prompt_header "curl -o $tarball_fileName -L $tarball_url"
+                    echo
+                    curl -o "$tarball_fileName" -L "$tarball_url"
+                    echo
+                fi
+            fi
+            if [ "$select_number" = "3" ]; then
+                if is_exist "wget"; then
+                    prompt_header "wget -O $tarball_fileName $tarball_url"
+                    echo
+                    wget -O "$tarball_fileName" "$tarball_url"
+                fi
+            fi
+
+            echo
+            prompt_header "tar -zxvf $tarball_fileName -C $dotPath && \\"
+                   echo "  rm -f $tarball_fileName && \\"
+                   echo "  mv $dotPath/dotfiles-main/ $dotPath/dotfiles/"
+            echo
+
+            tar -zxvf "$tarball_fileName" -C "$dotPath" && \
+            rm -f "$tarball_fileName" && \
+            mv $dotPath/dotfiles-main/ $dotPath/dotfiles/
+            return 0
+        else
+            :
+        fi
+    done
+}
+
+
+dotPath="$HOME"
+dotDir="$dotPath/dotfiles"
+
+dotfiles_check
+
+\cat << EOF
+
+  You can install it in one of the following ways.
+    (It will be download to your '$dotPath')
+
+    1 ) git (Protocol: https)
+    2 ) curl
+    3 ) wget (is deprecation)
+EOF
+
+dotfiles_download
+
+echo "========== Download Completed. =========="
+echo
+
+bash $dotDir/installer/installer.sh

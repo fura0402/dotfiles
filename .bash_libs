@@ -1,0 +1,192 @@
+#!/bin/bash
+# Functions of .bashrc
+function pwd_omission() {
+    # $1: path
+    # $2: prompt_count_no_path
+    if [ ${1::8} = ".../.../" ]; then
+        echo "0"
+        return 0
+    elif [ ${#1} -lt $((${COLUMNS} - $2)) ]; then
+        echo "$1"
+        return 0
+    fi
+    path="$1"
+    path=".../${path#*/*/}"
+    pwd_omission "$path" $2
+}
+function psdef(){
+    if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+        source /usr/local/etc/bash_completion.d/git-prompt.sh
+        source /usr/local/etc/bash_completion.d/git-completion.bash
+        export PS1="\e[01;37m\]╭─\[\e[01;32m\]\u@\h\[\e[01;33m\] $1$(__git_ps1)\n\[\e[01;37m\]╰─|ω･)ﾁﾗ ≺\[\e[0m\] "
+        export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
+    else
+        export PS1="\e[01;37m\]╭─\[\e[01;32m\]\u@\h\[\e[01;33m\] $1\n\[\e[01;37m\]╰─|ω･)ﾁﾗ ≺\[\e[0m\] "
+        export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
+    fi
+}
+function psdol(){
+    export PS1="\[\e[01;36m\]\$ \[\e[0m\]"
+}
+function set_prompt() {
+    # '╭' + '─' + '@' + ' ' = 4
+    local prompt_count_no_path=$(
+        expr 4 \
+        + `expr "$(whoami)" : '.*'` \
+        + `expr "$(hostname -s)" : '.*'` \
+        + `expr "$(type __git_ps1 &> /dev/null && __git_ps1)" : '.*'` \
+    )
+    path="$(pwd | sed -e "s|$HOME\(.*\)|~\1|")"
+    path=$(pwd_omission "$path" $prompt_count_no_path)
+    if [ "$path" = "0" ]; then
+        psdol
+    else
+        psdef "$path"
+    fi
+}
+
+function ls_notice(){
+    local ret=()
+    local args=("$@")
+    if [ $# -gt 0 ]; then
+        local i=0
+        for i in $(seq 0 "$(($# - 1))"); do
+            if [[ "${args[$i]}" =~ ^- ]]; then
+                ret+=("${args[$i]}")
+            else
+                ret+=("${args[$i]// /\\ }")
+            fi
+        done
+    fi
+
+    if [ -z "$(\ls -A "${PWD}")" ]; then
+            echo "The directory is empty."
+    else
+        if type -a \exa &>/dev/null; then
+            eval "\exa --icons --color=always ${ret[*]}"
+        else
+            eval "\ls -FG ${ret[*]}"
+        fi
+    fi
+}
+
+function cdls(){
+    if [[ $1 =~ \.\..* ]];then
+        local dot="$(echo $1 | sed 's|\.||')"
+        local i=0
+        for i in $(seq 1 ${#dot}); do
+            \cd ../
+        done
+    elif [[ "$*" =~ " " ]]; then
+        \cd "${*}" || return 1
+    else
+        \cd $* || return 1
+    fi
+    set_prompt
+    clear -x; printf '\n\e[1;33m%s\e[m\n' "$(pwd)"; printf '\n\e[1;37m%s\e[m\n' ' ls'; ls_notice
+}
+
+zls(){
+    __zoxide_z $* 2>&1
+    set_prompt
+    if [[ -n "$*" && $? -eq 0 ]]; then
+        printf '\n\e[1;37m%s\e[0m\n' ' ls'; ls_notice
+    fi
+}
+zils(){
+    __zoxide_zi $* 2>&1 && set_prompt; printf '\n\e[1;37m%s\e[0m\n' ' ls'; ls_notice
+}
+
+function all_alias(){
+    alias cd='cdls'
+    alias ..='cd ..'
+    alias dot='cd ~/dotfiles'
+
+    alias ls='ls_notice'
+    if type -a \exa &>/dev/null; then
+        alias la='ls -al'
+        alias tree='exa --icons --tree --ignore-glob=".git" --ignore-glob="node_modules"'
+        alias l1='ls -1'
+    else
+        alias la='ls -Al'
+    fi
+    alias ll='ls -l'
+    alias less='less -R'
+    if type -a \bat &>/dev/null; then
+        alias cat='bat'
+    fi
+    alias diff='delta'
+
+    alias n='nvim'
+    alias j='zls'
+    alias ji='zils'
+    alias lg='lazygit'
+
+    # brew
+    alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
+
+    # tmux
+    alias t='tmux -u'
+    alias ta='tmux attach'
+    alias tat='tmux attach -t'
+    alias tl='tmux ls'
+
+    ## ide
+    #alias ide='~/dotfiles/scripts/ide'
+
+    # silicon
+    alias silicon='silicon --shadow-blur-radius 15 --background "#5550" --font "Ricty"'
+
+    # Ghidra
+    alias ghidra='open /Applications/ghidra_9.1.1_PUBLIC/ghidraRun'
+
+    # C/C++
+    #alias gcc='gcc-11'
+    #alias g++='g++-11'
+
+    # GDB
+    #alias gdb='sudo /usr/local/bin/gdb'
+
+    # nvim lsp with lua
+    #alias luamake='~/.local/share/nvim/lsp_servers/lua-language-server/3rd/luamake/luamake'
+
+    # trash
+    if type trash &> /dev/null; then
+        alias rm='trash'
+    fi
+}
+function all_unalias(){
+    unalias -a
+    alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
+}
+
+#function llvm(){
+#    export PATH="/usr/local/opt/llvm/bin:$PATH"
+#    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+#    export CPPFLAGS="-I/usr/local/opt/llvm/include"
+#    unset -f llvm
+#}
+
+function bash_color(){
+    local fore=0
+    local mode=0
+    local back=0
+    for fore in $(seq 30 37); do
+        printf "\e[${fore}m \\\e[${fore}m \e[m\n"
+        for mode in 1 4 5; do
+            printf "\e[${fore};${mode}m \\\e[${fore};${mode}m \e[m"
+            for back in $(seq 40 47); do
+                printf "\e[${fore};${back};${mode}m \\\e[${fore};${back};${mode}m \e[m"
+            done
+            echo
+        done
+        echo
+    done
+    printf " \\\e[m\n"
+}
+
+function tsrun(){
+    tsc $1 || return 0
+    local fileName=$(echo "$1" | sed -e "s|\.ts|.js|")
+    node $fileName
+}

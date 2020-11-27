@@ -1,0 +1,77 @@
+[user]
+  useConfigOnly = true
+
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+  quotepath = false
+  pager = delta
+
+[init]
+  defaultBranch = main
+  templatedir = ~/.git_template
+
+[push]
+  default = current
+[pull]
+  rebase = false
+
+; [url "github:"]
+;   InsteadOf = git@github.com:
+
+[interactive]
+  diffFilter = delta --color-only
+[add.interactive]
+  useBuiltin = false # required for git 2.37.0
+
+[delta]
+  features = side-by-side decorations line-numbers navigate
+  syntax-theme = Dracula
+  plus-style = syntax "#003800"
+  minus-style = syntax "#3f0001"
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = cyan box ul
+[delta "line-numbers"]
+  line-numbers-left-style = cyan
+  line-numbers-right-style = cyan
+  line-numbers-minus-style = 124
+  line-numbers-plus-style = 28
+
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
+
+[color]
+  ui = auto
+  diff = auto
+  branch = auto
+
+[alias]
+  st = status
+  df = diff
+  br = branch
+  open = !hub browse
+  graph = log --graph --all --pretty=format:'%Cgreen%h%Creset %C(yellow)(%cd) %C(cyan)<%an>%Creset -%Creset%s%C(yellow)%d%Creset' --date=relative --decorate
+  hist = log --graph --name-status --pretty=format:'%C(red)%h %C(yellow)(%cd) %C(cyan)<%an> %Creset-%s %C(yellow)%d%Creset' --date=relative
+  co = "!fn(){ args=$@; \
+    if [ -z \"$args\" ]; then \
+    branch=$(git branch --all | grep -v HEAD | fzf --preview 'echo {} | cut -c 3- | xargs git log --color=always' | cut -c 3-); \
+    git switch $(echo $branch | sed 's|remotes/[^/]*/||'); \
+    else \
+    git switch $args; \
+    fi \
+    }; fn"
+  dt = "!fn(){ args=$@; \
+    if [ -z \"$args\" ]; then \
+    difffile=$(git diff --name-status | fzf --preview 'echo {} | cut -c 3- | xargs git diff --color=always' | cut -c 3-); \
+    [ -n \"$difffile\" ] && git difftool $difffile; \
+    else \
+    git difftool $args; \
+    fi \
+    }; fn"
+  color = log --pretty=format:'%Credred%Creset %Cgreengreen%Creset %C(Yellow)yellow%Creset %Cblueblue%Creset %C(magenta)magenta%Creset %C(cyan)cyan%Creset %C(white)white%Creset'
