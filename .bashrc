@@ -87,8 +87,8 @@ alias t='tmux -u'
 alias ta='tmux a'
 alias tl='tmux ls'
 
-# ide
-alias ide='~/dotfiles/scripts/ide'
+## ide
+#alias ide='~/dotfiles/scripts/ide'
 
 # silicon
 alias silicon='silicon --shadow-blur-radius 15 --background "#5550" --font "Ricty"'

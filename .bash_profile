@@ -55,6 +55,9 @@ export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --lin
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 
+# original scripts
+export PATH="$HOME/dotfiles/scripts:$PATH"
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
 # .bash_profile内で.bashrcを読み込む
