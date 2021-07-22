@@ -38,7 +38,7 @@ ls_notice(){
     if [ -z "$(\ls -A $PWD)" ]; then
             echo "The directory is empty."
         else
-            if [ -n $(which exa) ]; then
+            if type -a \exa &>/dev/null; then
                 if [ "$1" = "-t" ]; then
                     \exa --icons --tree $2
                 else
@@ -56,7 +56,7 @@ cdls(){
 # alias
 alias ls='ls_notice'
 alias ll='ls -l'
-if [ -n $(which exa) ]; then
+if type -a \exa &>/dev/null; then
     alias la='ls -al'
 else
     alias la='ls -Al'
