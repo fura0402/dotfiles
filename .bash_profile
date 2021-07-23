@@ -12,6 +12,9 @@ eval "$(direnv hook bash)"
 export JAVA_HOME=`/usr/libexec/java_home`
 
 
+# binutils
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+
 # gawk gnu-sed gmp mpfr libmpc isl zlib expat
 # risc-v
 #export PATH="/usr/local/opt/expat/bin:$PATH"
@@ -58,7 +61,13 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # original scripts
 export PATH="$HOME/dotfiles/scripts:$PATH"
 
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+
+
+# curl
+export PATH="/usr/local/opt/curl/bin:$PATH"
+
 
 # .bash_profile内で.bashrcを読み込む
 if [ -f ~/.bashrc ] ; then
