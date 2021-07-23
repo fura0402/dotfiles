@@ -114,7 +114,7 @@ function llvm (){
 }
 
 # trash
-if type trash > /dev/null 2>&1; then
+if type trash &> /dev/null; then
     alias rm='trash'
 fi
 
