@@ -14,18 +14,18 @@ eval "$(direnv hook bash)"
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
-# risc-v
-export PATH="/usr/local/opt/riscv-gnu-toolchain/bin:$PATH"
-# gawk gnu-sed gmp mpfr libmpc isl zlib expat
-export PATH="/usr/local/opt/expat/bin:$PATH"
-export ldflags="-l/usr/local/opt/zlib/lib"
-export cppflags="-i/usr/local/opt/zlib/include"
-export ldflags="-l/usr/local/opt/expat/lib"
-export cppflags="-i/usr/local/opt/expat/include"
-#GNU "sed" has been installed as "gsed".
-#If you need to use it as "sed", you can add a "gnubin" directory
-#to your PATH from your bashrc like:
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+## risc-v
+#export PATH="/usr/local/opt/riscv-gnu-toolchain/bin:$PATH"
+## gawk gnu-sed gmp mpfr libmpc isl zlib expat
+#export PATH="/usr/local/opt/expat/bin:$PATH"
+#export ldflags="-l/usr/local/opt/zlib/lib"
+#export cppflags="-i/usr/local/opt/zlib/include"
+#export ldflags="-l/usr/local/opt/expat/lib"
+#export cppflags="-i/usr/local/opt/expat/include"
+##GNU "sed" has been installed as "gsed".
+##If you need to use it as "sed", you can add a "gnubin" directory
+##to your PATH from your bashrc like:
+#export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -41,7 +41,7 @@ export GO111MODULE=on
 export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # original scripts
-export PATH="$home/dotfiles/scripts:$PATH"
+export PATH="$HOME/dotfiles/scripts:$PATH"
 
 # Required
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"

@@ -52,8 +52,8 @@ ls_notice(){
 cdls(){
     \cd "$@" && clear -x && printf '\n\e[1;33m%s\e[m\n' $(pwd) && printf '\n\e[1;37m%s\e[m\n' ' ls' && ls_notice
 }
+### alias ###
 
-# alias
 alias ls='ls_notice'
 alias ll='ls -l'
 if type -a \exa &>/dev/null; then
@@ -97,11 +97,11 @@ alias silicon='silicon --shadow-blur-radius 15 --background "#5550" --font "Rict
 alias ghidra='open /Applications/ghidra_9.1.1_PUBLIC/ghidraRun'
 
 # C/C++
-alias gcc='gcc-11'
-alias g++='g++-11'
+#alias gcc='gcc-11'
+#alias g++='g++-11'
 
 # GDB
-alias gdb='sudo /usr/local/bin/gdb'
+#alias gdb='sudo /usr/local/bin/gdb'
 
 # docker
 alias ownC='docker run --rm -v $HOME/workspace/projects/c-compiler-tutorial/:/c-compiler-tutorial -w /c-compiler-tutorial compilerbook'
@@ -117,6 +117,8 @@ function llvm (){
 if type trash &> /dev/null; then
     alias rm='trash'
 fi
+
+#############
 
 # z command
 source ~/z/z.sh
