@@ -7,6 +7,9 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR="vim"
 eval "$(direnv hook bash)"
 
+export LANG="ja_JP.UTF-8"
+#export LANG="en_US.UTF-8"
+
 
 ### PATH Variables ###
 

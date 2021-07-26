@@ -15,8 +15,11 @@ endif
 """"""""""""""""""""""""""""""""""
 set encoding=utf-8
 set fileformats=unix,mac,dos
-set fileencodings=utf-8,sjis
-let $LANG = 'en'
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+language en_US.UTF-8
+language message en_US.UTF-8
+"language ja_JP.UTF-8
+"language message ja_JP.UTF-8
 set number "行番号の表示
 set relativenumber "行番号相対表示
 set title "編集中のファイル名を表示
