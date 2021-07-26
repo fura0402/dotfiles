@@ -1,0 +1,79 @@
+# functions
+psdef(){
+    if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+        source /usr/local/etc/bash_completion.d/git-prompt.sh
+        export PS1='\e[01;37m\]╭─\[\e[01;32m\]\u@\h\[\e[01;33m\] \w$(__git_ps1) \n\[\e[01;37m\]╰─|ω･)ﾁﾗ ≺\[\e[0m\] '
+        export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
+    else
+        export PS1='\e[01;37m\]╭─\[\e[01;32m\]\u@\h\[\e[01;33m\] \w \n\[\e[01;37m\]╰─|ω･)ﾁﾗ ≺\[\e[0m\] '
+        export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
+    fi
+}
+psdol(){
+    export PS1="\[\e[01;36m\]\$ \[\e[0m\]"
+}
+
+ls_notice(){
+    if [ -z "$(\ls -A $PWD)" ]; then
+            echo "The directory is empty."
+        else
+            if type -a \exa &>/dev/null; then
+                if [ "$1" = "-t" ]; then
+                    \exa --icons --tree $2
+                else
+                    \exa --icons $1 $2
+                fi
+            else
+                \ls -FG $1 $2
+            fi
+        fi
+}
+cdls(){
+    \cd "$@" && clear -x && printf '\n\e[1;33m%s\e[m\n' $(pwd) && printf '\n\e[1;37m%s\e[m\n' ' ls' && ls_notice
+}
+
+function all_alias(){
+    alias ..='cd ..'
+    alias ...='cd ../..'
+    alias ....='cd ../../..'
+    alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
+    alias cat='bat'
+    alias cd='cdls'
+    alias dot='cd ~/dotfiles'
+    alias ghidra='open /Applications/ghidra_9.1.1_PUBLIC/ghidraRun'
+    alias j='zls'
+    alias la='ls -al'
+    alias lg='lazygit'
+    alias ll='ls -l'
+    alias ls='ls_notice'
+    alias n='nvim'
+    alias ownC='docker run --rm -v $HOME/workspace/projects/c-compiler-tutorial/:/c-compiler-tutorial -w /c-compiler-tutorial compilerbook'
+    alias rm='trash'
+    alias silicon='silicon --shadow-blur-radius 15 --background "#5550" --font "Ricty"'
+    alias t='tmux -u'
+    alias ta='tmux a'
+    alias tl='tmux ls'
+    alias wp='cd ~/workspace/programming'
+    alias wpa='cd ~/workspace/programming/assembly'
+    alias wpb='cd ~/workspace/programming/binary'
+    alias wpc='cd ~/workspace/programming/c'
+    alias wpj='cd ~/workspace/projects'
+    alias wpr='cd ~/workspace/programming/rust'
+    alias z='_z 2>&1'
+}
+function all_unalias(){
+    unalias -a
+    alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
+}
+
+zls(){
+    z "$@" && printf '\n\e[1;37m%s\e[0m\n' ' ls' && ls_notice
+}
+
+function llvm (){
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+    export CPPFLAGS="-I/usr/local/opt/llvm/include"
+    unset -f llvm
+}
+

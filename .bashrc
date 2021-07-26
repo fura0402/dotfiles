@@ -1,3 +1,8 @@
+#　ライブラリを読み込む
+if [ -f ~/.bash_libs ] ; then
+    . ~/.bash_libs
+fi
+
 #export PS1="╭─\u@\h:\W \n╰─|ω･)ﾁﾗ ≺"
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -11,20 +16,6 @@ else
     export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
 fi
 
-psdef(){
-    if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-        source /usr/local/etc/bash_completion.d/git-prompt.sh
-        export PS1='\e[01;37m\]╭─\[\e[01;32m\]\u@\h\[\e[01;33m\] \w$(__git_ps1) \n\[\e[01;37m\]╰─|ω･)ﾁﾗ ≺\[\e[0m\] '
-        export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
-    else
-        export PS1='\e[01;37m\]╭─\[\e[01;32m\]\u@\h\[\e[01;33m\] \w \n\[\e[01;37m\]╰─|ω･)ﾁﾗ ≺\[\e[0m\] '
-        export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
-    fi
-}
-psdol(){
-    export PS1="\[\e[01;36m\]\$ \[\e[0m\]"
-}
-
 # FB c6c8d1
 # BG 161821
 
@@ -33,25 +24,6 @@ psdol(){
 # bind '"jj": vi-movement-mode' # Escを jj にキーバインド
 
 
-# function
-ls_notice(){
-    if [ -z "$(\ls -A $PWD)" ]; then
-            echo "The directory is empty."
-        else
-            if type -a \exa &>/dev/null; then
-                if [ "$1" = "-t" ]; then
-                    \exa --icons --tree $2
-                else
-                    \exa --icons $1 $2
-                fi
-            else
-                \ls -FG $1 $2
-            fi
-        fi
-}
-cdls(){
-    \cd "$@" && clear -x && printf '\n\e[1;33m%s\e[m\n' $(pwd) && printf '\n\e[1;37m%s\e[m\n' ' ls' && ls_notice
-}
 ### alias ###
 
 alias ls='ls_notice'
@@ -106,13 +78,6 @@ alias ghidra='open /Applications/ghidra_9.1.1_PUBLIC/ghidraRun'
 # docker
 alias ownC='docker run --rm -v $HOME/workspace/projects/c-compiler-tutorial/:/c-compiler-tutorial -w /c-compiler-tutorial compilerbook'
 
-function llvm (){
-    export PATH="/usr/local/opt/llvm/bin:$PATH"
-    export LDFLAGS="-L/usr/local/opt/llvm/lib"
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"
-    unset -f llvm
-}
-
 # trash
 if type trash &> /dev/null; then
     alias rm='trash'
@@ -122,9 +87,6 @@ fi
 
 # z command
 source ~/z/z.sh
-zls(){
-    z "$@" && printf '\n\e[1;37m%s\e[0m\n' ' ls' && ls_notice
-}
 
 # hub
 #eval "$(hub alias -s)"
