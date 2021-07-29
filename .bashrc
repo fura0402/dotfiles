@@ -56,7 +56,8 @@ alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin br
 
 # tmux
 alias t='tmux -u'
-alias ta='tmux a'
+alias ta='tmux attach'
+alias tat='tmux attach -t'
 alias tl='tmux ls'
 
 ## ide
