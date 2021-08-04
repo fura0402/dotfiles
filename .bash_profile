@@ -52,6 +52,9 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 # curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
+# openSSL@1.1
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
 # 重複したPATHを消す
 export PATH=$(echo "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 
