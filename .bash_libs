@@ -18,13 +18,9 @@ ls_notice(){
             echo "The directory is empty."
         else
             if type -a \exa &>/dev/null; then
-                if [ "$1" = "-t" ]; then
-                    \exa --icons --tree $2
-                else
-                    \exa --icons $1 $2
-                fi
+                exa --icons --color=always $1 $2
             else
-                \ls -FG $1 $2
+                ls -FG $1 $2
             fi
         fi
 }
