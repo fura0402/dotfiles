@@ -26,68 +26,68 @@ fi
 
 ### alias ###
 
-alias ls='ls_notice'
-alias ll='ls -l'
-if type -a \exa &>/dev/null; then
-    alias la='ls -al'
-else
-    alias la='ls -Al'
-fi
+function all_alias(){
+    alias cd='cdls'
+    alias ..='cd ..'
+    alias ...='cd ../..'
+    alias ....='cd ../../..'
+    alias dot='cd ~/dotfiles'
 
-alias cd='cdls'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias dot='cd ~/dotfiles'
-alias wp='cd ~/workspace/programming'
-alias wpr='cd ~/workspace/programming/rust'
-alias wpc='cd ~/workspace/programming/c'
-alias wpa='cd ~/workspace/programming/assembly'
-alias wpb='cd ~/workspace/programming/binary'
-alias wpj='cd ~/workspace/projects'
+    alias ls='ls_notice'
+    alias ll='ls -l'
+    if type -a \exa &>/dev/null; then
+        alias la='ls -al'
+        alias tree='exa --icons --tree'
+    else
+        alias la='ls -Al'
+    fi
+    alias less='less -R'
+    alias cat='bat'
 
-alias n='nvim'
-alias j='zls'
-alias lg='lazygit'
-alias cat='bat'
+    alias n='nvim'
+    alias j='zls'
+    alias lg='lazygit'
 
-# brew
-alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
+    # brew
+    alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
 
-# tmux
-alias t='tmux -u'
-alias ta='tmux attach'
-alias tat='tmux attach -t'
-alias tl='tmux ls'
+    # tmux
+    alias t='tmux -u'
+    alias ta='tmux attach'
+    alias tat='tmux attach -t'
+    alias tl='tmux ls'
 
-## ide
-#alias ide='~/dotfiles/scripts/ide'
+    ## ide
+    #alias ide='~/dotfiles/scripts/ide'
 
-# silicon
-alias silicon='silicon --shadow-blur-radius 15 --background "#5550" --font "Ricty"'
+    # silicon
+    alias silicon='silicon --shadow-blur-radius 15 --background "#5550" --font "Ricty"'
 
-# Ghidra
-alias ghidra='open /Applications/ghidra_9.1.1_PUBLIC/ghidraRun'
+    # Ghidra
+    alias ghidra='open /Applications/ghidra_9.1.1_PUBLIC/ghidraRun'
 
-# C/C++
-#alias gcc='gcc-11'
-#alias g++='g++-11'
+    # C/C++
+    #alias gcc='gcc-11'
+    #alias g++='g++-11'
 
-# GDB
-#alias gdb='sudo /usr/local/bin/gdb'
+    # GDB
+    #alias gdb='sudo /usr/local/bin/gdb'
 
-# docker
-alias ownC='docker run --rm -v $HOME/workspace/projects/c-compiler-tutorial/:/c-compiler-tutorial -w /c-compiler-tutorial compilerbook'
+    # docker
+    alias ownC='docker run --rm -v $HOME/workspace/projects/c-compiler-tutorial/:/c-compiler-tutorial -w /c-compiler-tutorial compilerbook'
 
-# trash
-if type trash &> /dev/null; then
-    alias rm='trash'
-fi
+    # trash
+    if type trash &> /dev/null; then
+        alias rm='trash'
+    fi
+}
+all_alias
 
 #############
 
 # z command
 source ~/z/z.sh
+unalias z
 
 # hub
 #eval "$(hub alias -s)"
