@@ -2,14 +2,19 @@
 
 clear -x
 
+installerDir=$HOME/dotfiles/installer
+sourceDir=$installerDir/src
+
 currentKernel=$(uname -s)
 currentOS=""
 case $currentKernel in
     "Darwin")
-        . ./src/darwin/darwin.sh
+        darwinDir=$sourceDir/darwin
+        . $darwinDir/darwin.sh
         ;;
     "Linux")
-        . ./src/linux/linux.sh
+        linuxDir=$sourceDir/linux
+        . $linuxDir/linux.sh
         ;;
     *)
         echo -e "\nThis operating system is not supported."
