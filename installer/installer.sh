@@ -6,7 +6,6 @@ installerDir="$(\cd $(dirname "$0"); pwd)"
 sourceDir="$installerDir/src"
 
 currentKernel=$(uname -s)
-currentOS=""
 case $currentKernel in
     "Darwin")
         darwinDir=$sourceDir/darwin
