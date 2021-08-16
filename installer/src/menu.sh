@@ -1,5 +1,14 @@
 #!/bin/bash
 
+CURRENT_SOURCE=${BASH_SOURCE[$(expr ${#BASH_SOURCE[@]} - 1)]##*/}
+if [ "$CURRENT_SOURCE" != "installer.sh" ];then
+    echo " Warning!"
+    echo " This script cannot be run by itself."
+    echo " You need to run it from 'installer.sh'"
+    exit 1
+fi
+
+
 # Get cursor row.
 function GetRow(){
     { local ROW; local COL; }
@@ -103,12 +112,6 @@ function menu(){
     done
 }
 
-if [ -z $currentKernel ] && [ -z $itemsList ] && [ -z $currentOS ]; then
-    currentKernel='unknown Kernel'
-    itemsList=('unknown List')
-    itemsNum=${#itemsList[@]}
-    currentOS='unknown OS'
-fi
 # The value of this variable will be the specified decision number.
 cursor=0
 
