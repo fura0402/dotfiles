@@ -73,7 +73,7 @@ function menu(){
                 tput cnorm
                 tput dl1
                 if [ "${itemsList[$cursor]}" == "Custom Install" ]; then
-                    echo "Custom Install"
+                    cursor=-1
                     return 0
                 else
                     echo "Are you really okay with '${itemsList[$cursor]}' ?"
