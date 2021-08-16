@@ -2,8 +2,8 @@
 
 clear -x
 
-installerDir=$HOME/dotfiles/installer
-sourceDir=$installerDir/src
+installerDir="$(\cd $(dirname "$0"); pwd)"
+sourceDir="$installerDir/src"
 
 currentKernel=$(uname -s)
 currentOS=""
