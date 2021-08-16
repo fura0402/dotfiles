@@ -7,9 +7,6 @@ function GetRow(){
     echo "$(expr ${ROW#*[} - 1)"
 }
 
-# The value of this variable will be the specified decision number.
-cursor=0
-
 function menu(){
     cursor_MIN=0
     cursor_MAX=$(expr $itemsNum - 1)
@@ -112,6 +109,9 @@ if [ -z $currentKernel ] && [ -z $itemsList ] && [ -z $currentOS ]; then
     itemsNum=${#itemsList[@]}
     currentOS='unknown OS'
 fi
+# The value of this variable will be the specified decision number.
+cursor=0
+
 trap 'tput cnorm' 0
 trap 'echo; tput cnorm; exit' 1 2 3 15
 
