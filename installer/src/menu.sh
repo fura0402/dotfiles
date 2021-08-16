@@ -67,8 +67,7 @@ function menu(){
             "q")
                 tput dl1
                 echo "   cancel."
-                cursor=-1
-                return 0
+                exit 0
                 ;;
             "")
                 tput cnorm
