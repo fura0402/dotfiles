@@ -20,6 +20,7 @@ function menu(){
     echo -e "\n  Kernel: $currentKernel($currentOS)"
     start_row=$(GetRow)
     while :; do
+        tput civis
         for i in $(seq 0 $cursor_MAX); do
             if [ $i -eq $cursor ]; then
                 select[$i]="◉"
@@ -70,6 +71,7 @@ function menu(){
                 return 0
                 ;;
             "")
+                tput cnorm
                 tput dl1
                 if [ "${itemsList[$cursor]}" == "Custom Install" ]; then
                     echo "Custom Install"
@@ -111,4 +113,7 @@ if [ -z $currentKernel ] && [ -z $itemsList ] && [ -z $currentOS ]; then
     itemsNum=${#itemsList[@]}
     currentOS='unknown OS'
 fi
+trap 'tput cnorm' 0
+trap 'echo; tput cnorm; exit' 1 2 3 15
+
 menu
