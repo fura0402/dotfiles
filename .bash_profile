@@ -52,6 +52,9 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 # curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
+# openSSL@1.1
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
 # 重複したPATHを消す
 export PATH=$(echo "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 
@@ -64,7 +67,7 @@ export PATH=$(echo "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; pr
 export JAVA_HOME=`/usr/libexec/java_home`
 
 # bat
-export BAT_CONFIG_PATH="$HOME/.config/bat/config/bat.conf"
+export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

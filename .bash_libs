@@ -1,4 +1,4 @@
-# functions
+# Functions of bashrc
 psdef(){
     if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
         source /usr/local/etc/bash_completion.d/git-prompt.sh
@@ -18,13 +18,9 @@ ls_notice(){
             echo "The directory is empty."
         else
             if type -a \exa &>/dev/null; then
-                if [ "$1" = "-t" ]; then
-                    \exa --icons --tree $2
-                else
-                    \exa --icons $1 $2
-                fi
+                exa --icons --color=always $1 $2
             else
-                \ls -FG $1 $2
+                ls -FG $1 $2
             fi
         fi
 }
@@ -49,6 +45,16 @@ function llvm (){
 }
 
 function bash_color(){
-    for fore in `seq 30 37`; do printf "\e[${fore}m \\\e[${fore}m \e[m\n"; for mode in 1 4 5; do printf "\e[${fore};${mode}m \\\e[${fore};${mode}m \e[m"; for back in `seq 40 47`; do printf "\e[${fore};${back};${mode}m \\\e[${fore};${back};${mode}m \e[m"; done; echo; done; echo; done; printf " \\\e[m\n"
+    for fore in `seq 30 37`; do
+        printf "\e[${fore}m \\\e[${fore}m \e[m\n"
+        for mode in 1 4 5; do
+            printf "\e[${fore};${mode}m \\\e[${fore};${mode}m \e[m"
+            for back in `seq 40 47`; do
+                printf "\e[${fore};${back};${mode}m \\\e[${fore};${back};${mode}m \e[m"
+            done
+            echo
+        done
+        echo
+    done
+    printf " \\\e[m\n"
 }
-

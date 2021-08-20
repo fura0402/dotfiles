@@ -1,8 +1,3 @@
-#　ライブラリを読み込む
-if [ -f ~/.bash_libs ] ; then
-    . ~/.bash_libs
-fi
-
 #export PS1="╭─\u@\h:\W \n╰─|ω･)ﾁﾗ ≺"
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     source /usr/local/etc/bash_completion.d/git-completion.bash
