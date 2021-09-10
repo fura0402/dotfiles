@@ -49,7 +49,7 @@ function menu(){
 
 
         local select_key=""
-        read -rsn1 select_key
+        IFS= read -rsn1 select_key
         if [ "$select_key" == $'\x1b' ]; then
             read -rsn2 select_key
         fi
