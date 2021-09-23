@@ -18,10 +18,10 @@ currentOS=$(sw_vers -productName)
 
 case $cursor in
     "0")
-        . "$darwinDir/items_list/full_install.sh"
+        . "$darwinDir/items_list/full_install/full_install.sh"
         ;;
     "-1")
-        . "$darwinDir/items_list/custom_install.sh"
+        . "$darwinDir/items_list/custom_install/custom_install.sh"
         ;;
     *)
         echo "A fatal error has occurred."
