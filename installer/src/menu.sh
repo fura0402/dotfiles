@@ -17,8 +17,8 @@ function GetRow(){
 }
 
 function menu(){
-    cursor_MIN=0
-    cursor_MAX=$(expr $itemsNum - 1)
+    local cursor_MIN=0
+    local cursor_MAX=$(expr $itemsNum - 1)
 
     local select=()
     local err_flag=0
