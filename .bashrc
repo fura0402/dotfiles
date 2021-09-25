@@ -89,7 +89,3 @@ unalias z
 
 # done (original)
 #/usr/bin/osascript -e 'display notification "hogehoge" with title "iTerm" subtitle "done." sound name "Submarine"'
-
-
-# wakatime
-source ~/bash-wakatime/bash-wakatime.sh

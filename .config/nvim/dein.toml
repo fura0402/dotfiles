@@ -137,8 +137,6 @@ hook_add = '''
 
 
 # その他のプラグイン##########
-[[plugins]]
-repo = 'wakatime/vim-wakatime'
 
 [[plugins]]
 repo = 'segeljakt/vim-silicon'

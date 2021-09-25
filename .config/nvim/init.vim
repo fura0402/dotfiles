@@ -1,12 +1,10 @@
 if has('unix')
     let g:python_host_prog  = '$HOME/.pyenv/shims/python'
     let g:python3_host_prog = '$HOME/.pyenv/shims/python3'
-    let g:wakatime_PythonBinary = '$HOME/.pyenv/shims/python'  " (Default: 'python')
 endif
 if has('mac')
     let g:python_host_prog  = '$HOME/.anyenv/envs/pyenv/shims/python2'
     let g:python3_host_prog = '$HOME/.anyenv/envs/pyenv/shims/python3'
-    let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
 endif
 
 
