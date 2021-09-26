@@ -1,26 +1,32 @@
 # dotfiles
+My dotfiles
 
-# Terminal
-## the using theme (I'm not using it now...)
+
+## How to Install
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fura0402/dotfiles/main/launch)"
+
+<br>
+
+## Terminal
+### the using theme (I'm not using it now...)
     iceberg
 (https://cocopon.github.io/iceberg.vim/)
-## the using font
+### the using font
     SF Mono Square
 (https://github.com/delphinus/homebrew-sfmono-square)
 
 <br>
 
-# Vim
+## Vim
 - Minimal configuration
 
 <br>
 
-# NeoVim
+<!--
+## NeoVim
 
-<br>
-
-## coc extensions
-#### List
+### coc extensions
+##### List
 - coc-clangd
 - coc-cmake
 - coc-css
@@ -34,3 +40,4 @@
 - coc-snippets
 - coc-tsserver
 - coc-xml
+-->
