@@ -5,21 +5,17 @@ if [ -z $dotfilesDir ]; then
     dotfilesDir=${currentDir%%/dotfiles*}/dotfiles
 fi
 
+echo $dotfilesDir
 echo 'Paste the Symbolic link...'
-for file in .??*; do
-    [ "$file" = ".config" ] && continue
-    [ "$file" = ".git" ] && continue
-    [ "$file" = ".gitignore" ] && continue
-    [ "$file" = ".tmux.conf.osx" ] && continue
+for file in $dotfilesDir/.??*; do
+    [ "$file" = "$dotfilesDir/.config" ] && continue
+    [ "$file" = "$dotfilesDir/.git" ] && continue
+    [ "$file" = "$dotfilesDir/.gitignore" ] && continue
+    [ "$file" = "$dotfilesDir/.tmux.conf.osx" ] && continue
 
-    ln -snfv $dotfilesDir/$file ~/
+    ln -snfv $file ~
 done
 
-ln -snfv $dotfilesDir/.config/nvim/ ~/.config
-
-ln -snfv $dotfilesDir/.config/fish/ ~/.config
-ln -snfv $dotfilesDir/.config/starship.toml ~/.config
-
-ln -snfv $dotfilesDir/.config/bat/ ~/.config
+ln -snfv $dotfilesDir/.config/* ~/.config
 
 echo 'Complete!!'
