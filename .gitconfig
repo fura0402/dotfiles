@@ -1,0 +1,22 @@
+[user]
+    useConfigOnly = true
+
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore_global
+
+[init]
+	defaultBranch = main
+	templatedir = ~/.git_template
+
+[https]
+    proxy = http://proxy.example.com:8080
+
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com:
+
+[color]
+    ui = true
+    diff = auto
+    branch = auto
