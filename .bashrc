@@ -61,9 +61,6 @@ function all_alias(){
     # GDB
     #alias gdb='sudo /usr/local/bin/gdb'
 
-    # docker
-    alias ownC='docker run --rm -v $HOME/workspace/projects/c-compiler-tutorial/:/c-compiler-tutorial -w /c-compiler-tutorial compilerbook'
-
     # trash
     if type trash &> /dev/null; then
         alias rm='trash'
