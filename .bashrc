@@ -2,14 +2,7 @@
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     source /usr/local/etc/bash_completion.d/git-completion.bash
 fi
-if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-    source /usr/local/etc/bash_completion.d/git-prompt.sh
-    export PS1='\e[01;37m\]╭─\[\e[01;32m\]\u@\h\[\e[01;33m\] \w$(__git_ps1) \n\[\e[01;37m\]╰─|ω･)ﾁﾗ ≺\[\e[0m\] '
-    export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
-else
-    export PS1='\e[01;37m\]╭─\[\e[01;32m\]\u@\h\[\e[01;33m\] \w \n\[\e[01;37m\]╰─|ω･)ﾁﾗ ≺\[\e[0m\] '
-    export PS2="         \[\e[01;37m\]≺ \[\e[0m\]"
-fi
+psdef
 
 # FB c6c8d1
 # BG 161821

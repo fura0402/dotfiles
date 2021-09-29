@@ -44,7 +44,7 @@ export GO111MODULE=on
 export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # original scripts
-export PATH="$HOME/dotfiles/scripts:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
 
 # Required
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
@@ -82,4 +82,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 if [ -f ~/.bashrc ] && [ -f ~/.bash_libs ] ; then
     . ~/.bash_libs
     . ~/.bashrc
+fi
+if [ -f ~/.bash_libs.private ]; then
+    . ~/.bash_libs.private
 fi

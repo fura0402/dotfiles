@@ -1,3 +1,4 @@
+#!/bin/bash
 # Functions of bashrc
 psdef(){
     if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
@@ -18,9 +19,9 @@ ls_notice(){
             echo "The directory is empty."
         else
             if type -a \exa &>/dev/null; then
-                exa --icons --color=always $1 $2
+                exa --icons --color=always $*
             else
-                ls -FG $1 $2
+                ls -FG $*
             fi
         fi
 }
