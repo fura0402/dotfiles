@@ -51,8 +51,8 @@ if [ "$PREVIOUS_HEAD" = "$Z40" -a "$BRANCH_SWITCH" = "1" ]; then
                 local_userEmail="$(sed -ne "s|.*email = \(.*\)|\1|p" $file)"
                 git config --local user.name "$local_userName"
                 git config --local user.email "$local_userEmail"
-                echo "config: set the local user.name to $local_userName"
-                echo "config: set the local user.email to $local_userEmail"
+                echo "config: set the local user.name to '$local_userName'"
+                echo "config: set the local user.email to '$local_userEmail'"
             fi
             exit 0
         fi
