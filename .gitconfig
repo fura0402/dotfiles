@@ -4,19 +4,59 @@
 [core]
     editor = nvim
     excludesfile = ~/.gitignore_global
+    autocrlf = false
+    quotepath = false
 
 [init]
-	defaultBranch = main
-	templatedir = ~/.git_template
+    defaultBranch = main
+    templatedir = ~/.git_template
 
-[https]
-    proxy = http://proxy.example.com:8080
+[push]
+    default = current
+[pull]
+    ff = only
+    rebase = false
 
 [url "github:"]
     InsteadOf = https://github.com/
     InsteadOf = git@github.com:
 
+[diff]
+    tool = nvimdiff
+[difftool]
+    prompt = false
+[difftool "nvimdiff"]
+    cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+#[mergetool "nvimdiff"]
+#	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+#	trustExitCode = true
+
 [color]
-    ui = true
+    ui = auto
     diff = auto
     branch = auto
+
+[alias]
+    st = status
+    df = diff
+    br = branch
+    open = !hub browse
+    graph = log --graph --all --pretty=format:'%Cgreen%h%Creset %C(yellow)(%cd) %C(cyan)<%an>%Creset -%Creset%s%C(yellow)%d%Creset' --date=relative --decorate
+    hist = log --graph --name-status --pretty=format:'%C(red)%h %C(yellow)(%cd) %C(cyan)<%an> %Creset-%s %C(yellow)%d%Creset' --date=relative
+    co = "!fn(){ args=$@; \
+            if [ -z \"$args\" ]; then \
+                branch=$(git branch --all | grep -v HEAD | fzf --preview 'echo {} | cut -c 3- | xargs git log --color=always' | cut -c 3-); \
+                git switch $(echo $branch | sed 's|remotes/[^/]*/||'); \
+            else \
+                git switch $args; \
+            fi \
+        }; fn"
+    dt = "!fn(){ args=$@; \
+            if [ -z \"$args\" ]; then \
+                difffile=$(git diff --name-status | fzf --preview 'echo {} | cut -c 3- | xargs git diff --color=always' | cut -c 3-); \
+                [ -n \"$difffile\" ] && git difftool $difffile; \
+            else \
+                git difftool $args; \
+            fi \
+        }; fn"
+    color = log --pretty=format:'%Credred%Creset %Cgreengreen%Creset %C(Yellow)yellow%Creset %Cblueblue%Creset %C(magenta)magenta%Creset %C(cyan)cyan%Creset %C(white)white%Creset'
