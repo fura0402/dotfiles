@@ -1,10 +1,10 @@
 if has('unix')
-    let g:python_host_prog  = '$HOME/.pyenv/shims/python'
+    "let g:python_host_prog  = '$HOME/.pyenv/shims/python'
     let g:python3_host_prog = '$HOME/.pyenv/shims/python3'
 endif
 if has('mac')
-    let g:python_host_prog  = '$HOME/.anyenv/envs/pyenv/shims/python2'
-    let g:python3_host_prog = '$HOME/.anyenv/envs/pyenv/shims/python3'
+    "let g:python_host_prog  = '$HOME/nvim-python2/bin/python2'
+    let g:python3_host_prog = '$HOME/nvim-python3/bin/python3'
 endif
 
 
