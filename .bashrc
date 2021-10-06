@@ -16,6 +16,7 @@ psdef
 
 function all_alias(){
     alias cd='cdls'
+    alias ..='cd ..'
     alias dot='cd ~/dotfiles'
 
     alias ls='ls_notice'

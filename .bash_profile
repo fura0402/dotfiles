@@ -13,10 +13,6 @@ export LANG="ja_JP.UTF-8"
 
 ### PATH Variables ###
 
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-
 ## risc-v
 #export PATH="/usr/local/opt/riscv-gnu-toolchain/bin:$PATH"
 ## gawk gnu-sed gmp mpfr libmpc isl zlib expat
@@ -48,6 +44,10 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 # Required
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
 
 # curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
