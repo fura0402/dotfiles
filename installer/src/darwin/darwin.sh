@@ -9,7 +9,7 @@ if [ "$CURRENT_SOURCE" != "installer.sh" ];then
 fi
 
 
-itemsList=('Full Install' 'Custom Install')
+itemsList=('Full Install' 'Editor Install' 'Custom Install')
 itemsNum=${#itemsList[@]}
 
 currentOS=$(sw_vers -productName)
@@ -19,6 +19,9 @@ currentOS=$(sw_vers -productName)
 case $cursor in
     "0")
         . "$darwinDir/items_list/full_install/full_install.sh"
+        ;;
+    "1")
+        . "$darwinDir/items_list/editor_install/editor_install.sh"
         ;;
     "-1")
         . "$darwinDir/items_list/custom_install/custom_install.sh"
