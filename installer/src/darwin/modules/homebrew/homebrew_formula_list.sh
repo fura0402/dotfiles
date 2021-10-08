@@ -97,24 +97,23 @@ select_caskformula=('Discord' 'Zoomus'
 # Mas                                              #
 ####################################################
 mas_select=0
-if [ $mas_select -eq 1 ]; then
-    line_select=0
-    slack_select=0
-    tweetdeck_select=0
-    twitter_select=0
-    coteditor_select=0
-    developer_select=0
-    amphetamine_select=0
-    bettersnaptool_select=0
-    glview_select=0
-    keynote_select=0
-    skitch_select=0
-    theunarchiver_select=0
-    winarchiverlite_select=0
-    xmind_select=0
-    xcode_select=0
-    cinebench_select=0
-fi
+
+line_select=0
+slack_select=0
+tweetdeck_select=0
+twitter_select=0
+coteditor_select=0
+developer_select=0
+amphetamine_select=0
+bettersnaptool_select=0
+glview_select=0
+keynote_select=0
+skitch_select=0
+theunarchiver_select=0
+winarchiverlite_select=0
+xmind_select=0
+xcode_select=0
+cinebench_select=0
 
 select_masformula=('LINE' 'Slack' 'TweetDeck' 'Twitter'
                    'CotEditor' 'Developer' 'Amphetamine'

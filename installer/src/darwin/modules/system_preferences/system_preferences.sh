@@ -1,7 +1,11 @@
 #!/bin/bash
 
-system_preferencesDir=$(\cd $(dirname $0); pwd)
-system_configDir="$system_preferencesDir/system_conf"
+if [ -z $darwinDir ]; then
+    system_preferencesDir=$(\cd $(dirname $0); pwd)
+    system_configDir="$system_preferencesDir/system_conf"
+else
+    system_configDir="$darwinDir/modules/system_preferences/system_conf"
+fi
 
 ###############################################################################
 # Core System Preferences ( Finder, Power )                                   #

@@ -50,9 +50,9 @@ elif [ $starship_select -eq 1 ]; then
 fi
 
 if [ $full_install_flag -eq 1 ]; then
-    brew install neovim, args: ["HEAD"]
+    brew install neovim
 elif [ $neovim_select -eq 1 ]; then
-    brew install neovim, args: ["HEAD"]
+    brew install neovim
 fi
 
 if [ $full_install_flag -eq 1 ]; then
@@ -421,98 +421,100 @@ elif [ $mas_select -eq 1 ]; then
     brew install mas
 fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 539883307	#LINE
-elif [ $line_select -eq 1 ]; then
-    mas install 539883307	#LINE
-fi
+if [ $full_install_flag -eq 1 -o $mas_select -eq 1 ]; then
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 539883307	#LINE
+    elif [ $line_select -eq 1 ]; then
+        mas install 539883307	#LINE
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 803453959	#Slack
-elif [ $slack_select -eq 1 ]; then
-    mas install 803453959	#Slack
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 803453959	#Slack
+    elif [ $slack_select -eq 1 ]; then
+        mas install 803453959	#Slack
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 485812721	#TweetDeck
-elif [ $tweetdeck_select -eq 1 ]; then
-    mas install 485812721	#TweetDeck
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 485812721	#TweetDeck
+    elif [ $tweetdeck_select -eq 1 ]; then
+        mas install 485812721	#TweetDeck
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 1482454543	#Twitter
-elif [ $twitter_select -eq 1 ]; then
-    mas install 1482454543	#Twitter
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 1482454543	#Twitter
+    elif [ $twitter_select -eq 1 ]; then
+        mas install 1482454543	#Twitter
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 1024640650	#CotEditor
-elif [ $coteditor_select -eq 1 ]; then
-    mas install 1024640650	#CotEditor
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 1024640650	#CotEditor
+    elif [ $coteditor_select -eq 1 ]; then
+        mas install 1024640650	#CotEditor
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 640199958	#Developer
-elif [ $developer_select -eq 1 ]; then
-    mas install 640199958	#Developer
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 640199958	#Developer
+    elif [ $developer_select -eq 1 ]; then
+        mas install 640199958	#Developer
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 937984704	#Amphetamine
-elif [ $amphetamine_select -eq 1 ]; then
-    mas install 937984704	#Amphetamine
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 937984704	#Amphetamine
+    elif [ $amphetamine_select -eq 1 ]; then
+        mas install 937984704	#Amphetamine
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 417375580	#BetterSnapTool
-elif [ $bettersnaptool_select -eq 1 ]; then
-    mas install 417375580	#BetterSnapTool
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 417375580	#BetterSnapTool
+    elif [ $bettersnaptool_select -eq 1 ]; then
+        mas install 417375580	#BetterSnapTool
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 444052073	#GLView
-elif [ $glview_select -eq 1 ]; then
-    mas install 444052073	#GLView
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 444052073	#GLView
+    elif [ $glview_select -eq 1 ]; then
+        mas install 444052073	#GLView
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 409183694	#Keynote
-elif [ $keynote_select -eq 1 ]; then
-    mas install 409183694	#Keynote
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 409183694	#Keynote
+    elif [ $keynote_select -eq 1 ]; then
+        mas install 409183694	#Keynote
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 425955336	#Skitch
-elif [ $skitch_select -eq 1 ]; then
-    mas install 425955336	#Skitch
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 425955336	#Skitch
+    elif [ $skitch_select -eq 1 ]; then
+        mas install 425955336	#Skitch
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 425424353	#The Unarchiver
-elif [ $theunarchiver_select -eq 1 ]; then
-    mas install 425424353	#The Unarchiver
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 425424353	#The Unarchiver
+    elif [ $theunarchiver_select -eq 1 ]; then
+        mas install 425424353	#The Unarchiver
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 414855915	#WinArchiver Lite
-elif [ $winarchiverlite_select -eq 1 ]; then
-    mas install 414855915	#WinArchiver Lite
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 414855915	#WinArchiver Lite
+    elif [ $winarchiverlite_select -eq 1 ]; then
+        mas install 414855915	#WinArchiver Lite
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 1327661892	#XMind
-elif [ $xmind_select -eq 1 ]; then
-    mas install 1327661892	#XMind
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 1327661892	#XMind
+    elif [ $xmind_select -eq 1 ]; then
+        mas install 1327661892	#XMind
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 497799835	#Xcode
-elif [ $xcode_select -eq 1 ]; then
-    mas install 497799835	#Xcode
-fi
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 497799835	#Xcode
+    elif [ $xcode_select -eq 1 ]; then
+        mas install 497799835	#Xcode
+    fi
 
-if [ $full_install_flag -eq 1 ]; then
-    mas install 1438772273	#Cinebench
-elif [ $cinebench_select -eq 1 ]; then
-    mas install 1438772273	#Cinebench
+    if [ $full_install_flag -eq 1 ]; then
+        mas install 1438772273	#Cinebench
+    elif [ $cinebench_select -eq 1 ]; then
+        mas install 1438772273	#Cinebench
+    fi
 fi
