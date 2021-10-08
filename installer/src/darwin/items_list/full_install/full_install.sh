@@ -16,6 +16,8 @@ echo ""
 . $darwinDir/modules/system_preferences/system_preferences.sh
 
 . $darwinDir/modules/homebrew/homebrew_installer.sh
+
+. $darwinDir/modules/homebrew/homebrew_formula_list.sh
 full_install_flag=1
 . $darwinDir/modules/homebrew/homebrew_formula_install.sh
 

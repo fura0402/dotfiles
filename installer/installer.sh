@@ -2,6 +2,7 @@
 clear -x
 
 installerDir="$(\cd $(dirname "$0"); pwd)"
+dotfilesDir=${installerDir%%/dotfiles*}/dotfiles
 sourceDir="$installerDir/src"
 
 currentKernel=$(uname -s)

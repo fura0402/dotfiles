@@ -8,12 +8,17 @@ if [ "$CURRENT_SOURCE" != "installer.sh" ];then
     exit 1
 fi
 
-if !which brew &>/dev/null; then
+if ! which brew &>/dev/null; then
     echo "Homebrew is not installed."
     echo "It will be installed automatically."
     homebrewDir="$(\cd $(dirname "$0"); pwd)"
-    #. "$homebrewDir/homebrew_installer.sh"
+    . "$homebrewDir/homebrew_installer.sh"
     echo
+fi
+
+if [ -z $homebrew_formula_list ]; then
+    echo " Error: 'homebrew_formula_list' is not loaded."
+    exit 1
 fi
 
 
