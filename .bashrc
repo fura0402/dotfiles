@@ -23,7 +23,7 @@ function all_alias(){
     alias ll='ls -l'
     if type -a \exa &>/dev/null; then
         alias la='ls -al'
-        alias tree='exa --icons --tree'
+        alias tree='exa --icons --tree --ignore-glob=".git"'
     else
         alias la='ls -Al'
     fi
