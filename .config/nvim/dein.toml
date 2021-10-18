@@ -1,6 +1,3 @@
-[[plugins]]
-repo = 'Shougo/dein.vim'
-
 [[plugins]] # 補完系プラグイン
 repo = 'neoclide/coc.nvim'
 rev = 'release'
