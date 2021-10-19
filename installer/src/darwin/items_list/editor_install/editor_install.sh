@@ -15,11 +15,10 @@ echo ""
 
 . $darwinDir/modules/homebrew/homebrew_installer.sh
 
-. $darwinDir/modules/homebrew/homebrew_formula_list.sh
-neovim_select=1
-vim_select=1
-tmux_select=1
-. $darwinDir/modules/homebrew/homebrew_formula_install.sh
+brew install neovim
+brew install vim
+brew install tmux
+. $darwinDir/modules/homebrew/homebrew_formula_full_install.sh
 
 echo 'Paste the Symbolic link...'
 ln -snfv $dotfilesDir/.config/nvim ~/.config

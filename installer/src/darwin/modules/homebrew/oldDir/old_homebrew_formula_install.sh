@@ -75,10 +75,12 @@ fi
 
 if [ $full_install_flag -eq 1 ]; then
     brew tap delphinus/sfmono-square
-    brew install delphinus/sfmono-square/sfmono-square
+    brew install sfmono-square
+    #brew install delphinus/sfmono-square/sfmono-square
 elif [ $sfmono_square_select -eq 1 ]; then
     brew tap delphinus/sfmono-square
-    brew install delphinus/sfmono-square/sfmono-square
+    brew install sfmono-square
+    #brew install delphinus/sfmono-square/sfmono-square
 fi
 
 if [ $full_install_flag -eq 1 ]; then

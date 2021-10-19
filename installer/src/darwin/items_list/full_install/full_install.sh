@@ -17,8 +17,6 @@ echo ""
 
 . $darwinDir/modules/homebrew/homebrew_installer.sh
 
-. $darwinDir/modules/homebrew/homebrew_formula_list.sh
-full_install_flag=1
-. $darwinDir/modules/homebrew/homebrew_formula_install.sh
+. $darwinDir/modules/homebrew/homebrew_formula_full_install.sh
 
 . $darwinDir/modules/files/symbolic.sh
