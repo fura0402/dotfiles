@@ -29,7 +29,7 @@ fi
     brew install vim
     brew install tmux
     brew tap delphinus/sfmono-square
-    brew install sfmono-square
+    brew install sfmono-square && cp -f /usr/local/opt/sfmono-square/share/fonts/SFMonoSquare-* ~/Library/Fonts/
     #brew install delphinus/sfmono-square/sfmono-square
     brew install gcc
     brew install llvm
