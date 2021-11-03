@@ -3,7 +3,7 @@ My dotfiles
 
 
 ## How to Install
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fura0402/dotfiles/main/launch)"
+    /bin/bash -c "$(curl -fsSL dotfiles.fura0402.io/launch)"
 
 <br>
 
