@@ -13,6 +13,12 @@ export LANG="ja_JP.UTF-8"
 
 ### PATH Variables ###
 
+# Required
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+
+# original scripts
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 ## risc-v
 #export PATH="/usr/local/opt/riscv-gnu-toolchain/bin:$PATH"
 ## gawk gnu-sed gmp mpfr libmpc isl zlib expat
@@ -39,11 +45,11 @@ export GO111MODULE=on
 # binutils
 export PATH="/usr/local/opt/binutils/bin:$PATH"
 
-# original scripts
-export PATH="$HOME/dotfiles/bin:$PATH"
+# llvm
+#export PATH="/usr/local/opt/llvm/bin:$PATH"
 
-# Required
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+# java
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"

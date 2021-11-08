@@ -24,6 +24,7 @@ function all_alias(){
     if type -a \exa &>/dev/null; then
         alias la='ls -al'
         alias tree='exa --icons --tree --ignore-glob=".git"'
+        alias l1='ls -1'
     else
         alias la='ls -Al'
     fi
@@ -58,6 +59,9 @@ function all_alias(){
 
     # GDB
     #alias gdb='sudo /usr/local/bin/gdb'
+
+    # nvim lsp with lua
+    #alias luamake='~/.local/share/nvim/lsp_servers/lua-language-server/3rd/luamake/luamake'
 
     # trash
     if type trash &> /dev/null; then
