@@ -87,7 +87,7 @@ function menu(){
                         current_row=$(GetRow)
                         read -p "  (Yes/No) " enter_key
                         case $enter_key in
-                            "No")
+                            "No" | [Nn])
                                 tput cup $start_row 0
                                 break
                                 ;;
@@ -95,6 +95,11 @@ function menu(){
                                 tput ed
                                 echo
                                 return 0
+                                ;;
+                            "q")
+                                tput dl1
+                                echo "   cancel."
+                                exit 0
                                 ;;
                             *)
                                 echo "Please answer 'Yes' or 'No'."
