@@ -10,7 +10,11 @@ function ftColorSchemeSet()
         scheme.solarized()
     elseif ft == 'javascript' then
         scheme.solarized()
+    elseif ft == 'javascriptreact' then
+        scheme.solarized()
     elseif ft == 'typescript' then
+        scheme.solarized()
+    elseif ft == 'typescriptreact' then
         scheme.solarized()
     elseif ft == 'rust' then
         scheme.iceberg()
