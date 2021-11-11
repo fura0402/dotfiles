@@ -8,10 +8,9 @@ fi
 echo $dotfilesDir
 echo 'Paste the Symbolic link...'
 for file in $dotfilesDir/.??*; do
-    [ "$file" = "$dotfilesDir/CNAME" ] && continue
-    [ "$file" = "$dotfilesDir/.config" ] && continue
     [ "$file" = "$dotfilesDir/.git" ] && continue
     [ "$file" = "$dotfilesDir/.gitignore" ] && continue
+    [ "$file" = "$dotfilesDir/.config" ] && continue
     [ "$file" = "$dotfilesDir/.tmux.conf.osx" ] && continue
 
     ln -snfv $file ~
