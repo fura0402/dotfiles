@@ -1,0 +1,19 @@
+{
+    "HTML Format": {
+        "scope": "html",
+        "prefix": ["html:5"],
+        "body": [
+            "<!DOCTYPE html>",
+            "<html lang=\"ja\">",
+            "\t<head>",
+            "\t\t<meta charset=\"utf-8\">",
+            "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+            "\t\t<title>${1:Document}</title>",
+            "\t</head>",
+            "\t<body>",
+            "\t\t${0:...}",
+            "\t</body>",
+            "</html>"
+        ]
+    }
+}
