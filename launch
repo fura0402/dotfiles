@@ -32,7 +32,7 @@ dotfiles_download(){
 
             if is_exist "git"; then
                 if [ "$select_number" = "0" ]; then
-                    local dotGithub_SSH="git@github.com:fura0402/dotfiles.git"
+                    local dotGithub_SSH="github:fura0402/dotfiles.git"
 
                     prompt_header "git clone --recursive $dotGithub_SSH $dotDir"
                     echo
@@ -100,7 +100,9 @@ dotfiles_check
     2 ) curl
     3 ) wget (is deprecation)
 EOF
+
 dotfiles_download
+
 echo "========== Download Completed. =========="
 echo
 
