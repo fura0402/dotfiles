@@ -38,7 +38,7 @@ fi
     brew install gtk+3
     brew install sdl2
     brew install spark
-    brew install anyenv
+    brew install anyenv && anyenv install --init
     brew install hub
     brew install nasm
     brew install ncurses
@@ -52,7 +52,7 @@ fi
     brew install tldr
     brew install trash
     brew install tree
-    brew install fzf
+    brew install fzf && /usr/local/opt/fzf/install --all --no-update-rc
     brew install gdb
     brew install hexyl
     brew install tig
@@ -71,7 +71,8 @@ fi
 # Cask                                             #
 ####################################################
     brew install --cask discord
-    brew install --cask zoomus
+    brew install --cask skype
+    brew install --cask zoom
     brew install --cask docker
     brew install --cask ghidra
     brew install --cask iterm2
@@ -85,6 +86,10 @@ fi
     brew install --cask clipy
     brew install --cask karabiner-elements
     brew install --cask deepl
+    brew install --cask typora
+    brew install --cask lunar
+    brew install --cask balenaetcher
+    brew install --cask macs-fan-control
     brew install --cask notion
     brew install --cask obs
     brew install --cask firefox
@@ -102,15 +107,19 @@ fi
     mas install 803453959	#Slack
     mas install 485812721	#TweetDeck
     mas install 1482454543	#Twitter
+    mas install 634148309   #Logic Pro
+    mas install 424389933   #Final Cut Pro
+    mas install 434290957   #Motion
     mas install 1024640650	#CotEditor
     mas install 640199958	#Developer
     mas install 937984704	#Amphetamine
     mas install 417375580	#BetterSnapTool
+    mas install 414568915   #Key Codes
     mas install 444052073	#GLView
     mas install 409183694	#Keynote
     mas install 425955336	#Skitch
     mas install 425424353	#The Unarchiver
-    mas install 414855915	#WinArchiver Lite
     mas install 1327661892	#XMind
     mas install 497799835	#Xcode
     mas install 1438772273	#Cinebench
+    mas install 457622435   #Yoink
