@@ -73,7 +73,7 @@ all_alias
 #############
 
 # z command
-source ~/z/z.sh
+source /usr/local/etc/profile.d/z.sh
 unalias z
 
 # hub
