@@ -77,7 +77,7 @@ fi
     brew install --cask ghidra
     brew install --cask iterm2
     brew install --cask unity-hub
-    brew install --cask virtualbox
+    #brew install --cask virtualbox
     brew install --cask visual-studio-code
     brew install --cask wireshark
     brew install --cask xquartz
@@ -116,7 +116,6 @@ fi
     mas install 417375580	#BetterSnapTool
     mas install 414568915   #Key Codes
     mas install 444052073	#GLView
-    mas install 409183694	#Keynote
     mas install 425955336	#Skitch
     mas install 425424353	#The Unarchiver
     mas install 1327661892	#XMind
