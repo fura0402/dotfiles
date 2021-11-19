@@ -32,18 +32,18 @@ function cdls(){
             cd ../
         done
     else
-        \cd "$@" || return 1
+        \cd $* || return 1
     fi
     clear -x; printf '\n\e[1;33m%s\e[m\n' $(pwd); printf '\n\e[1;37m%s\e[m\n' ' ls'; ls_notice
+}
+
+zls(){
+    _z $* 2>&1 #&& printf '\n\e[1;37m%s\e[0m\n' ' ls'; ls_notice
 }
 
 function all_unalias(){
     unalias -a
     alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
-}
-
-zls(){
-    _z "$@" 2>&1 && printf '\n\e[1;37m%s\e[0m\n' ' ls' && ls_notice
 }
 
 function llvm(){
