@@ -18,12 +18,4 @@ Add: item to the README.md
     2) CLI Tool Config.
 
 
-Add Installer List:
-    Add nvim Installer
-    Add Formula:
-        Yoink
-        Java
-
-
 Add: Karabiner json file
-     fzf
