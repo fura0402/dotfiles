@@ -2,6 +2,19 @@
 
 # Creating an ide layout
 
+print_list(){
+\cat <<EOF
+
+  Select the command and press Enter.
+    list:
+       0) low
+       1) high
+       2) rosd
+       3) rose
+       4) tile
+EOF
+}
+
 if [ ! $TMUX ]; then
     echo "Cannot run without being in tmux."
     echo "run command 'tmux'"
@@ -75,16 +88,12 @@ else
                 clear
                 ;;
             "-l" | "--list")    # ide script list
-                echo -e "\n  Select the command and press Enter."
-                echo    "    list:"
-                echo    "       0) low"
-                echo    "       1) high"
-                echo    "       2) rosd"
-                echo    "       3) rose"
-                echo    "       4) tile"
-                echo
+                print_list
                 ;;
-            *) echo "Invalid argument : $1" ;;
+            *)
+                echo "Invalid argument : $1"
+                print_list
+                ;;
         esac
     fi
 fi
