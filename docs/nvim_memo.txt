@@ -59,8 +59,5 @@ nvim installer:
                 \rm -f lemminx-osx-x86_64.zip
 
 
-        faild:
-            "arduino_language_server",
-
 
 rust用のプラグインを構築する必要がある
