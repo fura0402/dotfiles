@@ -75,6 +75,7 @@ fi
     brew install --cask zoom
     brew install --cask docker
     brew install --cask ghidra
+    brew install --cask adobe-creative-cloud
     brew install --cask iterm2
     brew install --cask unity-hub
     #brew install --cask virtualbox
