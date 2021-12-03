@@ -84,7 +84,6 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 #############################
 
 
-#.bash_profile内で.bashrcと.bash_libsを読み込む
 if [ -f ~/.bashrc ] && [ -f ~/.bash_libs ] ; then
     . ~/.bash_libs
     . ~/.bashrc
