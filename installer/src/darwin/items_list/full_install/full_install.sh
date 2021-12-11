@@ -19,4 +19,6 @@ echo ""
 
 . $darwinDir/modules/homebrew/homebrew_formula_full_install.sh
 
+. $darwinDir/modules/neovim/nvim_construct.sh
+
 . $darwinDir/modules/files/symbolic.sh
