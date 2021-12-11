@@ -1,6 +1,3 @@
-# 何のためのやつか忘れたやつ
-# export PATH=~/jdk-11.0.2/bin:$PATH
-
 # zsh推奨警告を消す
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
