@@ -49,6 +49,8 @@ fi
     brew install curl
     brew install direnv
     brew install exa
+    brew install fd
+    brew install rg
     brew install tldr
     brew install trash
     brew install tree
