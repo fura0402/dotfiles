@@ -53,8 +53,8 @@ pyenv global system
 
 
 # nodenv
-nodenv install --skip-existing 16.13.0
-nodenv global 16.13.0
+nodenv install --skip-existing 16.13.1
+nodenv global 16.13.1
 
 npm install -g neovim
 
