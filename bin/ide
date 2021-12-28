@@ -41,7 +41,7 @@ else
             "high" | "1")   # High Level Programming
                 tmux split-window -v
                 tmux split-window -h
-                tmux resize-pane -D 10
+                tmux resize-pane -D 20
                 tmux select-pane -t 0
                 tmux send-keys -t 0 "ls" C-m
                 clear
