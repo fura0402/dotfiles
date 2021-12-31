@@ -6,6 +6,8 @@ function ftColorSchemeSet()
         scheme.solarized()
     elseif ft == 'css' then
         scheme.solarized()
+    elseif ft == 'scss' then
+        scheme.solarized()
     elseif ft == 'json' then
         scheme.solarized()
     elseif ft == 'javascript' then
