@@ -26,6 +26,7 @@ get::origin_userName(){
 
 readonly PREVIOUS_HEAD=$1
 readonly NOW_HEAD=$2
+
 # If you checkout of the branch: 1
 # If you checkout of the file: 0
 readonly BRANCH_SWITCH=$3
