@@ -42,6 +42,7 @@ else
                 tmux split-window -v
                 tmux split-window -h
                 tmux resize-pane -D 20
+                tmux select-pane -t 1
                 tmux select-pane -t 0
                 tmux send-keys -t 0 "ls" C-m
                 clear
