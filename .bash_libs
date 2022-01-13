@@ -67,3 +67,9 @@ function bash_color(){
     done
     printf " \\\e[m\n"
 }
+
+function tsrun(){
+    tsc $1 || return 0
+    fileName=$(echo $1 | sed -e "s|\.ts|.js|")
+    node $fileName
+}
