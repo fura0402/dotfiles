@@ -75,6 +75,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 local servers = {
     "tsserver",
+    "eslint",
     "html",
     "cssls",
     "emmet_ls",

@@ -65,6 +65,7 @@ npm i -g emmet-ls
 npm i -g pyright
 npm i -g vim-language-server
 npm i -g typescript typescript-language-server
+npm i -g vscode-langservers-extracted
 
 npm i -g yarn
 yarn global add yaml-language-server
