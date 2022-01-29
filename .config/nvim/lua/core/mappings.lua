@@ -16,6 +16,9 @@ map('n', '<C-o>', '<C-o>zz', { noremap = true, silent = false })
 map('n', '<C-i>', '<C-i>zz', { noremap = true, silent = false })
 map('n', "''", "''zz", { noremap = true, silent = true })
 
+map('n', '>d', '>>dd', { noremap = true, silent = false })
+map('n', '<d', '<<dd', { noremap = true, silent = false })
+
 map('n', 'x', '"_x', { noremap = true, silent = false })
 map('n', 's', '"_s', { noremap = true, silent = false })
 
