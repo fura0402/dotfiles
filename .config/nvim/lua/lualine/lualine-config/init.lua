@@ -8,12 +8,12 @@ require('lualine').setup({
         always_divide_middle = true,
     },
     sections = {
-        lualine_a = {'mode'},
+        lualine_a = {{'mode', color = { gui='bold' }}},
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'filename'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_z = {{'location', color = { gui='bold' }}}
     },
     inactive_sections = {
         lualine_a = {},

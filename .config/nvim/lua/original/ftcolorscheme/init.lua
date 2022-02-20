@@ -26,7 +26,6 @@ function ftColorSchemeSet()
         scheme.iceberg()
     elseif ft == 'lua' then
         scheme.nord()
-        vim.cmd('edit')
     elseif ft == 'NvimTree' then
         --
     elseif ft == '' then

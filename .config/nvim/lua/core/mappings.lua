@@ -4,29 +4,30 @@ noremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch
 
 vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
+local opts = { noremap=true, silent=true }
 
-map('n', '==', 'gg=G <C-o>zz', { noremap = true, silent = true })
+map('n', '==', 'gg=G <C-o>zz', opts)
 
-map('', '<C-h>', '<C-w>h', { noremap = true, silent = false })
-map('', '<C-j>', '<C-w>j', { noremap = true, silent = false })
-map('', '<C-k>', '<C-w>k', { noremap = true, silent = false })
-map('', '<C-l>', '<C-w>l', { noremap = true, silent = false })
+map('', '<C-h>', '<C-w>h', opts)
+map('', '<C-j>', '<C-w>j', opts)
+map('', '<C-k>', '<C-w>k', opts)
+map('', '<C-l>', '<C-w>l', opts)
 
-map('n', '<C-o>', '<C-o>zz', { noremap = true, silent = false })
-map('n', '<C-i>', '<C-i>zz', { noremap = true, silent = false })
-map('n', "''", "''zz", { noremap = true, silent = true })
+map('n', '<C-o>', '<C-o>zz', opts)
+map('n', '<C-i>', '<C-i>zz', opts)
+map('n', "''", "''zz", opts)
 
-map('n', '>d', '>>dd', { noremap = true, silent = false })
-map('n', '<d', '<<dd', { noremap = true, silent = false })
+map('n', '>d', '>>dd', opts)
+map('n', '<d', '<<dd', opts)
 
-map('n', 'x', '"_x', { noremap = true, silent = false })
-map('n', 's', '"_s', { noremap = true, silent = false })
+map('n', 'x', '"_x', opts)
+map('n', 's', '"_s', opts)
 
-map('i', '<C-f>', '<Esc>', { noremap = true, silent = false })
-map('v', '<C-f>', '<Esc>', { noremap = true, silent = false })
-map('c', '<C-f>', '<Esc>', { noremap = true, silent = false })
+map('i', '<C-f>', '<Esc>', opts)
+map('v', '<C-f>', '<Esc>', opts)
+map('c', '<C-f>', '<Esc>', opts)
 
-map('i', '<C-h>', '<BS>', { noremap = true, silent = false })
-map('i', '<C-d>', '<Del>', { noremap = true, silent = false })
+map('i', '<C-h>', '<BS>', opts)
+map('i', '<C-d>', '<Del>', opts)
 
-map('i', '<C-l>', '<right>', { noremap = false, silent = false })
+map('i', '<C-l>', '<right>', opts)
