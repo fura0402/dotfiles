@@ -15,15 +15,27 @@ function psdol(){
 }
 
 function ls_notice(){
-    if [ -z "$(\ls -A $PWD)" ]; then
-            echo "The directory is empty."
-        else
-            if type -a \exa &>/dev/null; then
-                exa --icons --color=always $*
+    if [ $# -gt 0 ]; then
+        ret=()
+        args=("$@")
+        for i in $(seq 0 $(expr $# - 1)); do
+            if [[ "${args[$i]}" =~ ^- ]]; then
+                ret+=("${args[$i]}")
             else
-                ls -FG $*
+                ret+=("${args[$i]// /\\ }")
             fi
+        done
+    fi
+
+    if [ -z "$(\ls -A "${PWD}")" ]; then
+            echo "The directory is empty."
+    else
+        if type -a \exa &>/dev/null; then
+            eval "exa --icons --color=always ${ret[*]}"
+        else
+            eval "ls -FG ${ret[*]}"
         fi
+    fi
 }
 function cdls(){
     if [[ $1 =~ \.\..* ]];then
@@ -36,7 +48,7 @@ function cdls(){
     else
         \cd $* || return 1
     fi
-    clear -x; printf '\n\e[1;33m%s\e[m\n' $(pwd); printf '\n\e[1;37m%s\e[m\n' ' ls'; ls_notice
+    clear -x; printf '\n\e[1;33m%s\e[m\n' "$(pwd)"; printf '\n\e[1;37m%s\e[m\n' ' ls'; ls_notice
 }
 
 zls(){
