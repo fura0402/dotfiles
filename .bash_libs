@@ -29,8 +29,10 @@ function cdls(){
     if [[ $1 =~ \.\..* ]];then
         local dot="$(echo $1 | sed 's|\.||')"
         for i in $(seq 1 ${#dot}); do
-            cd ../
+            \cd ../
         done
+    elif [[ "$*" =~ " " ]]; then
+        \cd "${*}" || return 1
     else
         \cd $* || return 1
     fi
