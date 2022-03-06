@@ -13,6 +13,21 @@ function psdef(){
 function psdol(){
     export PS1="\[\e[01;36m\]\$ \[\e[0m\]"
 }
+function prompt_check() {
+    prompt_count=$(
+        expr 4 \
+        + `expr "$(whoami)" : '.*'` \
+        + `expr "$(hostname -s)" : '.*'` \
+        + `expr "$(pwd | sed -e "s|$HOME\(.*\)|~\1|")" : '.*'` \
+        + `expr "$(type __git_ps1 &> /dev/null && __git_ps1)" : '.*'` \
+    )
+    cols=$(tput cols)
+    if [ $cols -le $prompt_count ]; then
+        psdol
+    else
+        psdef
+    fi
+}
 
 function ls_notice(){
     if [ $# -gt 0 ]; then

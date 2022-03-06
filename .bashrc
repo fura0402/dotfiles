@@ -1,7 +1,5 @@
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-fi
-psdef
+prompt_check
+trap prompt_check SIGWINCH
 
 ### alias ###
 function all_alias(){
