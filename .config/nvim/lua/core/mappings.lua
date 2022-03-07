@@ -17,11 +17,12 @@ map('n', '<C-o>', '<C-o>zz', opts)
 map('n', '<C-i>', '<C-i>zz', opts)
 map('n', "''", "''zz", opts)
 
-map('n', '>d', '>>dd', opts)
-map('n', '<d', '<<dd', opts)
+map('n', 'd>', 'dd>>', opts)
+map('n', 'd<', 'dd<<', opts)
 
 map('n', 'x', '"_x', opts)
 map('n', 's', '"_s', opts)
+map('n', 'p', '"0p', opts)
 
 map('i', '<C-f>', '<Esc>', opts)
 map('v', '<C-f>', '<Esc>', opts)
