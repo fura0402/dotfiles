@@ -14,14 +14,14 @@ function psdol(){
     export PS1="\[\e[01;36m\]\$ \[\e[0m\]"
 }
 function prompt_check() {
-    prompt_count=$(
+    local prompt_count=$(
         expr 4 \
         + `expr "$(whoami)" : '.*'` \
         + `expr "$(hostname -s)" : '.*'` \
         + `expr "$(pwd | sed -e "s|$HOME\(.*\)|~\1|")" : '.*'` \
         + `expr "$(type __git_ps1 &> /dev/null && __git_ps1)" : '.*'` \
     )
-    cols=$(tput cols)
+    local cols=$(tput cols)
     if [ $cols -le $prompt_count ]; then
         psdol
     else
@@ -31,8 +31,9 @@ function prompt_check() {
 
 function ls_notice(){
     if [ $# -gt 0 ]; then
-        ret=()
-        args=("$@")
+        local ret=()
+        local args=("$@")
+        local i=0
         for i in $(seq 0 $(expr $# - 1)); do
             if [[ "${args[$i]}" =~ ^- ]]; then
                 ret+=("${args[$i]}")
@@ -46,15 +47,16 @@ function ls_notice(){
             echo "The directory is empty."
     else
         if type -a \exa &>/dev/null; then
-            eval "exa --icons --color=always ${ret[*]}"
+            eval "\exa --icons --color=always ${ret[*]}"
         else
-            eval "ls -FG ${ret[*]}"
+            eval "\ls -FG ${ret[*]}"
         fi
     fi
 }
 function cdls(){
     if [[ $1 =~ \.\..* ]];then
         local dot="$(echo $1 | sed 's|\.||')"
+        local i=0
         for i in $(seq 1 ${#dot}); do
             \cd ../
         done
@@ -70,6 +72,62 @@ zls(){
     _z $* 2>&1 #&& printf '\n\e[1;37m%s\e[0m\n' ' ls'; ls_notice
 }
 
+function all_alias(){
+    alias cd='cdls'
+    alias ..='cd ..'
+    alias dot='cd ~/dotfiles'
+
+    alias ls='ls_notice'
+    if type -a \exa &>/dev/null; then
+        alias la='ls -al'
+        alias tree='exa --icons --tree --ignore-glob=".git"'
+        alias l1='ls -1'
+    else
+        alias la='ls -Al'
+    fi
+    alias ll='ls -l'
+    alias less='less -R'
+    if type -a \bat &>/dev/null; then
+        alias cat='bat'
+    fi
+
+    alias n='nvim'
+    alias j='zls'
+    alias lg='lazygit'
+
+    # brew
+    alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
+
+    # tmux
+    alias t='tmux -u'
+    alias ta='tmux attach'
+    alias tat='tmux attach -t'
+    alias tl='tmux ls'
+
+    ## ide
+    #alias ide='~/dotfiles/scripts/ide'
+
+    # silicon
+    alias silicon='silicon --shadow-blur-radius 15 --background "#5550" --font "Ricty"'
+
+    # Ghidra
+    alias ghidra='open /Applications/ghidra_9.1.1_PUBLIC/ghidraRun'
+
+    # C/C++
+    #alias gcc='gcc-11'
+    #alias g++='g++-11'
+
+    # GDB
+    #alias gdb='sudo /usr/local/bin/gdb'
+
+    # nvim lsp with lua
+    #alias luamake='~/.local/share/nvim/lsp_servers/lua-language-server/3rd/luamake/luamake'
+
+    # trash
+    if type trash &> /dev/null; then
+        alias rm='trash'
+    fi
+}
 function all_unalias(){
     unalias -a
     alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew'
@@ -83,6 +141,9 @@ function llvm(){
 }
 
 function bash_color(){
+    local fore=0
+    local mode=0
+    local back=0
     for fore in `seq 30 37`; do
         printf "\e[${fore}m \\\e[${fore}m \e[m\n"
         for mode in 1 4 5; do
@@ -99,6 +160,6 @@ function bash_color(){
 
 function tsrun(){
     tsc $1 || return 0
-    fileName=$(echo $1 | sed -e "s|\.ts|.js|")
+    local fileName=$(echo $1 | sed -e "s|\.ts|.js|")
     node $fileName
 }
