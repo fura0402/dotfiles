@@ -1,17 +1,38 @@
 {
-    "HTML Format": {
+    "HTML Templete": {
         "scope": "html",
+        "description": "HTML5 Templete",
         "prefix": ["html:5"],
         "body": [
             "<!DOCTYPE html>",
-            "<html lang=\"ja\">",
+            "<html>",
             "\t<head>",
             "\t\t<meta charset=\"utf-8\">",
-            "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-            "\t\t<title>${1:Document}</title>",
+            "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+            "\t\t<title>${1:Title}</title>",
             "\t</head>",
             "\t<body>",
-            "\t\t${0:...}",
+            "\t\t$0",
+            "\t</body>",
+            "</html>"
+        ]
+    },
+    "HTML React Templete": {
+        "scope": "html",
+        "description": "HTML React Templete",
+        "prefix": ["html:react"],
+        "body": [
+            "<!DOCTYPE html>",
+            "<html>",
+            "\t<head>",
+            "\t\t<meta charset=\"utf-8\">",
+            "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+            "\t\t<title>${1:Title}</title>",
+            "\t</head>",
+            "\t<body>",
+            "\t\t<noscript>You need to enable JavaScript to run this app.</noscript>",
+            "\t\t<div id=\"root\"></div>",
+            "\t\t<script src=\"${0:./path}\"/>",
             "\t</body>",
             "</html>"
         ]
