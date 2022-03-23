@@ -20,6 +20,8 @@ function ftColorSchemeSet()
         scheme.solarized()
     elseif ft == 'typescriptreact' then
         scheme.solarized()
+    elseif ft == 'markdown' then
+        scheme.iceberg()
     elseif ft == 'rust' then
         scheme.iceberg()
     elseif ft == 'go' then
