@@ -22,7 +22,7 @@ map('n', 'd<', 'dd<<', opts)
 
 map('n', 'x', '"_x', opts)
 map('n', 's', '"_s', opts)
-map('n', 'p', '"0p', opts)
+map('v', 'p', '"0p', opts)
 
 map('i', '<C-f>', '<Esc>', opts)
 map('v', '<C-f>', '<Esc>', opts)
