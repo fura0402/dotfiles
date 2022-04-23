@@ -4,9 +4,10 @@ vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_highlight_opened_files = 0
 vim.g.nvim_tree_add_trailing = 1
 require'nvim-tree'.setup {
+    auto_reload_on_write = true,
     disable_netrw = true,
     hijack_netrw = false,
-    auto_open = true,
+    -- auto_open = true, // This option is removed.
     auto_close = true,
     view = {
         width = 30,
