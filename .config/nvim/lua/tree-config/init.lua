@@ -1,17 +1,19 @@
-vim.g.nvim_tree_quit_on_open = 1
-vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_highlight_opened_files = 0
-vim.g.nvim_tree_add_trailing = 1
 require'nvim-tree'.setup {
     auto_reload_on_write = true,
     disable_netrw = true,
     hijack_netrw = false,
     -- auto_open = true, // This option is removed.
-    auto_close = true,
+    --auto_close = true, // This option is removed.
     view = {
         width = 30,
-    }
+    },
+    renderer = {
+        add_trailing = true,
+        highlight_git = true,
+        highlight_opened_files = "none",
+        indent_markers = { enable = true },
+    },
+    actions = { open_file = { quit_on_open = true }, },
 }
 
 local map = vim.api.nvim_set_keymap
