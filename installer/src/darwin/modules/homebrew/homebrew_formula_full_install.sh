@@ -54,7 +54,7 @@ fi
     brew install tldr
     brew install trash
     brew install tree
-    brew install fzf && /usr/local/opt/fzf/install --all --no-update-rc
+    brew install fzf && $(brew --prefix)/opt/fzf/install --all --no-update-rc
     brew install gdb
     brew install hexyl
     brew install tig
