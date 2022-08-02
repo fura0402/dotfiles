@@ -17,7 +17,6 @@ for file in $dotfilesDir/.??*; do
 done
 
 ln -snfv $dotfilesDir/.config/bat ~/.config
-ln -snfv $dotfilesDir/.config/fish ~/.config
 ln -snfv $dotfilesDir/.config/karabiner/karabiner.json ~/.config/karabiner
 ln -snfv $dotfilesDir/.config/nvim ~/.config
 ln -snfv $dotfilesDir/.config/starship.toml ~/.config
