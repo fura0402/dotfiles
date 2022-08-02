@@ -30,9 +30,9 @@ function prompt_check() {
 }
 
 function ls_notice(){
+    local ret=()
+    local args=("$@")
     if [ $# -gt 0 ]; then
-        local ret=()
-        local args=("$@")
         local i=0
         for i in $(seq 0 $(expr $# - 1)); do
             if [[ "${args[$i]}" =~ ^- ]]; then
