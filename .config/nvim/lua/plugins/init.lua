@@ -77,7 +77,7 @@ return require('packer').startup({function()
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use {'xiyaowong/telescope-emoji.nvim'}
+    use {'nvim-telescope/telescope-symbols.nvim'}
 
     use {
         'lewis6991/gitsigns.nvim',
