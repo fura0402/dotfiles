@@ -8,10 +8,6 @@ vim.cmd ([[
     syntax enable
 
     colorscheme ownDefault
-    highlight SignColumn ctermbg=0 guibg=#000000
-    highlight Pmenu ctermfg=250 ctermbg=235 guifg=#bcbcbc guibg=#262626
-    highlight PmenuSel ctermfg=0 ctermbg=13 guifg=#000000 guibg=#fd55ff
-
 
     autocmd FileType * setlocal formatoptions-=r
     autocmd FileType * setlocal formatoptions-=o

@@ -45,6 +45,7 @@ return require('packer').startup({function()
     use 'hrsh7th/vim-vsnip'
     use 'onsails/lspkind-nvim'
 
+    use 'andymass/vim-matchup'
     use 'windwp/nvim-autopairs'
     use 'tpope/vim-surround'
     use 'windwp/nvim-ts-autotag'

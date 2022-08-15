@@ -14,7 +14,10 @@ M.iceberg= function ()
 end
 
 M.solarized = function ()
-    vim.cmd('colorscheme NeoSolarized')
+    vim.cmd([[
+        colorscheme NeoSolarized
+        highlight MatchParen gui=bold guifg=NONE guibg=#A53331
+    ]])
     require('lualine').setup({
         options = {
             theme = 'solarized_dark',
@@ -27,7 +30,10 @@ M.solarized = function ()
 end
 
 M.nord = function ()
-    vim.cmd('colorscheme nord')
+    vim.cmd([[
+        colorscheme nord
+        highlight MatchParen gui=bold guibg=#434C5E
+    ]])
     require('lualine').setup({
         options = {
             theme = 'nord',
@@ -40,12 +46,7 @@ M.nord = function ()
 end
 
 M.default = function ()
-    vim.cmd([[
-        colorscheme ownDefault
-        highlight SignColumn ctermbg=0 guibg=#000000
-        highlight Pmenu ctermfg=250 ctermbg=235 guifg=#bcbcbc guibg=#262626
-        highlight PmenuSel ctermfg=0 ctermbg=13 guifg=#000000 guibg=#fd55ff
-    ]])
+    vim.cmd('colorscheme ownDefault')
     require('lualine').setup({
         options = {
             theme = 'ownDefault',
