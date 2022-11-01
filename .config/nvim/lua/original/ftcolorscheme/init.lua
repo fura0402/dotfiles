@@ -1,36 +1,25 @@
 local scheme = require('original.ftcolorscheme.colorscheme_config')
 
 function ftColorSchemeSet()
+    local function ftCheck(filetype, ftList)
+        for _, ft in pairs(ftList) do
+            if filetype == ft then
+                return true
+            end
+        end
+        return false
+    end
+
     local ft = vim.bo.filetype
-    if ft == 'html' then
-        scheme.solarized()
-    elseif ft == 'css' then
-        scheme.solarized()
-    elseif ft == 'scss' then
-        scheme.solarized()
-    elseif ft == 'sass' then
-        scheme.solarized()
-    elseif ft == 'json' then
-        scheme.solarized()
-    elseif ft == 'javascript' then
-        scheme.solarized()
-    elseif ft == 'javascriptreact' then
-        scheme.solarized()
-    elseif ft == 'typescript' then
-        scheme.solarized()
-    elseif ft == 'typescriptreact' then
-        scheme.solarized()
-    elseif ft == 'markdown' then
+    if ftCheck( ft, { 'html', 'css', 'scss', 'sass', 'json', 'javascript','javascriptreact', 'typescript', 'typescriptreact' } ) then
+        scheme.neosolarized()
+    elseif ftCheck( ft, { 'markdown', 'rust', 'go' } ) then
         scheme.iceberg()
-    elseif ft == 'rust' then
-        scheme.iceberg()
-    elseif ft == 'go' then
-        scheme.iceberg()
-    elseif ft == 'lua' then
+    elseif ftCheck( ft, { 'lua' } ) then
         scheme.nord()
-    elseif ft == 'NvimTree' then
+    elseif ftCheck( ft, { 'help', 'man', 'NvimTree', '' } ) then
         --
-    elseif ft == '' then
+    elseif ftCheck( ft, { 'plaintext', 'lspsagafindertitlebar', 'sagacodeaction', 'sagarename' } ) then
         --
     else
         scheme.default()
@@ -39,15 +28,8 @@ end
 
 
 vim.cmd ([[
-    "function! BufCheck_reload() abort
-    "    if expand("%") !=# ''
-    "        edit
-    "    endif
-    "endfunction
-
     augroup buf_reload
         autocmd!
-        "autocmd BufWinEnter * call BufCheck_reload()
         autocmd BufWinEnter * call v:lua.ftColorSchemeSet()
     augroup END
 ]])

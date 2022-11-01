@@ -48,7 +48,7 @@ highlight MatchParen cterm=bold ctermbg=1 gui=bold guibg=#bc0004
 highlight NvimInternalError ctermfg=9 ctermbg=9 guifg=#ff6d67 guibg=#ff6d67
 
 " syntax enable
-highlight Comment ctermfg=14 guifg=#60fdff
+highlight Comment cterm=italic ctermfg=14 gui=italic guifg=#60fdff
 highlight Constant ctermfg=13 guifg=#fd55ff
 highlight Special ctermfg=224 guifg=#57c5ea
 highlight Statement ctermfg=11 gui=NONE guifg=#fffc67
@@ -64,3 +64,7 @@ highlight Identifier cterm=bold ctermfg=14 gui=bold guifg=#40ffff
 highlight GitSignsAdd    ctermfg=10 guifg=#00ff00
 highlight GitSignsChange ctermfg=11 guifg=#ffff00
 highlight GitSignsDelete ctermfg=9  guifg=#ff0000
+
+" Indent BlankLine
+highlight IndentBlanklineChar ctermfg=242 guifg=#5a5959
+highlight IndentBlanklineContextChar ctermfg=250 guifg=#bcbcbc

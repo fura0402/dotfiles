@@ -1,28 +1,28 @@
 local M = {}
 
 M.iceberg= function ()
-    vim.cmd('colorscheme iceberg')
+    vim.cmd([[
+        colorscheme iceberg
+        highlight Comment cterm=italic gui=italic
+    ]])
     require('lualine').setup({
         options = {
             theme = 'iceberg_dark',
-            component_separators = { left = '', right = ''},
-            section_separators = { left = '', right = ''},
+            section_separators = { left = '', right = '' },
+            component_separators = { left = '', right = '' },
         }
     })
     require("bufferline").setup{}
     require('nvim-web-devicons').set_up_highlights()
 end
 
-M.solarized = function ()
-    vim.cmd([[
-        colorscheme NeoSolarized
-        highlight MatchParen gui=bold guifg=NONE guibg=#A53331
-    ]])
+M.neosolarized = function ()
+    require('neosolarized-config').setup()
     require('lualine').setup({
         options = {
             theme = 'solarized_dark',
-            component_separators = { left = '', right = ''},
-            section_separators = { left = '', right = ''},
+            section_separators = { left = '', right = '' },
+            component_separators = { left = '', right = '' },
         }
     })
     require("bufferline").setup{}
@@ -33,12 +33,13 @@ M.nord = function ()
     vim.cmd([[
         colorscheme nord
         highlight MatchParen gui=bold guibg=#434C5E
+        highlight Comment cterm=italic gui=italic
     ]])
     require('lualine').setup({
         options = {
             theme = 'nord',
-            component_separators = { left = '', right = ''},
-            section_separators = { left = '', right = ''},
+            section_separators = { left = '', right = '' },
+            component_separators = { left = '', right = '' },
         }
     })
     require("bufferline").setup{}
@@ -50,9 +51,18 @@ M.default = function ()
     require('lualine').setup({
         options = {
             theme = 'ownDefault',
-            component_separators = { left = '', right = ''},
-            section_separators = { left = '', right = ''},
-        }
+            section_separators = { left = '', right = '' },
+            component_separators = { left = '', right = '' },
+        },
+        sections = {
+            lualine_x = {
+                { 'diagnostics', sources = { "nvim_diagnostic" }, symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' }, colored = false },
+                'encoding',
+                { 'fileformat', symbols = { unix = '', dos = '', mac = '' } },
+                'filetype'
+            },
+        },
+
     })
     require("bufferline").setup{}
     require('nvim-web-devicons').set_up_highlights()

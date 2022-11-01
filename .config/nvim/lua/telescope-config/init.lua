@@ -1,10 +1,15 @@
 local actions = require('telescope.actions')
 require('telescope').setup{
     defaults = {
+        preview = {
+            filesize_limit = 15,
+            timeout = 100,
+        },
         layout_config = {
             width = 0.8,
             preview_width = 0.5,
             prompt_position = "bottom",
+            scroll_speed = 1,
         },
         winblend = 0;
         sorting_strategy = "descending",
@@ -25,8 +30,12 @@ require('telescope').setup{
         },
         mappings = {
             i = {
-                ["<Esc>"] = actions.close,
-                ["<C-f>"] = actions.close,
+                ['<Esc>'] = actions.close,
+                ['<C-f>'] = actions.close,
+                ['<C-u>'] = false,
+                ['<C-d>'] = false,
+                ['<C-y>'] = actions.preview_scrolling_up,
+                ['<C-e>'] = actions.preview_scrolling_down
             },
         },
     },
@@ -62,15 +71,19 @@ require('telescope').setup{
         },
     }
 }
+
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('neoclip')
+require('telescope-config.neoclip')
+require('telescope').load_extension('zoxide')
+require('telescope-config.zoxide')
 
-
-local map = vim.api.nvim_set_keymap
 local opts = { noremap=true, silent=true }
-map('n', '<Leader>tf', '<Cmd>Telescope find_files<CR>', opts)
-map('n', '<Leader>tg', '<Cmd>Telescope live_grep<CR>', opts)
-map('n', '<Leader>to', '<Cmd>Telescope oldfiles<CR>', opts)
-map('n', '<Leader>tb', '<Cmd>Telescope buffers<CR>', opts)
-map('n', '<Leader>th', '<Cmd>Telescope help_tags<CR>', opts)
-map('n', '<Leader>te', '<Cmd>lua require"telescope.builtin".symbols{ sources = {"emoji"} }<CR>', opts)
-map('n', '<Leader>tc', '<Cmd>lua require"telescope.builtin".symbols{ sources = {"gitmoji"} }<CR>', opts)
+vim.keymap.set('n', '<Leader>tf', '<Cmd>Telescope find_files<CR>', opts)
+vim.keymap.set('n', '<Leader>tg', '<Cmd>Telescope live_grep<CR>', opts)
+vim.keymap.set('n', '<Leader>to', '<Cmd>Telescope oldfiles<CR>', opts)
+vim.keymap.set('n', '<Leader>tb', '<Cmd>Telescope buffers<CR>', opts)
+vim.keymap.set('n', '<Leader>th', '<Cmd>Telescope help_tags<CR>', opts)
+vim.keymap.set('n', '<Leader>te', '<Cmd>lua require"telescope.builtin".symbols{ sources = {"emoji"} }<CR>', opts)
+vim.keymap.set('n', '<Leader>tc', '<Cmd>lua require"telescope.builtin".symbols{ sources = {"gitmoji"} }<CR>', opts)
+vim.keymap.set('n', '<Leader>cd', '<Cmd>lua require"telescope".extensions.zoxide.list{}<CR>', opts)

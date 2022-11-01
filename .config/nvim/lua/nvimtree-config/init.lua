@@ -2,8 +2,8 @@ require'nvim-tree'.setup {
     auto_reload_on_write = true,
     disable_netrw = true,
     hijack_netrw = false,
-    -- auto_open = true, // This option is removed.
-    --auto_close = true, // This option is removed.
+    hijack_cursor = true,
+    sync_root_with_cwd = true,
     view = {
         width = 30,
     },
@@ -16,5 +16,4 @@ require'nvim-tree'.setup {
     actions = { open_file = { quit_on_open = true }, },
 }
 
-local map = vim.api.nvim_set_keymap
-map('n', '<leader>f', ':NvimTreeFindFileToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>f', ':NvimTreeFindFileToggle<CR>', { noremap = true, silent = true })

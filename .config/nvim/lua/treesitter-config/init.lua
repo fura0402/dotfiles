@@ -1,35 +1,48 @@
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        underline = true,
-        virtual_text = {
-            spacing = 5,
-            severity_limit = 'Warning',
-        },
-        update_in_insert = true,
-    }
-)
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = 'all',
+    ensure_installed = {
+        'bash',
+        'c',
+        'cmake',
+        'cpp',
+        'css',
+        'dockerfile',
+        'gitignore',
+        'go',
+        'gomod',
+        'gowork',
+        'help',
+        'html',
+        'javascript',
+        'jsdoc',
+        'json',
+        'llvm',
+        'lua',
+        'make',
+        'markdown',
+        'markdown_inline',
+        'python',
+        'rust',
+        'scss',
+        'swift',
+        'toml',
+        'tsx',
+        'typescript',
+        'vim',
+        'yaml',
+    },
     highlight = {
         enable = true,
         disable = {},
         additional_vim_regex_highlighting = false,
     },
     indent = {
-      enable = false,
-    },
-    matchup = {
-        enable = true,
-    },
-    autopairs = {
-        enable = true
+        enable = false,
     },
     autotag = {
         enable = true,
-        filetypes = {
-            "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "xml"
-        },
+    },
+    matchup = {
+        enable = true,
     },
     rainbow = {
         enable = true,

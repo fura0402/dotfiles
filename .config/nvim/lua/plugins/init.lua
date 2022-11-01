@@ -3,7 +3,7 @@ local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 -- install packer if needed
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({
+    fn.system({
         'git',
         'clone',
         '--depth',
@@ -11,6 +11,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
         'https://github.com/wbthomason/packer.nvim',
         install_path,
     })
+    vim.cmd [[packadd packer.nvim]]
 end
 
 
@@ -27,73 +28,79 @@ augroup end
 ]])
 
 
-local use = require'packer'.use
-return require('packer').startup({function()
+return require('packer').startup({function(use)
     use 'wbthomason/packer.nvim'
+
+    use 'nvim-lua/plenary.nvim'
 
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
     }
-
-    use 'neovim/nvim-lspconfig'
-
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
-    use 'onsails/lspkind-nvim'
-
-    use 'andymass/vim-matchup'
-    use 'windwp/nvim-autopairs'
-    use 'tpope/vim-surround'
-    use 'windwp/nvim-ts-autotag'
-    use 'p00f/nvim-ts-rainbow'
-
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
-    use {
-        'akinsho/bufferline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons'
-    }
-
-    use 'norcalli/nvim-colorizer.lua'
 
     use 'cocopon/iceberg.vim'
     use 'shaunsingh/nord.nvim'
-    use 'overcache/NeoSolarized'
-
     use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require'nvim-tree'.setup {} end
+        'svrana/neosolarized.nvim',
+        requires = { 'tjdevries/colorbuddy.nvim' }
     }
 
     use {
-        'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        'kyazdani42/nvim-web-devicons',
+        config = function()
+            require('nvim-web-devicons').setup {
+                override = {}, default = true
+            }
+        end
     }
+
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'neovim/nvim-lspconfig'
+    use 'onsails/lspkind-nvim'
+    use 'glepnir/lspsaga.nvim'
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/nvim-cmp'
+
+    use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
+    use 'tpope/vim-surround'
+    use 'andymass/vim-matchup'
+    use 'p00f/nvim-ts-rainbow'
+
+    use 'nvim-lualine/lualine.nvim'
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+    use 'lukas-reineke/indent-blankline.nvim'
+
+
+    use 'kyazdani42/nvim-tree.lua'
+
+    use 'nvim-telescope/telescope.nvim'
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use {'nvim-telescope/telescope-symbols.nvim'}
-
+    use {'jvgrootveld/telescope-zoxide'}
     use {
-        'lewis6991/gitsigns.nvim',
+        'AckslD/nvim-neoclip.lua',
         requires = {
-            'nvim-lua/plenary.nvim'
+            {'nvim-telescope/telescope.nvim'},
         },
-        -- tag = 'release' -- To use the latest release
     }
 
+    --use {
+    --    'lewis6991/gitsigns.nvim',
+    --    -- tag = 'release' -- To use the latest release
+    --}
 
-    if packer_bootstrap then
-        require('packer').sync()
-    end
+    use 'norcalli/nvim-colorizer.lua'
+    use 'andweeb/presence.nvim'
 end,
 config = {
     display = {
-        open_fn = require('packer.util').float,
+        open_fn = function()
+            return require('packer.util').float({ border = 'single' })
+        end
     }
 }})

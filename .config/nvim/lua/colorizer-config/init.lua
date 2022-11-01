@@ -1,6 +1,5 @@
-require'colorizer'.setup(
-    nil,
-    {
-        css = true;
-    }
-)
+require'colorizer'.setup({
+    '*',
+    css = { rgb_fn = true; },
+    html = { names = false; }
+})
