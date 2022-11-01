@@ -69,7 +69,13 @@ function cdls(){
 }
 
 zls(){
-    _z $* 2>&1 #&& printf '\n\e[1;37m%s\e[0m\n' ' ls'; ls_notice
+    __zoxide_z $* 2>&1
+    if [[ -n "$*" && $? -eq 0 ]]; then
+        printf '\n\e[1;37m%s\e[0m\n' ' ls'; ls_notice
+    fi
+}
+zils(){
+    __zoxide_zi $* 2>&1 && printf '\n\e[1;37m%s\e[0m\n' ' ls'; ls_notice
 }
 
 function all_alias(){
@@ -93,6 +99,7 @@ function all_alias(){
 
     alias n='nvim'
     alias j='zls'
+    alias ji='zils'
     alias lg='lazygit'
 
     # brew

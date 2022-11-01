@@ -5,9 +5,8 @@ trap prompt_check SIGWINCH
 # alias
 all_alias
 
-# z command
-source /usr/local/etc/profile.d/z.sh
-unalias z
+# zoxide
+eval "$(zoxide init --no-cmd bash)"
 
 # hub
 #eval "$(hub alias -s)"
