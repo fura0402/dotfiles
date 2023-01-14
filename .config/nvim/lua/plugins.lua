@@ -95,7 +95,7 @@ local function init()
     config = 'require("modules.lsp.mason").setup()',
   })
 
-  use({ 'neovim/nvim-lspconfig', event = 'BufReadPre', config = 'require("modules.lsp.lspconfig")' })
+  use({ 'neovim/nvim-lspconfig', event = 'BufReadPost', config = 'require("modules.lsp.lspconfig")' })
   use({
     'glepnir/lspsaga.nvim',
     after = 'nvim-lspconfig',
