@@ -4,7 +4,7 @@
 [core]
     editor = nvim
     excludesfile = ~/.gitignore_global
-    autocrlf = false
+    autocrlf = input
     quotepath = false
     pager = delta
 
