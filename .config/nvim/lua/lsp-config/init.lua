@@ -1,6 +1,0 @@
-require('lsp-config.mason')
-require('lsp-config.lspconfig')
-require('lsp-config.lspkind')
-require('lsp-config.lspsaga')
-require('lsp-config.cmp')
-require('lsp-config.luasnip')
