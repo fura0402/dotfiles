@@ -14,8 +14,9 @@ function ftColorSchemeSet()
   local ft = vim.bo.filetype
   if ftCheck(ft, { 'c' }) then
     scheme.default()
-  elseif ftCheck(ft, { 'html', 'css', 'scss', 'sass',
-    'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }) then
+  elseif
+    ftCheck(ft, { 'html', 'css', 'scss', 'sass', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' })
+  then
     scheme.neosolarized()
   elseif ftCheck(ft, { 'markdown', 'rust', 'toml', 'go' }) then
     scheme.iceberg()
@@ -28,9 +29,9 @@ function ftColorSchemeSet()
   end
 end
 
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = vim.api.nvim_create_augroup("BufReload", {}),
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  group = vim.api.nvim_create_augroup('BufReload', {}),
   callback = function()
     ftColorSchemeSet()
-  end
+  end,
 })

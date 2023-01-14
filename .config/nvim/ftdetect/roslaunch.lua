@@ -1,10 +1,10 @@
-vim.filetype.add {
+vim.filetype.add({
   extension = {
-    launch = "roslaunch",
+    launch = 'roslaunch',
   },
   pattern = {
-    ["%.launch$"] = function (_, _, _)
-      vim.opt.filetype = "roslaunch"
-    end
-  }
-}
+    ['%.launch$'] = function(_, _, _)
+      vim.opt.filetype = 'roslaunch'
+    end,
+  },
+})

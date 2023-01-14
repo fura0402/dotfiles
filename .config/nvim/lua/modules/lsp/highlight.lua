@@ -45,7 +45,6 @@ vim.cmd([[
   highlight! link CmpItemKindTypeParameter CmpItemKindInterface 
 ]])
 
-
 -- Do not working...
 -- local conf = {
 --   CmpItemAbbrDeprecated = { fg = "#808080", bg = "NONE", strikethrough=true },

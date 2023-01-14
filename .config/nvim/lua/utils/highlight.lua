@@ -19,5 +19,4 @@ M.set_hl = function(opts)
   end
 end
 
-
 return M

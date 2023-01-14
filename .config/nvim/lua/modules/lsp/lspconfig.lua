@@ -3,19 +3,19 @@ vim.cmd.packadd('cmp-nvim-lsp')
 
 -- UI Customization --------------------------------------------------
 local border = {
-  { "╭", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╮", "FloatBorder" },
-  { "│", "FloatBorder" },
-  { "╯", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╰", "FloatBorder" },
-  { "│", "FloatBorder" },
+  { '╭', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╮', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+  { '╯', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╰', 'FloatBorder' },
+  { '│', 'FloatBorder' },
 }
 -- LSP settings (for overriding per client)
 local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 }
 -- To instead override globally
 -- local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -25,9 +25,9 @@ local handlers = {
 --   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 -- end
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
+  local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
@@ -36,23 +36,21 @@ vim.diagnostic.config({
     prefix = '●', -- Could be '■', '▎', 'x'
   },
   float = {
-    source = "always", -- Or "if_many"
+    source = 'always', -- Or "if_many"
   },
   severity_sort = true,
 })
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
   virtual_text = {
     spacing = 4,
-    prefix = "●",
+    prefix = '●',
     severity_limit = 'Warning',
   },
   severity_sort = true,
   update_in_insert = false,
 })
-
 
 local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
@@ -86,7 +84,7 @@ end
 local lspconfig = require('lspconfig')
 -- Do not forget to use the on_attach function
 for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers()) do
-  if server_name == "sumneko_lua" then
+  if server_name == 'sumneko_lua' then
     lspconfig.sumneko_lua.setup({
       handlers = handlers,
       capabilities = capabilities,
@@ -103,7 +101,7 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
           },
           workspace = {
             -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
+            library = vim.api.nvim_get_runtime_file('', true),
             checkThirdParty = false,
           },
           -- Do not send telemetry data containing a randomized but unique identifier
@@ -113,10 +111,10 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
         },
       },
     })
-  elseif server_name == "tsserver" then
+  elseif server_name == 'tsserver' then
     local cmd = check_os({
-      macunix = { "typescript-language-server", "--stdio" },
-      win = { "typescript-language-server.cmd", "--stdio" },
+      macunix = { 'typescript-language-server', '--stdio' },
+      win = { 'typescript-language-server.cmd', '--stdio' },
     })
     lspconfig.tsserver.setup({
       handlers = handlers,
@@ -125,24 +123,24 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
       -- filetypes = { "typescript" , "typescriptreact" },
       cmd = cmd,
     })
-  elseif server_name == "clangd" then
+  elseif server_name == 'clangd' then
     lspconfig.clangd.setup({
       capabilities = capabilities,
       single_file_support = true,
       cmd = {
-        "clangd",
-        "--background-index",
-        "--pch-storage=memory",
+        'clangd',
+        '--background-index',
+        '--pch-storage=memory',
         -- You MUST set this arg ↓ to your c/cpp compiler location (if not included)!
-        "--query-driver=/usr/bin/clang++,/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
-        "--clang-tidy",
-        "--all-scopes-completion",
-        "--completion-style=detailed",
-        "--header-insertion-decorators",
-        "--header-insertion=iwyu",
+        '--query-driver=/usr/bin/clang++,/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
+        '--clang-tidy',
+        '--all-scopes-completion',
+        '--completion-style=detailed',
+        '--header-insertion-decorators',
+        '--header-insertion=iwyu',
       },
     })
-  elseif server_name ~= "rust_analyzer" then
+  elseif server_name ~= 'rust_analyzer' then
     lspconfig[server_name].setup({
       handlers = handlers,
       capabilities = capabilities,
@@ -152,18 +150,17 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
 end
 
 -- lsp_signature
-require("lsp_signature").setup({
+require('lsp_signature').setup({
   bind = true,
   floating_window = false,
   hint_enable = true,
-  hint_prefix = "💡 ",
+  hint_prefix = '💡 ',
   handler_opts = {
-    border = "rounded",
+    border = 'rounded',
   },
   check_completion_visible = true,
-  toggle_key = "<C-k>",
+  toggle_key = '<C-k>',
 })
-
 
 local config = {}
 function config.rust_setup()
@@ -171,7 +168,7 @@ function config.rust_setup()
     server = {
       handlers = handlers,
       on_attach = on_attach,
-    }
+    },
   })
 end
 

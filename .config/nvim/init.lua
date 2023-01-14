@@ -7,8 +7,7 @@ elseif is_win == 1 then
   require('core.windows')
 end
 
-
-local disable_distribution_plugins = function ()
+local disable_distribution_plugins = function()
   local g = vim.g
   -- g.loaded_python3_provider = 0
   g.loaded_node_provider = 0
@@ -56,11 +55,10 @@ local disable_distribution_plugins = function ()
   g.loaded_rrhelper = 1
 
   -- Disable sql omni completion.
-	g.loaded_sql_completion = 1
+  g.loaded_sql_completion = 1
 end
 
-
-local load_core = function ()
+local load_core = function()
   disable_distribution_plugins()
   require('core.options')
   require('core.mappings')
@@ -68,6 +66,5 @@ local load_core = function ()
   require('plugins').load_compile()
   require('modules.original.ftcolorscheme')
 end
-
 
 load_core()

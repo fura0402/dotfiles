@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'bash',
     'c',
@@ -41,9 +41,9 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     keymaps = {
       --init_selection = "gnn", -- set to `false` to disable one of the mappings
-      node_incremental = "gin",
-      scope_incremental = "gic",
-      node_decremental = "gim",
+      node_incremental = 'gin',
+      scope_incremental = 'gic',
+      node_decremental = 'gim',
     },
   },
   indent = {
@@ -71,11 +71,11 @@ require'nvim-treesitter.configs'.setup {
       enable = true,
       lookahead = true,
       keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
 
-        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
       },
       selection_modes = {
         ['@parameter.outer'] = 'v', -- charwise
@@ -87,40 +87,40 @@ require'nvim-treesitter.configs'.setup {
     swap = {
       enable = true,
       swap_next = {
-        ["<Leader>a"] = "@parameter.inner",
+        ['<Leader>a'] = '@parameter.inner',
       },
       swap_previous = {
-        ["<Leader>i"] = "@parameter.inner",
+        ['<Leader>i'] = '@parameter.inner',
       },
     },
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = { query = "@class.outer", desc = "Next class start" },
+        [']m'] = '@function.outer',
+        [']]'] = { query = '@class.outer', desc = 'Next class start' },
       },
       goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
       },
       goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
       },
       goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
       },
     },
   },
   textsubjects = {
     enable = true,
-    prev_selection = ",",
+    prev_selection = ',',
     keymaps = {
       ['.'] = 'textsubjects-smart',
       [';'] = 'textsubjects-container-inner',
       ['a;'] = 'textsubjects-container-outer',
-    }
-  }
-}
+    },
+  },
+})

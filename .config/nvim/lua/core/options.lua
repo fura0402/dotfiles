@@ -36,9 +36,9 @@ vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 vim.api.nvim_create_autocmd('Filetype', {
   pattern = '*',
-  command = 'setlocal formatoptions-=ro'
+  command = 'setlocal formatoptions-=ro',
 })
-vim.g.completeopt = "menu,menuone,noinsert,noselect"
+vim.g.completeopt = 'menu,menuone,noinsert,noselect'
 vim.o.pumheight = 15
 
 --vim.o.showbreak='↪'

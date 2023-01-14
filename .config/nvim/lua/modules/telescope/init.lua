@@ -1,6 +1,6 @@
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
-require('telescope').setup {
+require('telescope').setup({
   defaults = {
     preview = {
       filesize_limit = 15,
@@ -9,14 +9,14 @@ require('telescope').setup {
     layout_config = {
       width = 0.8,
       preview_width = 0.5,
-      prompt_position = "bottom",
+      prompt_position = 'bottom',
       scroll_speed = 1,
     },
-    winblend = 0;
-    sorting_strategy = "descending",
-    prompt_prefix = "  ",
-    selection_caret = "  ",
-    entry_prefix = "   ",
+    winblend = 0,
+    sorting_strategy = 'descending',
+    prompt_prefix = '  ',
+    selection_caret = '  ',
+    entry_prefix = '   ',
     set_env = { ['COLORTERM'] = 'truecolor' }, -- Default: nil
     vimgrep_arguments = {
       'rg',
@@ -50,15 +50,15 @@ require('telescope').setup {
         '--no-ignore',
         '--strip-cwd-prefix',
         '--exclude=.git',
-        '--exclude=node_modules'
+        '--exclude=node_modules',
       },
     },
     registers = {
-      theme = "cursor",
+      theme = 'cursor',
       layout_config = { height = 0.4, width = 0.2 },
     },
     symbols = {
-      theme = "cursor",
+      theme = 'cursor',
       layout_config = { height = 0.5 },
     },
   },
@@ -67,24 +67,20 @@ require('telescope').setup {
       fuzzy = true, -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
       override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     },
     zoxide = {
       mappings = {
-        ["<C-o>"] = {
+        ['<C-o>'] = {
           keepinsert = true,
           action = function(selection)
             builtin.find_files({ cwd = selection.path })
-          end
+          end,
         },
       },
-    }
-  }
-}
+    },
+  },
+})
 
 require('telescope').load_extension('fzf')
--- require('telescope').load_extension('projects')
--- require('telescope').load_extension('neoclip')
--- require('modules.telescope.neoclip')
--- require('telescope').load_extension('zoxide')

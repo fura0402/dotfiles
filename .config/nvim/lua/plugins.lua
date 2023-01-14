@@ -3,7 +3,6 @@ local data_dir = fn.stdpath('data') .. '/site/'
 local install_path = data_dir .. 'pack/packer/opt/packer.nvim'
 local packer_compiled = data_dir .. 'lua/_compiled.lua'
 
-
 -- install packer if needed
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({
@@ -34,11 +33,11 @@ local function init()
 
   local use = packer.use
 
-  use { 'wbthomason/packer.nvim', opt = true }
-  use { 'lewis6991/impatient.nvim', config = 'require("impatient")' }
-  use { 'nathom/filetype.nvim' }
+  use({ 'wbthomason/packer.nvim', opt = true })
+  use({ 'lewis6991/impatient.nvim', config = 'require("impatient")' })
+  use({ 'nathom/filetype.nvim' })
 
-  use {
+  use({
     'nvim-treesitter/nvim-treesitter',
     requires = {
       { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
@@ -47,71 +46,71 @@ local function init()
     },
     run = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile', 'InsertEnter' },
-    config = 'require("modules.treesitter")'
-  }
+    config = 'require("modules.treesitter")',
+  })
 
-  use { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
-  use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
-  use { 'haringsrob/nvim_context_vt', after = 'nvim-treesitter', config = 'require("modules.context_vt")' }
-  use { 'andymass/vim-matchup', after = 'nvim-treesitter' }
+  use({ 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' })
+  use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
+  use({ 'haringsrob/nvim_context_vt', after = 'nvim-treesitter', config = 'require("modules.context_vt")' })
+  use({ 'andymass/vim-matchup', after = 'nvim-treesitter' })
 
-  use {
+  use({
     'numToStr/Comment.nvim',
     after = 'nvim-ts-context-commentstring',
     config = 'require("modules.comment")',
-  }
+  })
 
-  use {
+  use({
     'lukas-reineke/indent-blankline.nvim',
     after = 'nvim-treesitter',
     event = 'BufRead',
     config = 'require("modules.indent-blankline")',
-  }
+  })
 
-  use {
+  use({
     'cocopon/iceberg.vim',
     opt = true,
-  }
-  use {
+  })
+  use({
     'shaunsingh/nord.nvim',
     opt = true,
-  }
-  use {
+  })
+  use({
     'svrana/neosolarized.nvim',
     requires = { 'tjdevries/colorbuddy.nvim', opt = true },
     opt = true,
-  }
-  use {
+  })
+  use({
     'catppuccin/nvim',
     as = 'catppuccin',
     opt = true,
-  }
+  })
 
-  use {
+  use({
     'williamboman/mason.nvim',
     requires = {
-      { 'williamboman/mason-lspconfig.nvim', config = 'require("modules.lsp.mason").lspconfig()', },
+      { 'williamboman/mason-lspconfig.nvim', config = 'require("modules.lsp.mason").lspconfig()' },
       { 'jay-babu/mason-null-ls.nvim', after = 'null-ls.nvim', config = 'require("modules.lsp.mason").null_ls()' },
     },
     config = 'require("modules.lsp.mason").setup()',
-  }
+  })
 
-  use { 'neovim/nvim-lspconfig', event = 'BufReadPre', config = 'require("modules.lsp.lspconfig")' }
-  use {
+  use({ 'neovim/nvim-lspconfig', event = 'BufReadPre', config = 'require("modules.lsp.lspconfig")' })
+  use({
     'glepnir/lspsaga.nvim',
     after = 'nvim-lspconfig',
     commit = 'b7b4777369b441341b2dcd45c738ea4167c11c9e',
-    config = 'require("modules.lsp.lspsaga")'
-  }
-  use { 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig' }
-  use {
+    config = 'require("modules.lsp.lspsaga")',
+  })
+  use({ 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig' })
+  use({
     'folke/trouble.nvim',
     requires = 'nvim-tree/nvim-web-devicons',
     after = 'nvim-lspconfig',
     cmd = { 'Trouble', 'TroubleToggle', 'TroubleRefresh' },
     config = 'require("modules.lsp.trouble")',
-  }
-  use {
+  })
+  use({
     'j-hui/fidget.nvim',
     after = 'nvim-lspconfig',
     event = 'BufReadPost',
@@ -126,21 +125,21 @@ local function init()
         },
       })
     end,
-  }
-  use {
+  })
+  use({
     'jose-elias-alvarez/null-ls.nvim',
     requires = { 'nvim-lua/plenary.nvim', module = 'plenary' },
     after = 'nvim-lspconfig',
     config = 'require("modules.lsp.null-ls")',
-  }
-  use {
+  })
+  use({
     'simrat39/rust-tools.nvim',
     requires = { 'nvim-lua/plenary.nvim', module = 'plenary' },
     ft = 'rust',
     config = 'require("modules.lsp.lspconfig").rust_setup()',
-  }
+  })
 
-  use {
+  use({
     'hrsh7th/nvim-cmp',
     requires = {
       { 'onsails/lspkind-nvim', module = 'lspkind', config = 'require("modules.lsp.lspkind")' },
@@ -149,56 +148,56 @@ local function init()
       { 'hrsh7th/cmp-nvim-lsp', after = 'cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
+      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
     },
     wants = 'LuaSnip',
     event = 'InsertEnter',
     config = 'require("modules.lsp.cmp")',
-  }
-  use {
+  })
+  use({
     'L3MON4D3/LuaSnip',
     after = 'nvim-cmp',
     config = 'require("modules.lsp.luasnip")',
-  }
+  })
 
-  use {
+  use({
     'windwp/nvim-autopairs',
     after = 'nvim-cmp',
     config = 'require("modules.autopairs")',
-  }
+  })
 
-  use {
+  use({
     'kylechui/nvim-surround',
     event = 'BufWinEnter',
     config = 'require("nvim-surround").setup()',
-  }
-  use {
+  })
+  use({
     'phaazon/hop.nvim',
     event = 'BufWinEnter',
-    config = 'require("modules.hop")'
-  }
+    config = 'require("modules.hop")',
+  })
 
-  use {
+  use({
     'nvim-lualine/lualine.nvim',
     requires = 'nvim-tree/nvim-web-devicons',
-  }
-  use {
+  })
+  use({
     'akinsho/bufferline.nvim',
     tag = 'v2.*',
     requires = 'nvim-tree/nvim-web-devicons',
     config = 'require("modules.bufferline").set_map()',
-  }
+  })
 
-  use {
+  use({
     'nvim-tree/nvim-tree.lua',
     requires = 'nvim-tree/nvim-web-devicons',
     cmd = 'NvimTreeFindFileToggle',
-    setup = function ()
+    setup = function()
       vim.keymap.set('n', '<leader>f', ':NvimTreeFindFileToggle<CR>', { noremap = true, silent = true })
     end,
     config = 'require("modules.nvim-tree")',
-  }
-  use {
+  })
+  use({
     'nvim-telescope/telescope.nvim',
     module = 'telescope',
     requires = {
@@ -206,7 +205,7 @@ local function init()
       { 'nvim-telescope/telescope-fzf-native.nvim', opt = true, run = 'make' },
       { 'nvim-telescope/telescope-symbols.nvim', opt = true },
       { 'jvgrootveld/telescope-zoxide', opt = true },
-      { 'ahmedkhalf/project.nvim', opt = true, config = 'require("project_nvim").setup()' }
+      { 'ahmedkhalf/project.nvim', opt = true, config = 'require("project_nvim").setup()' },
     },
     wants = {
       'plenary.nvim',
@@ -215,17 +214,17 @@ local function init()
       'telescope-zoxide',
       'project.nvim',
     },
-    setup = function ()
+    setup = function()
       local function builtin(name)
         return function(opt)
           return function()
-            return require("telescope.builtin")[name](opt or {})
+            return require('telescope.builtin')[name](opt or {})
           end
         end
       end
-      local function extensions(name , prop)
-        return function (opt)
-          return function ()
+      local function extensions(name, prop)
+        return function(opt)
+          return function()
             local telescope = require('telescope')
             telescope.load_extension(name)
             return telescope.extensions[name][prop](opt or {})
@@ -234,67 +233,67 @@ local function init()
       end
 
       local opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<Leader>tf', builtin 'find_files' {}, opts)
-      vim.keymap.set('n', '<Leader>tg', builtin 'live_grep' {}, opts)
-      vim.keymap.set('n', '<Leader>to', builtin 'oldfiles' {}, opts)
-      vim.keymap.set('n', '<Leader>tb', builtin 'buffers' {}, opts)
-      vim.keymap.set('n', '<Leader>th', builtin 'help_tags' {}, opts)
-      vim.keymap.set('n', '<Leader>tp', extensions('projects', 'projects') {}, opts)
-      vim.keymap.set('n', '<Leader>tc', extensions('neoclip', 'default') {}, opts)
-      vim.keymap.set('n', '<Leader>cd', extensions('zoxide', 'list') {}, opts)
-      vim.keymap.set('n', '<Leader>ge', builtin 'symbols' { sources = {"emoji"} }, opts)
-      vim.keymap.set('i', '<C-g>e',     builtin 'symbols' { sources = {"emoji"} }, opts)
-      vim.keymap.set('n', '<Leader>gi', builtin 'symbols' { sources = {"gitmoji"} }, opts)
-      vim.keymap.set('i', '<C-g>i',     builtin 'symbols' { sources = {"gitmoji"} }, opts)
+      vim.keymap.set('n', '<Leader>tf', builtin('find_files')({}), opts)
+      vim.keymap.set('n', '<Leader>tg', builtin('live_grep')({}), opts)
+      vim.keymap.set('n', '<Leader>to', builtin('oldfiles')({}), opts)
+      vim.keymap.set('n', '<Leader>tb', builtin('buffers')({}), opts)
+      vim.keymap.set('n', '<Leader>th', builtin('help_tags')({}), opts)
+      vim.keymap.set('n', '<Leader>tp', extensions('projects', 'projects')({}), opts)
+      vim.keymap.set('n', '<Leader>tc', extensions('neoclip', 'default')({}), opts)
+      vim.keymap.set('n', '<Leader>cd', extensions('zoxide', 'list')({}), opts)
+      vim.keymap.set('n', '<Leader>ge', builtin('symbols')({ sources = { 'emoji' } }), opts)
+      vim.keymap.set('i', '<C-g>e', builtin('symbols')({ sources = { 'emoji' } }), opts)
+      vim.keymap.set('n', '<Leader>gi', builtin('symbols')({ sources = { 'gitmoji' } }), opts)
+      vim.keymap.set('i', '<C-g>i', builtin('symbols')({ sources = { 'gitmoji' } }), opts)
     end,
     config = 'require("modules.telescope")',
-  }
-  use { 'AckslD/nvim-neoclip.lua', after = 'telescope.nvim', config = 'require("modules.telescope.neoclip")' }
+  })
+  use({ 'AckslD/nvim-neoclip.lua', after = 'telescope.nvim', config = 'require("modules.telescope.neoclip")' })
 
-  use { 'jghauser/mkdir.nvim' }
+  use({ 'jghauser/mkdir.nvim' })
 
-  use {
+  use({
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim', opt = true },
     wants = { 'plenary.nvim' },
     event = { 'BufReadPost', 'BufNewFile' },
     config = 'require("modules.gitsigns")',
-  }
+  })
 
-  use {
+  use({
     'norcalli/nvim-colorizer.lua',
     event = 'BufWinEnter',
-    config = 'require("modules.colorizer")'
-  }
+    config = 'require("modules.colorizer")',
+  })
 
-  use {
+  use({
     'folke/zen-mode.nvim',
     requires = {
       { 'folke/twilight.nvim', opt = true },
     },
     wants = { 'twilight.nvim' },
     cmd = 'ZenMode',
-    setup = function ()
-      vim.api.nvim_create_user_command("ZenMode", function ()
+    setup = function()
+      vim.api.nvim_create_user_command('ZenMode', function()
         vim.cmd([[ZenMode]])
       end, {})
     end,
     config = 'require("zen-mode").setup()',
-  }
+  })
 
-  use {
+  use({
     'dstein64/vim-startuptime',
     cmd = 'StartupTime',
-    setup = function ()
-      vim.api.nvim_create_user_command("StartupTime", function ()
+    setup = function()
+      vim.api.nvim_create_user_command('StartupTime', function()
         vim.cmd([[StartupTime]])
       end, {})
     end,
-  }
+  })
 end
 
 local plugins = setmetatable({}, {
-  __index = function (_, key)
+  __index = function(_, key)
     if not packer then
       init()
     end
@@ -317,15 +316,14 @@ function plugins.load_compile()
     Status = { desc = '[Packer] Output plugins status', force = true },
     Compile = { desc = '[Packer] Output plugins status', force = true },
     Sync = { desc = '[Packer] Update plugins', force = true },
-  } 
+  }
 
   for cmd, opts in pairs(cmds) do
-    vim.api.nvim_create_user_command('Packer' .. cmd, function ()
+    vim.api.nvim_create_user_command('Packer' .. cmd, function()
       vim.cmd.packadd('packer.nvim')
       require('plugins')[string.lower(cmd)]()
     end, opts)
   end
 end
- 
 
 return plugins
