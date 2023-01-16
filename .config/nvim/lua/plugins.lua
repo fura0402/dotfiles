@@ -267,6 +267,14 @@ local function init()
   })
 
   use({
+    'iamcco/markdown-preview.nvim',
+    ft = 'markdown',
+    run = function()
+      vim.fn['mkdp#util#install']()
+    end,
+  })
+
+  use({
     'folke/zen-mode.nvim',
     requires = {
       { 'folke/twilight.nvim', opt = true },
