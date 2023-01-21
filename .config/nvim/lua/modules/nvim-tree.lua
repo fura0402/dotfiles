@@ -24,4 +24,7 @@ require('nvim-tree').setup({
     indent_markers = { enable = true },
   },
   actions = { open_file = { quit_on_open = true } },
+  git = {
+    ignore = false,
+  },
 })

@@ -3,6 +3,7 @@ local builtin = require('telescope.builtin')
 require('telescope').setup({
   defaults = {
     preview = {
+      treesitter = true,
       filesize_limit = 15,
       timeout = 100,
     },
@@ -28,6 +29,8 @@ require('telescope').setup({
       '--line-number',
       '--column',
       '--smart-case',
+      '--glob=!{.git,node_modules}/*',
+      '--glob=!package-lock.json',
     },
     mappings = {
       i = {
@@ -47,8 +50,7 @@ require('telescope').setup({
         '--type=file',
         '--hidden',
         '--follow',
-        '--no-ignore',
-        '--strip-cwd-prefix',
+        -- '--strip-cwd-prefix',
         '--exclude=.git',
         '--exclude=node_modules',
       },
