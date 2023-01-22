@@ -14,7 +14,9 @@ end
 
 null_ls.setup({
   sources = {
-    null_fmt.prettierd,
+    null_fmt.prettierd.with({
+      disabled_filetypes = { 'markdown' },
+    }),
     null_diag.eslint_d.with({
       diagnostics_format = '[eslint] #{m}\n(#{c})',
     }),
