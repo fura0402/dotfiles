@@ -24,7 +24,6 @@ function config.lspconfig()
       'cssmodules_ls',
       'emmet_ls',
       'html',
-      'tailwindcss',
       'tsserver',
       'rust_analyzer',
       'pyright',

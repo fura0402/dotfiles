@@ -123,6 +123,20 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
       -- filetypes = { "typescript" , "typescriptreact" },
       cmd = cmd,
     })
+  elseif server_name == 'cssls' then
+    lspconfig.cssls.setup({
+      handlers = handlers,
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { 'css', 'scss', 'less', 'markdown' },
+    })
+  elseif server_name == 'emmet_ls' then
+    lspconfig.emmet_ls.setup({
+      handlers = handlers,
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'eruby', 'markdown' },
+    })
   elseif server_name == 'clangd' then
     lspconfig.clangd.setup({
       capabilities = capabilities,
