@@ -19,6 +19,7 @@
             "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな） (rev 3)",
             "manipulators": [
               {
+                "type": "basic",
                 "from": {
                   "key_code": "left_command",
                   "modifiers": {
@@ -26,7 +27,7 @@
                   }
                 },
                 "parameters": {
-                  "basic.to_if_held_down_threshold_milliseconds": 1000
+                  "basic.to_if_held_down_threshold_milliseconds": 100
                 },
                 "to": [
                   {
@@ -34,14 +35,19 @@
                     "lazy": true
                   }
                 ],
+                "to_if_held_down": [
+                  {
+                    "key_code": "left_command"
+                  }
+                ],
                 "to_if_alone": [
                   {
                     "key_code": "japanese_eisuu"
                   }
-                ],
-                "type": "basic"
+                ]
               },
               {
+                "type": "basic",
                 "from": {
                   "key_code": "right_command",
                   "modifiers": {
@@ -49,7 +55,7 @@
                   }
                 },
                 "parameters": {
-                  "basic.to_if_held_down_threshold_milliseconds": 1000
+                  "basic.to_if_held_down_threshold_milliseconds": 100
                 },
                 "to": [
                   {
@@ -57,12 +63,16 @@
                     "lazy": true
                   }
                 ],
+                "to_if_held_down": [
+                  {
+                    "key_code": "right_command"
+                  }
+                ],
                 "to_if_alone": [
                   {
                     "key_code": "japanese_kana"
                   }
-                ],
-                "type": "basic"
+                ]
               }
             ]
           },
@@ -173,7 +183,7 @@
                   {
                     "bundle_identifiers": [
                       "^com\\.apple\\.Terminal$",
-                      "^com\\.googlecode\\.iterm2$"
+                      "^com.googlecode.iterm2$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -191,6 +201,16 @@
                   },
                   {
                     "key_code": "japanese_eisuu"
+                  }
+                ],
+                "parameters": {
+                  "basic.to_if_held_down_threshold_milliseconds": 500
+                },
+                "to_if_held_down": [
+                  {
+                    "key_code": "f",
+                    "modifiers": ["control"],
+                    "repeat": true
                   }
                 ],
                 "type": "basic"
@@ -356,128 +376,6 @@
                   "key_code": "caps_lock"
                 }
               ]
-            }
-          ]
-        }
-      ],
-      "fn_function_keys": [
-        {
-          "from": {
-            "key_code": "f1"
-          },
-          "to": [
-            {
-              "consumer_key_code": "display_brightness_decrement"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f2"
-          },
-          "to": [
-            {
-              "consumer_key_code": "display_brightness_increment"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f3"
-          },
-          "to": [
-            {
-              "key_code": "mission_control"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f4"
-          },
-          "to": [
-            {
-              "key_code": "launchpad"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f5"
-          },
-          "to": [
-            {
-              "key_code": "illumination_decrement"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f6"
-          },
-          "to": [
-            {
-              "key_code": "illumination_increment"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f7"
-          },
-          "to": [
-            {
-              "consumer_key_code": "rewind"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f8"
-          },
-          "to": [
-            {
-              "consumer_key_code": "play_or_pause"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f9"
-          },
-          "to": [
-            {
-              "consumer_key_code": "fastforward"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f10"
-          },
-          "to": [
-            {
-              "consumer_key_code": "mute"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f11"
-          },
-          "to": [
-            {
-              "consumer_key_code": "volume_decrement"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f12"
-          },
-          "to": [
-            {
-              "consumer_key_code": "volume_increment"
             }
           ]
         }
