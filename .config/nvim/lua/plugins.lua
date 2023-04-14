@@ -93,6 +93,7 @@ local function init()
       { 'jay-babu/mason-null-ls.nvim', after = 'null-ls.nvim', config = 'require("modules.lsp.mason").null_ls()' },
     },
     config = 'require("modules.lsp.mason").setup()',
+    run = ':MasonUpdate',
   })
 
   use({ 'neovim/nvim-lspconfig', event = 'BufReadPost', config = 'require("modules.lsp.lspconfig")' })
