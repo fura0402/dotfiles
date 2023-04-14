@@ -21,9 +21,9 @@ null_ls.setup({
       diagnostics_format = '[eslint] #{m}\n(#{c})',
     }),
     null_fmt.rustfmt,
-    null_diag.cpplint.with({
-      diagnostics_format = '[cpplint] #{m}\n(#{c})',
-    }),
+    -- null_diag.cpplint.with({
+    --   diagnostics_format = '[cpplint] #{m}\n(#{c})',
+    -- }),
     null_fmt.stylua.with({
       extra_args = { '--config-path', vim.fn.stdpath('config') .. '/utils/linter-config/.stylua.toml' },
     }),
