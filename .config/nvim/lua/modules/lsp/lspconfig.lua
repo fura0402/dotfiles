@@ -84,8 +84,8 @@ end
 local lspconfig = require('lspconfig')
 -- Do not forget to use the on_attach function
 for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers()) do
-  if server_name == 'sumneko_lua' then
-    lspconfig.sumneko_lua.setup({
+  if server_name == 'lua_ls' then
+    lspconfig.lua_ls.setup({
       handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,

@@ -17,7 +17,7 @@ function config.lspconfig()
   require('mason-lspconfig').setup({
     ensure_installed = {
       'bashls',
-      'sumneko_lua',
+      'lua_ls',
       'clangd',
       'cmake',
       'cssls',
