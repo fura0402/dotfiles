@@ -1,5 +1,7 @@
 require('trouble').setup({
   action_keys = {
+    jump = {},
+    jump_close = { '<cr>' },
     close = { 'q', '<C-f>' },
   },
   signs = {
