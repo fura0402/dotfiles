@@ -48,7 +48,6 @@ local disable_distribution_plugins = function()
   g.loaded_tutor_mode_plugin = 1
   g.did_install_default_menus = 1
   g.did_install_syntax_menu = 1
-  --g.did_load_filetypes = 1
   g.skip_loading_mswin = 1
   g.did_indent_on = 1
   g.did_load_ftplugin = 1
