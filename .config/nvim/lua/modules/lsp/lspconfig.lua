@@ -25,7 +25,7 @@ local handlers = {
 --   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 -- end
 
-local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+local signs = { Error = ' ', Warn = ' ', Info = ' ', Hint = ' ' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -140,6 +140,7 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
   elseif server_name == 'clangd' then
     lspconfig.clangd.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
       single_file_support = true,
       cmd = {
         'clangd',
