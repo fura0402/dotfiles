@@ -35,7 +35,10 @@ local function init()
 
   use({ 'wbthomason/packer.nvim', opt = true })
   use({ 'lewis6991/impatient.nvim', config = 'require("impatient")' })
-  -- use({ 'nathom/filetype.nvim', setup = 'vim.g.did_load_filetypes = 1' })
+  use({
+    'nathom/filetype.nvim',
+    config = 'vim.g.did_load_filetypes = 1',
+  })
 
   use({
     'nvim-treesitter/nvim-treesitter',
