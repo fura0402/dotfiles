@@ -37,7 +37,16 @@ local function init()
   use({ 'lewis6991/impatient.nvim', config = 'require("impatient")' })
   use({
     'nathom/filetype.nvim',
-    config = 'vim.g.did_load_filetypes = 1',
+    config = function()
+      vim.g.did_load_filetypes = 1
+      require('filetype').setup({
+        overrides = {
+          extensions = {
+            c = 'c',
+          },
+        },
+      })
+    end,
   })
 
   use({
