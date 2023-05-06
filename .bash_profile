@@ -1,8 +1,7 @@
 # zsh推奨警告を消す
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export EDITOR="vim"
-eval "$(direnv hook bash)"
+export EDITOR="nvim"
 
 export LANG="ja_JP.UTF-8"
 #export LANG="en_US.UTF-8"
@@ -34,23 +33,26 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # rust sdl
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
+# nodeJS
+export PATH="/usr/local/opt/node@18/bin:$PATH"
+
 # go
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
 export GO111MODULE=on
 
+# ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/3.1.0/bin/:$PATH"
+
 # binutils
 export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # llvm
-#export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # java
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
-
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
 
 # curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
@@ -64,7 +66,7 @@ export PATH=$(echo "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; pr
 ######################
 
 
-### Environment Variables ###
+### Environment Variables or Read ###
 
 # java ;xml LSP のため
 export JAVA_HOME=`/usr/libexec/java_home`
@@ -87,6 +89,16 @@ if type -a \exa &>/dev/null; then
 else
     export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 fi
+
+# fnm
+eval "$(fnm env --shell bash)"
+eval "$(fnm completions --shell bash)"
+
+# zoxide
+eval "$(zoxide init --no-cmd bash)"
+
+# hub
+#eval "$(hub alias -s)"
 
 #############################
 

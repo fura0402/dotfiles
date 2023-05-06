@@ -5,11 +5,8 @@ trap prompt_check SIGWINCH
 # alias
 all_alias
 
-# zoxide
-eval "$(zoxide init --no-cmd bash)"
-
-# hub
-#eval "$(hub alias -s)"
+# fnm
+__fnm_use_if_file_found
 
 # done (original)
 #/usr/bin/osascript -e 'display notification "hogehoge" with title "iTerm" subtitle "done." sound name "Submarine"'
