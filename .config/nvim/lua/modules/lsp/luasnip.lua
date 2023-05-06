@@ -72,10 +72,10 @@ ls.add_snippets('json', {
     t({
       '{',
       '\t"arrowParens": "avoid",',
-      '\t"singleQuote": true,',
       '\t"bracketSpacing": true,',
       '\t"endOfLine": "lf",',
       '\t"semi": false,',
+      '\t"singleQuote": true,',
       '\t"tabWidth": 2,',
       '\t"trailingComma": "none"',
       '}',
