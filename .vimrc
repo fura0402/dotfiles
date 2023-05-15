@@ -52,14 +52,10 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" スクロール移動
-noremap <C-n> <C-f>
-noremap <C-p> <C-b>
-
 " ウィンドウ移動
-noremap  <C-h> <C-w>h
+noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
-noremap<C-k> <C-w>k
+noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " ウィンドウ分割
@@ -70,20 +66,13 @@ nmap sv :vnew<Return>
 nmap te :tabedit
 
 " その他
-noremap <silent> <Esc><Esc> :nohlsearch<CR> " D-escによるハイライト消去
 noremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-
 
 "" インサートモード
 inoremap <silent> <C-f> <Esc>
 
-" インサートモードでのカーソル移動
-inoremap <C-k> <C-o>gk
-inoremap <C-l> <right>
-
 inoremap <C-j> <Esc>a<CR>
 "inoremap <C-j> <Down>
-
 
 
 """"""""""""""""""""""""""""""""""
