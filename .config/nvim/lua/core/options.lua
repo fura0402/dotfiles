@@ -47,8 +47,8 @@ vim.opt.autoindent = true
 vim.opt.breakindent = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 0
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

@@ -285,6 +285,9 @@ local function init()
     run = function()
       vim.fn['mkdp#util#install']()
     end,
+    config = function()
+      vim.g.mkdp_theme = 'light'
+    end,
   })
 
   use({
