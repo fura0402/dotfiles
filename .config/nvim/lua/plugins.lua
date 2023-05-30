@@ -100,12 +100,23 @@ local function init()
 
   use({
     'williamboman/mason.nvim',
-    requires = {
-      { 'williamboman/mason-lspconfig.nvim', config = 'require("modules.lsp.mason").lspconfig()' },
-      { 'jay-babu/mason-null-ls.nvim', after = 'null-ls.nvim', config = 'require("modules.lsp.mason").null_ls()' },
-    },
     config = 'require("modules.lsp.mason").setup()',
     run = ':MasonUpdate',
+  })
+  use({
+    'williamboman/mason-lspconfig.nvim',
+    config = 'require("modules.lsp.mason").lspconfig()',
+  })
+  use({
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { 'nvim-lua/plenary.nvim', module = 'plenary' },
+    after = 'nvim-lspconfig',
+    config = 'require("modules.lsp.null-ls")',
+  })
+  use({
+    'jay-babu/mason-null-ls.nvim',
+    after = 'null-ls.nvim',
+    config = 'require("modules.lsp.mason").null_ls()',
   })
 
   use({ 'neovim/nvim-lspconfig', event = 'BufReadPost', config = 'require("modules.lsp.lspconfig")' })
@@ -138,12 +149,6 @@ local function init()
         },
       })
     end,
-  })
-  use({
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'nvim-lua/plenary.nvim', module = 'plenary' },
-    after = 'nvim-lspconfig',
-    config = 'require("modules.lsp.null-ls")',
   })
   use({
     'simrat39/rust-tools.nvim',
