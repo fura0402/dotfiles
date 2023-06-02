@@ -15,6 +15,10 @@ M.setup = function(opts)
       lualine_c = { { 'filename', file_status = true, path = 1 } },
       lualine_x = {
         {
+          require('lazy.status').updates,
+          cond = require('lazy.status').has_updates,
+        },
+        {
           'diagnostics',
           sources = { 'nvim_diagnostic' },
           symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },

@@ -2,6 +2,7 @@ vim.cmd([[
   noremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 ]])
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
 local key_set = vim.keymap.set
 local key_del = vim.keymap.del

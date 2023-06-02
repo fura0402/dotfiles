@@ -1,8 +1,8 @@
 local M = {}
 
 M.iceberg = function()
-  vim.cmd.packadd('iceberg.vim')
-  vim.cmd.colorscheme('iceberg')
+  -- vim.cmd.colorscheme('iceberg')
+  vim.cmd([[colorscheme iceberg]])
   require('utils.highlight').set_hl({
     Comment = { ctermfg = 242, fg = '#6B7089', cterm = italic, italic = true },
   })
@@ -20,7 +20,6 @@ M.iceberg = function()
 end
 
 M.neosolarized = function()
-  vim.cmd.packadd('neosolarized.nvim')
   require('modules.neosolarized').setup()
   require('modules.lualine').setup({
     theme = 'solarized_dark',
@@ -35,8 +34,7 @@ M.neosolarized = function()
 end
 
 M.nord = function()
-  vim.cmd.packadd('nord.nvim')
-  vim.cmd.colorscheme('nord')
+  require('nord').set()
   require('utils.highlight').set_hl({
     MatchParen = { bg = '#434C5E', bold = true },
     Comment = { fg = '#616e88', cterm = italic, italic = true },
@@ -54,20 +52,46 @@ M.nord = function()
 end
 
 M.catppuccin = function()
-  vim.cmd.packadd('catppuccin')
   require('catppuccin').setup({
+    dim_inactive = {
+      enabled = true,
+      shade = 'dark',
+      percentage = 0.15,
+    },
     integrations = {
+      cmp = true,
       fidget = true,
+      gitsigns = true,
+      headlines = true,
       hop = true,
       lsp_saga = true,
       lsp_trouble = true,
+      markdown = true,
+      mason = true,
       nvimtree = true,
-      ts_rainbow = true,
-      which_key = true,
+      telescope = true,
+      treesitter = true,
+      treesitter_context = true,
+      ts_rainbow2 = true,
     },
     indent_blankline = {
       enabled = true,
       colored_indent_levels = false,
+    },
+    native_lsp = {
+      enabled = true,
+      virtual_text = {
+        errors = { 'italic' },
+        hints = { 'italic' },
+        warnings = { 'italic' },
+        information = { 'italic' },
+      },
+      underlines = {
+        errors = { 'underline' },
+        hints = { 'underline' },
+        warnings = { 'underline' },
+        information = { 'underline' },
+      },
     },
   })
   vim.cmd.colorscheme('catppuccin-mocha')
@@ -82,8 +106,10 @@ M.catppuccin = function()
     separator_style = 'slant',
     highlights = require('catppuccin.groups.integrations.bufferline').get(),
   })
-  require('lspsaga').init_lsp_saga({
-    custom_kind = require('catppuccin.groups.integrations.lsp_saga').custom_kind(),
+  require('lspsaga').setup({
+    ui = {
+      kind = require('catppuccin.groups.integrations.lsp_saga').custom_kind(),
+    },
   })
   require('nvim-web-devicons').set_up_highlights()
 end

@@ -1,3 +1,5 @@
+-- vim.loader.enable()  -- Since version 9.0
+
 local has = vim.fn.has
 local is_macUnix = has('macunix')
 local is_win = has('win32')
@@ -7,9 +9,22 @@ elseif is_win == 1 then
   require('core.windows')
 end
 
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
 local disable_distribution_plugins = function()
   local g = vim.g
-  -- g.loaded_python3_provider = 0
+  g.loaded_python3_provider = 0
   g.loaded_node_provider = 0
   g.loaded_perl_provider = 0
   g.loaded_ruby_provider = 0
@@ -56,14 +71,30 @@ local disable_distribution_plugins = function()
   -- Disable sql omni completion.
   g.loaded_sql_completion = 1
 end
+disable_distribution_plugins()
 
-local load_core = function()
-  disable_distribution_plugins()
-  require('core.options')
-  require('core.mappings')
-  --require('core.statusline')
-  require('plugins').load_compile()
-  require('modules.original.ftcolorscheme')
-end
-
-load_core()
+require('core.options')
+require('core.mappings')
+require('lazy').setup('plugins', {
+  defaults = { lazy = true },
+  checker = {
+    enabled = true,
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        'gzip',
+        'matchit',
+        'matchparen',
+        'netrwPlugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
+  },
+})
+--require('core.statusline')
+require('modules.original.ftcolorscheme')
+-- vim.cmd.colorscheme('nord')

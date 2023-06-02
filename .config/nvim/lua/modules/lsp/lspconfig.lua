@@ -1,6 +1,3 @@
-vim.cmd.packadd('lsp_signature.nvim')
-vim.cmd.packadd('cmp-nvim-lsp')
-
 -- UI Customization --------------------------------------------------
 local border = {
   { '╭', 'FloatBorder' },
@@ -67,8 +64,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.offsetEncoding = 'utf-8' -- Resolving offset_encoding issues for several different clients (at null-ls)
 

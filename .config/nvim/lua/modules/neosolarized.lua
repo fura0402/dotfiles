@@ -1,9 +1,9 @@
 local M = {}
 
 function M.setup()
-  vim.cmd.packadd('colorbuddy.nvim')
   local n = require('neosolarized').setup({
     comment_italics = true,
+    background_set = true,
   })
 
   local cb = require('colorbuddy.init')
@@ -14,7 +14,6 @@ function M.setup()
   local styles = cb.styles
 
   Color.new('black', '#000000')
-  n.Group.new('Normal', colors.base0, colors.base03)
   n.Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)
   n.Group.new('CursorLineNr', colors.yellow, colors.black, styles.NONE, colors.base1)
   n.Group.new('Visual', colors.none, colors.base03, styles.reverse)
