@@ -46,7 +46,7 @@ return {
   {
     'numToStr/Comment.nvim',
     dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    event = { 'BufRead', 'BufNewFile' },
+    event = { 'VeryLazy' },
     config = function()
       require('modules.comment')
     end,
@@ -95,14 +95,6 @@ return {
   },
 
   {
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    event = 'LspAttach',
-    config = function()
-      require('modules.lsp.null-ls')
-    end,
-  },
-  {
     'jay-babu/mason-null-ls.nvim',
     dependencies = {
       'williamboman/mason.nvim',
@@ -110,6 +102,14 @@ return {
     },
     config = function()
       require('modules.lsp.mason').null_ls()
+    end,
+  },
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'jay-babu/mason-null-ls.nvim' },
+    event = 'LspAttach',
+    config = function()
+      require('modules.lsp.null-ls')
     end,
   },
 
@@ -135,7 +135,7 @@ return {
   {
     'j-hui/fidget.nvim',
     dependencies = 'nvim-lspconfig',
-    event = 'BufReadPost',
+    event = 'LspAttach',
     config = function()
       require('fidget').setup({
         text = {
