@@ -1,6 +1,6 @@
 local null_ls = require('null-ls')
-local null_fmt = null_ls.builtins.formatting
-local null_diag = null_ls.builtins.diagnostics
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 local lsp_formatting = function(bufnr)
@@ -14,17 +14,17 @@ end
 
 null_ls.setup({
   sources = {
-    null_fmt.prettierd.with({
+    formatting.prettierd.with({
       disabled_filetypes = { 'markdown' },
     }),
-    null_diag.eslint_d.with({
+    diagnostics.eslint_d.with({
       diagnostics_format = '[eslint] #{m}\n(#{c})',
     }),
-    null_fmt.rustfmt,
-    -- null_diag.cpplint.with({
-    --   diagnostics_format = '[cpplint] #{m}\n(#{c})',
-    -- }),
-    null_fmt.stylua.with({
+    formatting.rustfmt,
+    formatting.clang_format.with({
+      extra_args = { '--style=file:' .. vim.fn.stdpath('config') .. '/utils/linter-config/.clang-format' },
+    }),
+    formatting.stylua.with({
       extra_args = { '--config-path', vim.fn.stdpath('config') .. '/utils/linter-config/.stylua.toml' },
     }),
   },

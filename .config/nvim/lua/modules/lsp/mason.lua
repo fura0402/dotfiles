@@ -38,10 +38,10 @@ end
 function config.null_ls()
   require('mason-null-ls').setup({
     ensure_installed = {
-      'cpplint',
       'prettierd',
       'eslint_d',
       'rustfmt',
+      'clang_format',
       'stylua',
     },
     automatic_installation = true,
