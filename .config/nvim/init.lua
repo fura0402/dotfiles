@@ -77,9 +77,7 @@ require('core.options')
 require('core.mappings')
 require('lazy').setup('plugins', {
   defaults = { lazy = true },
-  checker = {
-    enabled = true,
-  },
+  lockfile = vim.fn.stdpath('data') .. '/site/lazy/lazy-lock.json',
   performance = {
     rtp = {
       disabled_plugins = {
