@@ -49,7 +49,7 @@ export PATH="/usr/local/lib/ruby/gems/3.1.0/bin/:$PATH"
 export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # llvm
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # java
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
