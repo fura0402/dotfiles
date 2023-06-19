@@ -1,6 +1,6 @@
 # prompt
-prompt_check
-trap prompt_check SIGWINCH
+set_prompt
+trap set_prompt SIGWINCH
 
 # alias
 all_alias
