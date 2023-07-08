@@ -49,7 +49,7 @@ function ls_notice(){
     local args=("$@")
     if [ $# -gt 0 ]; then
         local i=0
-        for i in $(seq 0 $(expr $# - 1)); do
+        for i in $(seq 0 "$(($# - 1))"); do
             if [[ "${args[$i]}" =~ ^- ]]; then
                 ret+=("${args[$i]}")
             else
@@ -177,11 +177,11 @@ function bash_color(){
     local fore=0
     local mode=0
     local back=0
-    for fore in `seq 30 37`; do
+    for fore in $(seq 30 37); do
         printf "\e[${fore}m \\\e[${fore}m \e[m\n"
         for mode in 1 4 5; do
             printf "\e[${fore};${mode}m \\\e[${fore};${mode}m \e[m"
-            for back in `seq 40 47`; do
+            for back in $(seq 40 47); do
                 printf "\e[${fore};${back};${mode}m \\\e[${fore};${back};${mode}m \e[m"
             done
             echo
@@ -193,6 +193,6 @@ function bash_color(){
 
 function tsrun(){
     tsc $1 || return 0
-    local fileName=$(echo $1 | sed -e "s|\.ts|.js|")
+    local fileName=$(echo "$1" | sed -e "s|\.ts|.js|")
     node $fileName
 }
