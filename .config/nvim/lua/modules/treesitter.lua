@@ -22,8 +22,6 @@ require('nvim-treesitter.configs').setup({
     'markdown_inline',
     'python',
     'rust',
-    -- 'scss',
-    -- 'swift',
     'toml',
     'tsx',
     'typescript',
@@ -40,7 +38,7 @@ require('nvim-treesitter.configs').setup({
   incremental_selection = {
     enable = true,
     keymaps = {
-      --init_selection = "gnn", -- set to `false` to disable one of the mappings
+      init_selection = 'gnn', -- set to `false` to disable one of the mappings
       node_incremental = 'gin',
       scope_incremental = 'gic',
       node_decremental = 'gim',

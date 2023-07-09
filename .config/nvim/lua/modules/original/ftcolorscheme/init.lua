@@ -18,9 +18,9 @@ function ftColorSchemeSet()
     ftCheck(ft, { 'html', 'css', 'scss', 'sass', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' })
   then
     scheme.neosolarized()
-  elseif ftCheck(ft, { 'markdown', 'rust', 'toml', 'go' }) then
+  elseif ftCheck(ft, { 'rust', 'toml', 'go' }) then
     scheme.iceberg()
-  elseif ftCheck(ft, { 'cpp', 'python' }) then
+  elseif ftCheck(ft, { 'cpp', 'markdown', 'python' }) then
     scheme.catppuccin()
   elseif ftCheck(ft, { 'lua' }) then
     scheme.nord()
