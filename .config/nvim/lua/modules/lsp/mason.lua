@@ -40,7 +40,7 @@ function config.null_ls()
     ensure_installed = {
       'prettierd',
       'eslint_d',
-      'rustfmt',
+      'stylelint',
       'clang_format',
       'stylua',
     },

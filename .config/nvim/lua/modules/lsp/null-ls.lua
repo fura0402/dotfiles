@@ -20,7 +20,7 @@ null_ls.setup({
     diagnostics.eslint_d.with({
       diagnostics_format = '[eslint] #{m}\n(#{c})',
     }),
-    formatting.rustfmt,
+    diagnostics.stylelint,
     formatting.clang_format.with({
       extra_args = { '--style=file:' .. vim.fn.stdpath('config') .. '/utils/linter-config/.clang-format' },
     }),
