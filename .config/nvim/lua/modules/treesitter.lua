@@ -39,9 +39,9 @@ require('nvim-treesitter.configs').setup({
     enable = true,
     keymaps = {
       init_selection = 'gnn', -- set to `false` to disable one of the mappings
-      node_incremental = 'gin',
+      node_incremental = '.',
+      node_decremental = ',',
       scope_incremental = 'gic',
-      node_decremental = 'gim',
     },
   },
   indent = {
@@ -75,7 +75,6 @@ require('nvim-treesitter.configs').setup({
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
         ['ac'] = '@class.outer',
-
         ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
       },
       selection_modes = {
@@ -83,7 +82,7 @@ require('nvim-treesitter.configs').setup({
         ['@function.outer'] = 'V', -- linewise
         ['@class.outer'] = '<c-v>', -- blockwise
       },
-      include_surrounding_whitespace = true,
+      include_surrounding_whitespace = false,
     },
     swap = {
       enable = true,
@@ -113,15 +112,6 @@ require('nvim-treesitter.configs').setup({
         ['[M'] = '@function.outer',
         ['[]'] = '@class.outer',
       },
-    },
-  },
-  textsubjects = {
-    enable = true,
-    prev_selection = ',',
-    keymaps = {
-      ['.'] = 'textsubjects-smart',
-      [';'] = 'textsubjects-container-inner',
-      ['a;'] = 'textsubjects-container-outer',
     },
   },
 })
