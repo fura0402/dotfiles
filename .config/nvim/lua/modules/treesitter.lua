@@ -10,7 +10,7 @@ require('nvim-treesitter.configs').setup({
     'go',
     'gomod',
     'gowork',
-    -- 'help',
+    'vimdoc',
     'html',
     'javascript',
     'jsdoc',
@@ -53,16 +53,6 @@ require('nvim-treesitter.configs').setup({
   matchup = {
     enable = true,
   },
-  rainbow = {
-    enable = true,
-    strategy = 'global',
-    query = {
-      'rainbow-parens',
-      html = 'rainbow-tags',
-      javascript = 'rainbow-tags-react',
-      tsx = 'rainbow-tags',
-    },
-  },
   context_commenting = {
     enable = true,
     enable_autocmd = false,
@@ -97,20 +87,20 @@ require('nvim-treesitter.configs').setup({
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = { query = '@class.outer', desc = 'Next class start' },
+        [']]'] = '@function.outer',
+        [']c'] = { query = '@class.outer', desc = 'Next class start' },
       },
       goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
+        ['[['] = '@function.outer',
+        ['[c'] = '@class.outer',
       },
       goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+        [']}'] = '@function.outer',
+        [']C'] = '@class.outer',
       },
       goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
+        ['[{'] = '@function.outer',
+        ['[C'] = '@class.outer',
       },
     },
   },

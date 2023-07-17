@@ -20,7 +20,12 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'windwp/nvim-ts-autotag',
-      'HiPhish/nvim-ts-rainbow2',
+      {
+        'HiPhish/rainbow-delimiters.nvim',
+        config = function()
+          require('modules.rainbow-delimiters')
+        end,
+      },
       'andymass/vim-matchup',
       {
         'haringsrob/nvim_context_vt',

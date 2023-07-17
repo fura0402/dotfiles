@@ -49,7 +49,7 @@ highlight MatchParen cterm=bold ctermbg=1 gui=bold guibg=#bc0004
 highlight NvimInternalError ctermfg=9 ctermbg=9 guifg=#ff6d67 guibg=#ff6d67
 
 " syntax enable
-highlight Comment cterm=italic ctermfg=14 gui=italic guifg=#60fdff
+highlight Comment cterm=italic ctermfg=244 gui=italic guifg=#808080
 highlight Constant ctermfg=13 guifg=#fd55ff
 highlight Special ctermfg=224 guifg=#57c5ea
 highlight Statement ctermfg=11 gui=NONE guifg=#fffc67

@@ -173,6 +173,7 @@ require('lsp_signature').setup({
   toggle_key = '<C-k>',
 })
 
+-- Rust
 local config = {}
 function config.rust_setup()
   require('rust-tools').setup({

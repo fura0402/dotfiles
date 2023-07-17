@@ -1,3 +1,4 @@
+require('utils.table')
 -- vim.loader.enable()  -- Since version 9.0
 
 local has = vim.fn.has

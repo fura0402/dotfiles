@@ -1,12 +1,16 @@
 local M = {}
 
+local common_hl = {
+  NormalFloat = { link = 'Normal' },
+  FloatBorder = { link = 'Normal' },
+}
+
 M.iceberg = function()
-  -- vim.cmd.colorscheme('iceberg')
   vim.cmd([[colorscheme iceberg]])
-  require('utils.highlight').set_hl({
+  require('utils.highlight').set_hl(table.merge(common_hl, {
     Comment = { ctermfg = 242, fg = '#6B7089', cterm = italic, italic = true },
-  })
-  require('modules.lsp.highlight')
+  }))
+  require('modules.lsp.highlight.iceberg')
   require('modules.lualine').setup({
     theme = 'iceberg_dark',
     section_separators = { left = '', right = '' },
@@ -35,10 +39,10 @@ end
 
 M.nord = function()
   require('nord').set()
-  require('utils.highlight').set_hl({
+  require('utils.highlight').set_hl(table.merge(common_hl, {
     MatchParen = { bg = '#434C5E', bold = true },
     Comment = { fg = '#616e88', cterm = italic, italic = true },
-  })
+  }))
   require('modules.lualine').setup({
     theme = 'nord',
     section_separators = { left = '', right = '' },
@@ -95,7 +99,7 @@ M.catppuccin = function()
     },
   })
   vim.cmd.colorscheme('catppuccin-mocha')
-  require('utils.highlight').set_hl({})
+  require('utils.highlight').set_hl(common_hl)
   require('modules.lualine').setup({
     theme = 'catppuccin',
     section_separators = { left = '', right = '' },
@@ -116,7 +120,7 @@ end
 
 M.default = function()
   vim.cmd.colorscheme('ownDefault')
-  require('utils.highlight').set_hl({})
+  require('utils.highlight').set_hl(common_hl)
   require('modules.lualine').setup({
     theme = require('modules.lualine.themes.ownDefault'),
     section_separators = { left = '', right = '' },
