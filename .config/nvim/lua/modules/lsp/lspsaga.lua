@@ -40,6 +40,7 @@ require('lspsaga').setup({
     border = 'rounded',
     code_action = ' ',
   },
+  symbol_in_winbar = {
+    enable = true,
+  },
 })
-
-vim.wo.winbar = require('lspsaga.symbolwinbar'):get_winbar()
