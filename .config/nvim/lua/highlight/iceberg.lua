@@ -46,6 +46,14 @@ local conf = {
   CmpItemKindInterface = { fg = '#D8EEEB', bg = '#58B5A8' },
   CmpItemKindColor = { link = 'CmpItemKindInterface' },
   CmpItemKindTypeParameter = { link = 'CmpItemKindInterface' },
+
+  rainbowcol1 = { fg = '#A093C7', bg = 'NONE' },
+  rainbowcol2 = { fg = '#E2A478', bg = 'NONE' },
+  rainbowcol3 = { fg = '#E27878', bg = 'NONE' },
+  rainbowcol4 = { fg = '#B4BE82', bg = 'NONE' },
+  rainbowcol5 = { fg = '#89B8C2', bg = 'NONE' },
+  rainbowcol6 = { fg = '#84A0C6', bg = 'NONE' },
+  rainbowcol7 = { fg = '#BFBB82', bg = 'NONE' },
 }
 
 local set_hl = function(opts)

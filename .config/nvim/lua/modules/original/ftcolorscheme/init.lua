@@ -1,3 +1,4 @@
+local api = vim.api
 local scheme = require('modules.original.ftcolorscheme.colorscheme_config')
 
 scheme.default()
@@ -15,7 +16,16 @@ function ftColorSchemeSet()
   if ftCheck(ft, { 'c' }) then
     scheme.default()
   elseif
-    ftCheck(ft, { 'html', 'css', 'scss', 'sass', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' })
+    ftCheck(ft, {
+      'html',
+      'css',
+      'scss',
+      'sass',
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+    })
   then
     scheme.neosolarized()
   elseif ftCheck(ft, { 'rust', 'toml', 'go' }) then
@@ -29,9 +39,24 @@ function ftColorSchemeSet()
   end
 end
 
-vim.api.nvim_create_autocmd('BufWinEnter', {
+api.nvim_create_autocmd('BufWinEnter', {
   group = vim.api.nvim_create_augroup('BufReload', {}),
   callback = function()
     ftColorSchemeSet()
+  end,
+})
+
+api.nvim_create_user_command('Scheme', function(opts)
+  require('modules.original.ftcolorscheme.colorscheme_config')[opts.args]()
+end, {
+  nargs = 1,
+  complete = function(_, _, _)
+    return {
+      'default',
+      'catppuccin',
+      'neosolarized',
+      'iceberg',
+      'nord',
+    }
   end,
 })

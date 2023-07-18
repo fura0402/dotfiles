@@ -58,19 +58,22 @@ return {
 
   {
     'cocopon/iceberg.vim',
-    ft = { 'markdown', 'rust', 'toml', 'go' },
+    ft = { 'rust', 'toml', 'go' },
   },
   {
     'shaunsingh/nord.nvim',
     dependencies = { 'lukas-reineke/headlines.nvim' },
+    ft = { 'lua' },
   },
   {
     'svrana/neosolarized.nvim',
     dependencies = { 'tjdevries/colorbuddy.nvim' },
+    ft = { 'html', 'css', 'scss', 'sass', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
   },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    ft = { 'cpp', 'markdown', 'python' },
   },
 
   {
