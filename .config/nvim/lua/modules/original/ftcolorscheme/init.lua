@@ -50,13 +50,15 @@ api.nvim_create_user_command('Scheme', function(opts)
   require('modules.original.ftcolorscheme.colorscheme_config')[opts.args]()
 end, {
   nargs = 1,
-  complete = function(_, _, _)
-    return {
+  complete = function(arg_lead, _, _)
+    return vim.tbl_filter(function(item)
+      return vim.startswith(item, arg_lead)
+    end, {
       'default',
       'catppuccin',
       'neosolarized',
       'iceberg',
       'nord',
-    }
+    })
   end,
 })
