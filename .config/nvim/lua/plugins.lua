@@ -41,7 +41,7 @@ return {
       },
     },
     build = ':TSUpdate',
-    event = { 'BufRead', 'BufNewFile' },
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('modules.treesitter')
     end,
@@ -62,7 +62,6 @@ return {
   },
   {
     'shaunsingh/nord.nvim',
-    dependencies = { 'lukas-reineke/headlines.nvim' },
     ft = { 'lua' },
   },
   {
@@ -77,15 +76,16 @@ return {
   },
 
   {
+    'williamboman/mason.nvim',
+    config = function()
+      require('modules.lsp.mason').setup()
+    end,
+    build = ':MasonUpdate',
+    lazy = false,
+  },
+  {
     'neovim/nvim-lspconfig',
     dependencies = {
-      {
-        'williamboman/mason.nvim',
-        config = function()
-          require('modules.lsp.mason').setup()
-        end,
-        build = ':MasonUpdate',
-      },
       {
         'williamboman/mason-lspconfig.nvim',
         config = function()
@@ -102,18 +102,16 @@ return {
   },
 
   {
-    'jay-babu/mason-null-ls.nvim',
-    dependencies = {
-      'williamboman/mason.nvim',
-      'jose-elias-alvarez/null-ls.nvim',
-    },
-    config = function()
-      require('modules.lsp.mason').null_ls()
-    end,
-  },
-  {
     'jose-elias-alvarez/null-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'jay-babu/mason-null-ls.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      {
+        'jay-babu/mason-null-ls.nvim',
+        config = function()
+          require('modules.lsp.mason').null_ls()
+        end,
+      },
+    },
     event = 'LspAttach',
     config = function()
       require('modules.lsp.null-ls')

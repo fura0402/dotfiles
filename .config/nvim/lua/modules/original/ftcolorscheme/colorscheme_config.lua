@@ -14,8 +14,8 @@ local common_hl = {
 }
 
 M.iceberg = function()
-  vim.cmd([[colorscheme iceberg]])
-  require('highlight.iceberg')
+  vim.cmd.colorscheme('iceberg')
+  require('highlight.iceberg').set_hl()
   require('utils.highlight').set_hl(table.merge(common_hl, {
     Comment = { ctermfg = 242, fg = '#6B7089', cterm = italic, italic = true },
   }))

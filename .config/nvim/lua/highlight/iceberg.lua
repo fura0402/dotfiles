@@ -7,6 +7,8 @@
 -- highlight! CmpItemKindMethod guifg=#DDE5F5 guibg=#6C8ED4
 -- highlight! link CmpItemKindInterface
 
+local M = {}
+
 local conf = {
   CmpItemAbbrDeprecated = { fg = '#808080', bg = 'NONE', strikethrough = true },
   CmpItemAbbrMatch = { fg = '#82AAFF', bg = 'NONE', bold = true },
@@ -47,6 +49,12 @@ local conf = {
   CmpItemKindColor = { link = 'CmpItemKindInterface' },
   CmpItemKindTypeParameter = { link = 'CmpItemKindInterface' },
 
+  IndentBlanklineChar = { fg = '#242940', nocombine = true },
+  IndentBlanklineContextChar = { fg = '#84a0c6', nocombine = true },
+  IndentBlanklineSpaceCharBlankline = { fg = '#242940', nocombine = true },
+  IndentBlanklineSpaceChar = { fg = '#242940', nocombine = true },
+  IndentBlanklineContextStart = { sp = '#84a0c6', underline = true },
+
   rainbowcol1 = { fg = '#A093C7', bg = 'NONE' },
   rainbowcol2 = { fg = '#E2A478', bg = 'NONE' },
   rainbowcol3 = { fg = '#E27878', bg = 'NONE' },
@@ -56,10 +64,8 @@ local conf = {
   rainbowcol7 = { fg = '#BFBB82', bg = 'NONE' },
 }
 
-local set_hl = function(opts)
-  for name, value in pairs(opts) do
-    vim.api.nvim_set_hl(0, name, value)
-  end
+M.set_hl = function()
+  require('utils.highlight').set_hl(conf)
 end
 
-set_hl(conf)
+return M

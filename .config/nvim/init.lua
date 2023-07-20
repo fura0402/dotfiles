@@ -96,4 +96,3 @@ require('lazy').setup('plugins', {
 })
 --require('core.statusline')
 require('modules.original.ftcolorscheme')
--- vim.cmd.colorscheme('nord')
