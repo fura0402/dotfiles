@@ -1,5 +1,24 @@
 return {
   {
+    'cocopon/iceberg.vim',
+    ft = { 'rust', 'toml', 'go' },
+  },
+  {
+    'shaunsingh/nord.nvim',
+    ft = { 'lua' },
+  },
+  {
+    'svrana/neosolarized.nvim',
+    dependencies = { 'tjdevries/colorbuddy.nvim' },
+    ft = { 'html', 'css', 'scss', 'sass', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    ft = { 'cpp', 'markdown', 'python' },
+  },
+
+  {
     'nathom/filetype.nvim',
     lazy = false,
     config = function()
@@ -65,25 +84,6 @@ return {
     config = function()
       require('modules.comment')
     end,
-  },
-
-  {
-    'cocopon/iceberg.vim',
-    ft = { 'rust', 'toml', 'go' },
-  },
-  {
-    'shaunsingh/nord.nvim',
-    ft = { 'lua' },
-  },
-  {
-    'svrana/neosolarized.nvim',
-    dependencies = { 'tjdevries/colorbuddy.nvim' },
-    ft = { 'html', 'css', 'scss', 'sass', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-  },
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    ft = { 'cpp', 'markdown', 'python' },
   },
 
   {
@@ -213,7 +213,6 @@ return {
       require('modules.autopairs')
     end,
   },
-
   {
     'kylechui/nvim-surround',
     event = 'BufWinEnter',
@@ -356,11 +355,6 @@ return {
   },
 
   {
-    'jghauser/mkdir.nvim',
-    event = 'CmdlineEnter',
-  },
-
-  {
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = { 'BufReadPost', 'BufNewFile' },
@@ -386,6 +380,11 @@ return {
     config = function()
       require('modules.nvim-highlight-colors')
     end,
+  },
+
+  {
+    'jghauser/mkdir.nvim',
+    event = 'CmdlineEnter',
   },
 
   {
