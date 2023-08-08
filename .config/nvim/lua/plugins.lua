@@ -17,6 +17,12 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
+      {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+          require('modules.treesitter').context_setup()
+        end,
+      },
       'nvim-treesitter/nvim-treesitter-textobjects',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'windwp/nvim-ts-autotag',
@@ -26,7 +32,12 @@ return {
           require('modules.rainbow-delimiters')
         end,
       },
-      'andymass/vim-matchup',
+      {
+        'andymass/vim-matchup',
+        config = function()
+          vim.g.matchup_matchparen_enabled = 0
+        end,
+      },
       {
         'haringsrob/nvim_context_vt',
         config = function()
@@ -43,7 +54,7 @@ return {
     build = ':TSUpdate',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      require('modules.treesitter')
+      require('modules.treesitter').setup()
     end,
   },
 
@@ -214,13 +225,34 @@ return {
     'phaazon/hop.nvim',
     event = 'BufWinEnter',
     config = function()
-      require('modules.hop')
+      require('modules.nvim-hop')
+    end,
+  },
+  {
+    'mfussenegger/nvim-treehopper',
+    dependencies = {
+      'phaazon/hop.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    event = 'BufWinEnter',
+    config = function()
+      require('modules.nvim-treehopper')
     end,
   },
 
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    'famiu/bufdelete.nvim',
+    config = function()
+      vim.keymap.set('n', '<leader>bd', ':Bdelete<CR>', { noremap = true, silent = true })
+    end,
+    cmd = 'Bdelete',
+  },
+  {
+    'kwkarlwang/bufresize.nvim',
+    event = 'BufWinEnter',
+    config = function()
+      require('bufresize').setup()
+    end,
   },
   {
     'akinsho/bufferline.nvim',
@@ -244,7 +276,15 @@ return {
   },
   {
     'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      {
+        'stevearc/stickybuf.nvim',
+        config = function()
+          require('stickybuf').setup()
+        end,
+      },
+    },
     cmd = 'NvimTreeFindFileToggle',
     init = function()
       vim.keymap.set('n', '<leader>f', ':NvimTreeFindFileToggle<CR>', { noremap = true, silent = true })
@@ -296,14 +336,15 @@ return {
       end
 
       local opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<Leader>tf', builtin('find_files')({}), opts)
-      vim.keymap.set('n', '<Leader>tg', builtin('live_grep')({}), opts)
-      vim.keymap.set('n', '<Leader>to', builtin('oldfiles')({}), opts)
-      vim.keymap.set('n', '<Leader>tb', builtin('buffers')({}), opts)
-      vim.keymap.set('n', '<Leader>th', builtin('help_tags')({}), opts)
-      vim.keymap.set('n', '<Leader>tp', extensions('projects', 'projects')({}), opts)
-      vim.keymap.set('n', '<Leader>tc', extensions('neoclip', 'default')({}), opts)
-      vim.keymap.set('n', '<Leader>cd', extensions('zoxide', 'list')({}), opts)
+      vim.keymap.set('n', '<Leader>tf', builtin('find_files')(), opts)
+      vim.keymap.set('n', '<Leader>tg', builtin('live_grep')(), opts)
+      vim.keymap.set('n', '<Leader>to', builtin('oldfiles')(), opts)
+      vim.keymap.set('n', '<Leader>tb', builtin('buffers')(), opts)
+      vim.keymap.set('n', '<Leader>th', builtin('help_tags')(), opts)
+      vim.keymap.set('n', '<Leader>tp', extensions('projects', 'projects')(), opts)
+      vim.keymap.set('n', '<Leader>tc', extensions('neoclip', 'default')(), opts)
+      vim.keymap.set('i', '<C-g>c', extensions('neoclip', 'default')(), opts)
+      vim.keymap.set('n', '<Leader>cd', extensions('zoxide', 'list')(), opts)
       vim.keymap.set('n', '<Leader>ge', builtin('symbols')({ sources = { 'emoji' } }), opts)
       vim.keymap.set('i', '<C-g>e', builtin('symbols')({ sources = { 'emoji' } }), opts)
       vim.keymap.set('n', '<Leader>gi', builtin('symbols')({ sources = { 'gitmoji' } }), opts)
@@ -325,14 +366,6 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       require('modules.gitsigns')
-    end,
-  },
-
-  {
-    'norcalli/nvim-colorizer.lua',
-    event = 'BufWinEnter',
-    config = function()
-      require('modules.colorizer')
     end,
   },
 
