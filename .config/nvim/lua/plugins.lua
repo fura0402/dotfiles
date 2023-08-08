@@ -348,6 +348,14 @@ return {
   },
 
   {
+    'brenoprata10/nvim-highlight-colors',
+    event = 'BufWinEnter',
+    config = function()
+      require('modules.nvim-highlight-colors')
+    end,
+  },
+
+  {
     'folke/zen-mode.nvim',
     dependencies = {
       { 'folke/twilight.nvim' },

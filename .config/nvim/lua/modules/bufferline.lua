@@ -29,7 +29,6 @@ end
 
 M.set_map = function()
   local opt = { silent = true, noremap = true }
-  vim.keymap.set('n', '<leader>bd', '<Cmd>bdelete<CR>', opt)
   vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', opt)
   vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', opt)
   vim.keymap.set('n', '<leader>b[', '<Cmd>BufferLineMovePrev<CR>', opt)
