@@ -8,6 +8,8 @@ local key_set = vim.keymap.set
 local key_del = vim.keymap.del
 local opts = { noremap = true, silent = true }
 
+key_set('', '$', 'g_', opts)
+
 key_set('n', '==', 'gg=G <C-o>zz', opts)
 
 key_set('n', 'j', 'gj', opts)
@@ -23,7 +25,6 @@ key_set('v', 'p', '"0p', opts)
 
 key_set('i', '<C-f>', '<Esc>', opts)
 key_set('v', '<C-f>', '<Esc>', opts)
---key_set('c', '<C-f>', '<Esc>', opts)
 
 key_set('i', '<C-h>', '<BS>', opts)
 key_set('i', '<C-d>', '<Del>', opts)

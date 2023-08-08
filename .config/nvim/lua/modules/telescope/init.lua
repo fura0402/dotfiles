@@ -15,7 +15,7 @@ require('telescope').setup({
     },
     winblend = 0,
     sorting_strategy = 'descending',
-    prompt_prefix = '  ',
+    prompt_prefix = '  ',
     selection_caret = '  ',
     entry_prefix = '   ',
     set_env = { ['COLORTERM'] = 'truecolor' }, -- Default: nil

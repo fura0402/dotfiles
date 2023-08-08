@@ -1,5 +1,5 @@
+vim.loader.enable()
 require('utils.table')
--- vim.loader.enable()  -- Since version 9.0
 
 local has = vim.fn.has
 local is_macUnix = has('macunix')
@@ -94,5 +94,4 @@ require('lazy').setup('plugins', {
     },
   },
 })
---require('core.statusline')
 require('modules.original.ftcolorscheme')
