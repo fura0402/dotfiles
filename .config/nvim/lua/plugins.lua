@@ -230,7 +230,18 @@ return {
       require('modules.bufferline').set_map()
     end,
   },
-
+  {
+    'rebelot/heirline.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'lewis6991/gitsigns.nvim',
+      'glepnir/lspsaga.nvim',
+    },
+    event = 'UIEnter',
+    config = function()
+      require('modules.heirline')
+    end,
+  },
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },

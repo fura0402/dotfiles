@@ -42,6 +42,8 @@ vim.api.nvim_create_autocmd('Filetype', {
 })
 vim.g.completeopt = 'menu,menuone,noinsert,noselect'
 vim.o.pumheight = 15
+vim.o.cmdheight = 0
+vim.o.laststatus = 3
 
 --vim.o.showbreak='↪'
 vim.opt.whichwrap = 'b,s,h,l'

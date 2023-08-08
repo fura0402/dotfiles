@@ -14,6 +14,9 @@ function M.setup()
   local styles = cb.styles
 
   Color.new('black', '#000000')
+  Color.new('green', '#719e07')
+  Color.new('orange', '#b58900')
+
   n.Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)
   n.Group.new('CursorLineNr', colors.yellow, colors.black, styles.NONE, colors.base1)
   n.Group.new('Visual', colors.none, colors.base03, styles.reverse)
@@ -22,6 +25,8 @@ function M.setup()
   n.Group.new('IndentBlanklineContextChar', colors.base1)
   n.Group.link('NormalFloat', groups.Normal)
   n.Group.link('FloatBorder', groups.Normal)
+  n.Group.new('diffAdded', colors.green)
+  n.Group.new('diffNewFile', colors.orange)
 
   local cError = groups.Error.fg
   local cInfo = groups.Information.fg

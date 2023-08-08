@@ -11,112 +11,81 @@ local common_hl = {
   RainbowDelimiterCyan = { link = 'rainbowcol5' },
   RainbowDelimiterBlue = { link = 'rainbowcol6' },
   RainbowDelimiterViolet = { link = 'rainbowcol1' },
+
+  TreesitterContext = { link = 'Pmenu' },
 }
 
+local function common_fn()
+  -- require('nvim-web-devicons').set_up_highlights()
+  -- vim.cmd('redrawstatus')
+end
+
 M.iceberg = function()
+  vim.g.heirlineDelimiters = {
+    main_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+    middle_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+    sub_separators = { left = '|', right = '|', hl = { fg = 'sub_fg', bg = 'sub_bg' } },
+  }
   vim.cmd.colorscheme('iceberg')
   require('highlight.iceberg').set_hl()
   require('utils.highlight').set_hl(table.merge(common_hl, {
     Comment = { ctermfg = 242, fg = '#6B7089', cterm = italic, italic = true },
+    diffNewFile = { fg = '#e2a478' },
   }))
-  require('modules.lualine').setup({
-    theme = 'iceberg_dark',
-    section_separators = { left = '', right = '' },
-    component_separators = { left = '', right = '' },
-    diagnostics_colored = true,
-  })
+  require('modules.heirline.palette.iceberg').set()
   require('modules.bufferline').setup({
     separator_style = 'slant',
   })
-  require('nvim-web-devicons').set_up_highlights()
+  common_fn()
 end
 
 M.neosolarized = function()
-  require('modules.neosolarized').setup()
-  require('modules.lualine').setup({
-    theme = 'solarized_dark',
-    section_separators = { left = '', right = '' },
-    component_separators = { left = '', right = '' },
-    diagnostics_colored = true,
-  })
+  vim.g.heirlineDelimiters = {
+    main_separators = { left = '', right = '', hl = { fg = 'main_bg', bg = 'main_fg' } },
+    middle_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+    sub_separators = { left = '', right = '', hl = { fg = 'sub_fg', bg = 'sub_bg' } }, -- 
+  }
+  require('highlight.neosolarized').setup()
+  require('modules.heirline.palette.neosolarized').set()
   require('modules.bufferline').setup({
     separator_style = 'slant',
   })
-  require('nvim-web-devicons').set_up_highlights()
+  common_fn()
 end
 
 M.nord = function()
+  vim.g.heirlineDelimiters = {
+    main_separators = { left = '', right = '', hl = { fg = 'main_bg', bg = 'base_bg' } },
+    middle_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+    sub_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+  }
   require('nord').set()
   require('utils.highlight').set_hl(table.merge(common_hl, {
     MatchParen = { bg = '#434C5E', bold = true },
     Comment = { fg = '#616e88', cterm = italic, italic = true },
   }))
-  require('modules.lualine').setup({
-    theme = 'nord',
-    section_separators = { left = '', right = '' },
-    component_separators = { left = '', right = '' },
-    diagnostics_colored = true,
-  })
+  require('modules.heirline.palette.nord').set()
   require('modules.bufferline').setup({
     separator_style = 'thin',
   })
-  require('nvim-web-devicons').set_up_highlights()
+  common_fn()
 end
 
 M.catppuccin = function()
-  require('catppuccin').setup({
-    dim_inactive = {
-      enabled = true,
-      shade = 'dark',
-      percentage = 0.15,
-    },
-    integrations = {
-      cmp = true,
-      fidget = true,
-      gitsigns = true,
-      headlines = true,
-      hop = true,
-      lsp_saga = true,
-      lsp_trouble = true,
-      markdown = true,
-      mason = true,
-      nvimtree = true,
-      telescope = true,
-      treesitter = true,
-      treesitter_context = true,
-      rainbow_delimiters = true,
-    },
-    indent_blankline = {
-      enabled = true,
-      colored_indent_levels = false,
-    },
-    native_lsp = {
-      enabled = true,
-      virtual_text = {
-        errors = { 'italic' },
-        hints = { 'italic' },
-        warnings = { 'italic' },
-        information = { 'italic' },
-      },
-      underlines = {
-        errors = { 'underline' },
-        hints = { 'underline' },
-        warnings = { 'underline' },
-        information = { 'underline' },
-      },
-    },
-  })
+  vim.g.heirlineDelimiters = {
+    main_separators = { left = '', right = '', hl = { fg = 'main_bg', bg = 'base_bg', bold = true } },
+    middle_separators = { left = '', right = '', hl = { fg = 'base_bg', bg = 'main_bg', bold = true } },
+    sub_separators = { left = '', right = '', hl = { fg = 'base_bg', bg = 'main_bg', bold = true } },
+  }
+  require('highlight.catppuccin')
   vim.cmd.colorscheme('catppuccin-mocha')
   require('utils.highlight').set_hl({
     NormalFloat = { link = 'Normal' },
     FloatBorder = { link = 'Normal' },
+    SagaFolderName = { link = 'Delimiter' },
+    SagaFileName = { link = 'Delimiter' },
   })
-  require('modules.lualine').setup({
-    theme = 'catppuccin',
-    section_separators = { left = '', right = '' },
-    component_separators = '|',
-    diagnostics_colored = true,
-  })
+  require('modules.heirline.palette.catppuccin').set()
   require('modules.bufferline').setup({
     separator_style = 'slant',
     highlights = require('catppuccin.groups.integrations.bufferline').get(),
@@ -126,22 +95,22 @@ M.catppuccin = function()
       kind = require('catppuccin.groups.integrations.lsp_saga').custom_kind(),
     },
   })
-  require('nvim-web-devicons').set_up_highlights()
+  common_fn()
 end
 
 M.default = function()
+  vim.g.heirlineDelimiters = {
+    main_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+    middle_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+    sub_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+  }
   vim.cmd.colorscheme('ownDefault')
   require('utils.highlight').set_hl(common_hl)
-  require('modules.lualine').setup({
-    theme = require('modules.lualine.themes.ownDefault'),
-    section_separators = { left = '', right = '' },
-    component_separators = { left = '', right = '' },
-    diagnostics_colored = false,
-  })
+  require('modules.heirline.palette.ownDefault').set()
   require('modules.bufferline').setup({
     separator_style = 'thin',
   })
-  require('nvim-web-devicons').set_up_highlights()
+  common_fn()
 end
 
 return M

@@ -43,10 +43,13 @@ highlight RedrawDebugClear ctermbg=11 guibg=#fffc67
 highlight RedrawDebugComposed ctermbg=10 guibg=#71e992
 highlight RedrawDebugRecompose ctermbg=9 guibg=#ff6d67
 highlight NormalFloat guifg=#c7c7c7 guibg=#000000
+highlight Normal guifg=#c7c7c7 guibg=#000000
 highlight FloatShadow guibg=#000000 blend=80
 highlight FloatShadowThrough guibg=#000000 blend=100
 highlight MatchParen cterm=bold ctermbg=1 gui=bold guibg=#bc0004
 highlight NvimInternalError ctermfg=9 ctermbg=9 guifg=#ff6d67 guibg=#ff6d67
+highlight diffAdded guifg=#00ff00
+highlight diffNewFile guifg=#ff8700  " #ffaf00
 
 " syntax enable
 highlight Comment cterm=italic ctermfg=244 gui=italic guifg=#808080
