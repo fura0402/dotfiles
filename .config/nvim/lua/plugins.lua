@@ -376,7 +376,18 @@ return {
 
   {
     'brenoprata10/nvim-highlight-colors',
-    event = 'BufWinEnter',
+    ft = {
+      'vim',
+      'lua',
+      'html',
+      'css',
+      'scss',
+      'sass',
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+    },
     config = function()
       require('modules.nvim-highlight-colors')
     end,
