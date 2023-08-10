@@ -29,7 +29,7 @@ function ftColorSchemeSet()
     scheme.neosolarized()
   elseif ftCheck(ft, { 'rust', 'toml', 'go' }) then
     scheme.iceberg()
-  elseif ftCheck(ft, { 'cpp', 'markdown', 'python' }) then
+  elseif ftCheck(ft, { 'cpp', 'python', 'markdown', 'mdx' }) then
     scheme.catppuccin()
   elseif ftCheck(ft, { 'lua' }) then
     scheme.nord()

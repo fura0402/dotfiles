@@ -39,7 +39,7 @@ return {
       {
         'nvim-treesitter/nvim-treesitter-context',
         config = function()
-          require('modules.treesitter').context_setup()
+          require('modules.treesitter.context')
         end,
       },
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -73,8 +73,16 @@ return {
     build = ':TSUpdate',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      require('modules.treesitter').setup()
+      require('modules.treesitter')
     end,
+  },
+  {
+    'nvim-treesitter/playground',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    cmd = {
+      'TSPlaygroundToggle',
+      'TSNodeUnderCursor',
+    },
   },
 
   {
@@ -241,10 +249,10 @@ return {
 
   {
     'famiu/bufdelete.nvim',
-    config = function()
+    cmd = 'Bdelete',
+    init = function()
       vim.keymap.set('n', '<leader>bd', ':Bdelete<CR>', { noremap = true, silent = true })
     end,
-    cmd = 'Bdelete',
   },
   {
     'kwkarlwang/bufresize.nvim',
