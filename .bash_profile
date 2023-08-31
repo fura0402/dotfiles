@@ -6,6 +6,17 @@ export EDITOR="nvim"
 export LANG="ja_JP.UTF-8"
 #export LANG="en_US.UTF-8"
 
+# tmux-256color が見つからない場合の対処
+## MacPorts(Mac標準)
+# $ /opt/local/bin/infocmp -x tmux-256color > ~/tmux-256color.src
+#   or
+# # Homebrew(brew経由のncurses) <-- 基本こっち
+# $ /usr/local/opt/ncurses/bin/infocmp -x tmux-256color > ~/tmux-256color.src
+#
+# Rewrite the file: pairs#0x10000 or pairs#65536 --> pairs#32767
+# run: /usr/bin/tic -x -o $HOME/.local/share/terminfo tmux-256color.src
+# export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
 
 ### PATH Variables ###
 
