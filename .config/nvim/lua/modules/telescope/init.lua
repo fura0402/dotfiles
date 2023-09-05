@@ -29,7 +29,7 @@ require('telescope').setup({
       '--line-number',
       '--column',
       '--smart-case',
-      '--glob=!{.git,node_modules}/*',
+      '--glob=!{.git,node_modules,.next}/*',
       '--glob=!package-lock.json',
     },
     mappings = {
@@ -53,6 +53,7 @@ require('telescope').setup({
         -- '--strip-cwd-prefix',
         '--exclude=.git',
         '--exclude=node_modules',
+        '--exclude=.next',
       },
     },
     registers = {
