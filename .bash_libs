@@ -70,13 +70,6 @@ function ls_notice(){
     fi
 }
 
-__fnm_use_if_file_found() {
-    if [[ -f .node-version || -f .nvmrc ]]; then
-        fnm use --silent-if-unchanged
-    else
-        fnm use system --silent-if-unchanged
-    fi
-}
 function cdls(){
     if [[ $1 =~ \.\..* ]];then
         local dot="$(echo $1 | sed 's|\.||')"
@@ -91,7 +84,6 @@ function cdls(){
     fi
     set_prompt
     clear -x; printf '\n\e[1;33m%s\e[m\n' "$(pwd)"; printf '\n\e[1;37m%s\e[m\n' ' ls'; ls_notice
-    __fnm_use_if_file_found
 }
 
 zls(){

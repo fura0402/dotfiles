@@ -101,10 +101,6 @@ else
     export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 fi
 
-# fnm
-eval "$(fnm env --shell bash)"
-eval "$(fnm completions --shell bash)"
-
 # zoxide
 eval "$(zoxide init --no-cmd bash)"
 
