@@ -1,0 +1,3 @@
+[submodule "dot_win"]
+	path = dot_win
+	url = git@github.com:fura0402/dot_win.git
