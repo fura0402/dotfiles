@@ -1,3 +1,6 @@
 [submodule "dot_win"]
 	path = dot_win
 	url = https://github.com/fura0402/dot_win.git
+[submodule "dot_macos"]
+	path = dot_macos
+	url = https://github.com/fura0402/dot_macos.git
