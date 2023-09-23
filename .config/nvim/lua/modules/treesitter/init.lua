@@ -18,6 +18,7 @@ require('nvim-treesitter.configs').setup({
     'llvm',
     'lua',
     'make',
+    'markdown',
     'markdown_inline',
     'python',
     'rust',
