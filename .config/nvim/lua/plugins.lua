@@ -17,6 +17,10 @@ return {
     name = 'catppuccin',
     ft = { 'cpp', 'markdown', 'python' },
   },
+  {
+    'marko-cerovac/material.nvim',
+    ft = { 'java' },
+  },
 
   {
     'nathom/filetype.nvim',
@@ -65,6 +69,7 @@ return {
       },
       {
         'lukas-reineke/indent-blankline.nvim',
+        tag = 'v2.20.8',
         config = function()
           require('modules.indent-blankline')
         end,
@@ -177,12 +182,13 @@ return {
     tag = 'legacy',
   },
   {
-    'simrat39/rust-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    -- lazy = false, -- This plugin is already lazy
     ft = 'rust',
-    config = function()
-      require('modules.lsp.lspconfig').rust_setup()
-    end,
+    -- config = function()
+    --   require('modules.lsp.lspconfig').rust_setup()
+    -- end,
   },
 
   {
@@ -364,7 +370,6 @@ return {
 
   {
     'lewis6991/gitsigns.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
     event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       require('modules.gitsigns')

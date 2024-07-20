@@ -31,6 +31,8 @@ function ftColorSchemeSet()
     scheme.iceberg()
   elseif ftCheck(ft, { 'cpp', 'python', 'markdown', 'mdx' }) then
     scheme.catppuccin()
+  elseif ftCheck(ft, { 'java' }) then
+    scheme.material()
   elseif ftCheck(ft, { 'lua' }) then
     scheme.nord()
   else
@@ -61,6 +63,7 @@ end, {
       'catppuccin',
       'neosolarized',
       'iceberg',
+      'material',
       'nord',
     })
   end,

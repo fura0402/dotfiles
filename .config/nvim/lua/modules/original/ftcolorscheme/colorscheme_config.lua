@@ -29,7 +29,7 @@ M.iceberg = function()
   vim.cmd.colorscheme('iceberg')
   require('highlight.iceberg').set_hl()
   require('utils.highlight').set_hl(table.merge(common_hl, {
-    Comment = { ctermfg = 242, fg = '#6B7089', cterm = italic, italic = true },
+    Comment = { ctermfg = 242, fg = '#6B7089', italic = true },
     diffNewFile = { fg = '#e2a478' },
   }))
   require('modules.heirline.palette.iceberg').set()
@@ -94,6 +94,20 @@ M.catppuccin = function()
     ui = {
       kind = require('catppuccin.groups.integrations.lsp_saga').custom_kind(),
     },
+  })
+  common_fn()
+end
+
+M.material = function()
+  vim.g.heirlineDelimiters = {
+    main_separators = { left = '', right = '', hl = { fg = 'main_bg', bg = 'base_bg' } },
+    middle_separators = { left = '', right = '', hl = { fg = 'fg', bg = 'bg' } },
+    sub_separators = { left = '', right = '', hl = { fg = 'sub_fg', bg = 'sub_bg' } }, -- 
+  }
+  vim.cmd.colorscheme('material-darker')
+  require('modules.heirline.palette.material').set()
+  require('modules.bufferline').setup({
+    separator_style = 'slant',
   })
   common_fn()
 end
