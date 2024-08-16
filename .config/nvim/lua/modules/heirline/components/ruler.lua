@@ -12,7 +12,8 @@ M.Ruler = {
   -- %P = percentage through file of displayed window
   -- provider = '%7(%l/%3L%):%2c %P',
   -- provider = ' %P% /%2L ',
-  provider = ' %l:%c %P ',
+  -- provider = ' %l:%c %P ',
+  provider = '%5(%l/%2L%) :%2c %P ',
 }
 
 -- I take no credits for this! :lion:
@@ -25,12 +26,7 @@ M.ScrollBar = {
   provider = function(self)
     local curr_line = vim.api.nvim_win_get_cursor(0)[1]
     local lines = vim.api.nvim_buf_line_count(0)
-    local i
-    if lines > 0 then
-      i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
-    else
-      i = #self.sbar
-    end
+    local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
     return string.rep(self.sbar[i], 2)
   end,
 }
