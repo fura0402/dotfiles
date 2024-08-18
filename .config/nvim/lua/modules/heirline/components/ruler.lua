@@ -19,7 +19,8 @@ M.Ruler = {
 -- I take no credits for this! :lion:
 M.ScrollBar = {
   static = {
-    sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
+    -- sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
+    sbar = { '█', '▇', '▆', '▅', '▄', '▃', '▂', '▁' },
     -- Another variant, because the more choice the better.
     -- sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' }
   },
